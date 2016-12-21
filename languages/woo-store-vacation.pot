@@ -1,0 +1,95 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Woo Store Vacation\n"
+"POT-Creation-Date: 2016-11-28 03:22+0400\n"
+"PO-Revision-Date: 2016-11-28 03:20+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: woo-store-vacation.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin/theme
+#: includes/WooStoreVacation.php:29 includes/WooStoreVacation.php:39
+msgid "Woo Store Vacation"
+msgstr ""
+
+#: includes/WooStoreVacation.php:30
+msgid "Store Vacation"
+msgstr ""
+
+#: includes/WooStoreVacation.php:40
+msgid "Put WooCommerce store in vacation or pause mode with custom notice."
+msgstr ""
+
+#: includes/WooStoreVacation.php:65
+msgid "Enable Vacation Mode"
+msgstr ""
+
+#: includes/WooStoreVacation.php:72
+msgid "Disable Purchase"
+msgstr ""
+
+#: includes/WooStoreVacation.php:79
+msgid "End Date"
+msgstr ""
+
+#: includes/WooStoreVacation.php:86
+msgid "Notice Style"
+msgstr ""
+
+#: includes/WooStoreVacation.php:93
+msgid "Vacation Notice"
+msgstr ""
+
+#: includes/WooStoreVacation.php:129
+msgid ""
+"Warning: With checking this setting customers won't be able to place an "
+"order."
+msgstr ""
+
+#: includes/WooStoreVacation.php:141
+msgid "Info"
+msgstr ""
+
+#: includes/WooStoreVacation.php:143
+msgid "Error"
+msgstr ""
+
+#: includes/WooStoreVacation.php:145
+msgid "Success"
+msgstr ""
+
+#: includes/WooStoreVacation.php:162
+msgid "Settings"
+msgstr ""
+
+#: includes/requirements.php:12
+msgid ""
+"Woo Store Vacation is enabled but not effective. It requires WooCommerce in "
+"order to work."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://www.mypreview.one"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Put your store in vacation or pause mode with custom notice."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mahdi Yazdani"
+msgstr ""
