@@ -15,11 +15,8 @@ When you turn on your store vacation mode, plugin will display a custom notice i
 
 If you want customers to be able to see products and prices, but not be able to purchase any products, it is possible to turn on "Disable Purchase" option in order to remove the purchase functionality and add to cart button, until after you come back from vacation(holiday) or end date passed.
 
-Download plugin from WordPress Repository
-https://wordpress.org/plugins/woo-store-vacation/
+[Download plugin from WordPress Repository] (https://wordpress.org/plugins/woo-store-vacation/)
 
-Get free support at WordPress forum
-https://wordpress.org/plugins/woo-store-vacation/
+[Get free support at WordPress forum] (https://wordpress.org/support/plugin/woo-store-vacation)
 
-Offical plugin post page
-https://www.mypreview.one/downloads/woo-store-vacation/
+[Offical plugin post page] (https://www.mypreview.one/downloads/woo-store-vacation/)
