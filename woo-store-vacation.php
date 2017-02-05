@@ -2,8 +2,8 @@
 /*
 Plugin Name: 	Woo Store Vacation
 Plugin URI:  	https://www.mypreview.one
-Description: 	Put your store in vacation or pause mode with custom notice.
-Version:     	1.0.2
+Description: 	Put your WooCommerce store in vacation or pause mode with custom notice.
+Version:     	1.0.3
 Author:      	Mahdi Yazdani
 Author URI:  	https://www.mypreview.one
 Text Domain: 	woo-store-vacation
