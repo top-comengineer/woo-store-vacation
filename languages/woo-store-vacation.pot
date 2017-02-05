@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Woo Store Vacation\n"
-"POT-Creation-Date: 2016-11-28 03:22+0400\n"
-"PO-Revision-Date: 2016-11-28 03:20+0400\n"
+"POT-Creation-Date: 2017-02-05 12:27+0400\n"
+"PO-Revision-Date: 2017-02-05 12:26+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #. Plugin Name of the plugin/theme
-#: includes/WooStoreVacation.php:29 includes/WooStoreVacation.php:39
+#: includes/WooStoreVacation.php:29 includes/WooStoreVacation.php:40
 msgid "Woo Store Vacation"
 msgstr ""
 
@@ -29,49 +29,89 @@ msgstr ""
 msgid "Store Vacation"
 msgstr ""
 
-#: includes/WooStoreVacation.php:40
-msgid "Put WooCommerce store in vacation or pause mode with custom notice."
+#: includes/WooStoreVacation.php:49 includes/WooStoreVacation.php:75
+msgid "Click to toggle"
 msgstr ""
 
-#: includes/WooStoreVacation.php:65
-msgid "Enable Vacation Mode"
-msgstr ""
-
-#: includes/WooStoreVacation.php:72
-msgid "Disable Purchase"
+#: includes/WooStoreVacation.php:53
+msgid "Global Settings"
 msgstr ""
 
 #: includes/WooStoreVacation.php:79
-msgid "End Date"
+msgid "Looking for a stylish theme?"
 msgstr ""
 
-#: includes/WooStoreVacation.php:86
+#: includes/WooStoreVacation.php:91
+#, php-format
+msgid ""
+"In case you want to start an e-commerce project, the %s is one of the first "
+"things you need. The whole design of Hypermarket is ultra-responsive and "
+"Retina ready, offering you a site that can be accessed from any device, no "
+"matter the size or technology of its screen."
+msgstr ""
+
+#: includes/WooStoreVacation.php:123
+msgid "Set Vacation Mode"
+msgstr ""
+
+#: includes/WooStoreVacation.php:130
+msgid "Disable Purchase"
+msgstr ""
+
+#: includes/WooStoreVacation.php:137
+msgid "Closing Date"
+msgstr ""
+
+#: includes/WooStoreVacation.php:144
 msgid "Notice Style"
 msgstr ""
 
-#: includes/WooStoreVacation.php:93
+#: includes/WooStoreVacation.php:151
 msgid "Vacation Notice"
 msgstr ""
 
-#: includes/WooStoreVacation.php:129
+#: includes/WooStoreVacation.php:181
+msgid "Want to go vacation by closing my store publically."
+msgstr ""
+
+#: includes/WooStoreVacation.php:187
 msgid ""
 "Warning: With checking this setting customers won't be able to place an "
 "order."
 msgstr ""
 
-#: includes/WooStoreVacation.php:141
+#: includes/WooStoreVacation.php:199
+msgid "The date has already passed."
+msgstr ""
+
+#: includes/WooStoreVacation.php:208
 msgid "Info"
 msgstr ""
 
-#: includes/WooStoreVacation.php:143
+#: includes/WooStoreVacation.php:210
 msgid "Error"
 msgstr ""
 
-#: includes/WooStoreVacation.php:145
+#: includes/WooStoreVacation.php:212
 msgid "Success"
 msgstr ""
 
-#: includes/WooStoreVacation.php:162
+#: includes/WooStoreVacation.php:217
+msgid ""
+"I am currently on vacation and products from my shop will be unavailable for "
+"next few days. Thank you for your patience and apologize for any "
+"inconvenience."
+msgstr ""
+
+#: includes/WooStoreVacation.php:230
+msgid "Support"
+msgstr ""
+
+#: includes/WooStoreVacation.php:231
+msgid "Docs"
+msgstr ""
+
+#: includes/WooStoreVacation.php:234
 msgid "Settings"
 msgstr ""
 
@@ -87,7 +127,8 @@ msgid "https://www.mypreview.one"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Put your store in vacation or pause mode with custom notice."
+msgid ""
+"Put your WooCommerce store in vacation or pause mode with custom notice."
 msgstr ""
 
 #. Author of the plugin/theme
