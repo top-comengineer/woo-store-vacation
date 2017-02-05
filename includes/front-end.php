@@ -4,12 +4,12 @@
  *
  * @author      Mahdi Yazdani
  * @package     Woo Store Vacation
- * @since       1.0
+ * @since       1.0.3
  */
 /**
  * Display Vacation Message.
  *
- *@since 1.0
+ * @since 1.0.3
  */
 if (!function_exists('woo_store_vacation_custom_notice')):
 	function woo_store_vacation_custom_notice() {
@@ -25,7 +25,7 @@ endif;
 /**
  * Trigger Store Vacation Mode.
  *
- * @since 1.0
+ * @since 1.0.3
  */
 if (!function_exists('woo_store_vacation_mode')):
 	function woo_store_vacation_mode() {
@@ -42,7 +42,8 @@ if (!function_exists('woo_store_vacation_mode')):
 				remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 );
 				remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 			endif;
-			add_action( 'woocommerce_before_main_content', 'woo_store_vacation_custom_notice', 5 );
+			add_action( 'woocommerce_archive_description', 'woo_store_vacation_custom_notice', 5 );
+			add_action( 'woocommerce_before_single_product', 'woo_store_vacation_custom_notice', 10 );
 			add_action( 'woocommerce_before_cart', 'woo_store_vacation_custom_notice', 5 );
 			add_action( 'woocommerce_before_checkout_form', 'woo_store_vacation_custom_notice', 5 );
 		endif;
