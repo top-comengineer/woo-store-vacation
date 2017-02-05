@@ -23,4 +23,4 @@ Want to contribute? Here's the [GitHub development repository](https://github.co
 All support is handled via a dedicated support forum, available at [Community Forums](https://support.mypreview.one "Community Forums"). Please head out there to open a new topic, in case you have any questions.
 
 **Support this plugin**
-Don't forget to rate this plugin 5 shining stars if you like it, thanks!
+Don't forget to rate this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "5 shining stars") if you like it, thanks!
