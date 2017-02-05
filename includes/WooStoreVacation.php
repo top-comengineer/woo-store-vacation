@@ -4,7 +4,7 @@
  *
  * @author      Mahdi Yazdani
  * @package     Woo Store Vacation
- * @since       1.0
+ * @since       1.0.3
  */
 // Prevent direct file access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -36,17 +36,75 @@ if ( !class_exists( 'WooStoreVacation' ) ) :
 		public function woo_store_vacation_create_admin_page() {
 			$this->woo_store_vacation_options = get_option( 'woo_store_vacation_option_name' ); ?>
 			<div class="wrap">
-				<h2><?php _e('Woo Store Vacation', 'woo-store-vacation'); ?></h2>
-				<p><?php _e('Put WooCommerce store in vacation or pause mode with custom notice.', 'woo-store-vacation'); ?></p>
-				<?php settings_errors(); ?>
-				<form method="post" action="options.php">
-					<?php
-						settings_fields( 'woo_store_vacation_option_group' );
-						do_settings_sections( 'woo-store-vacation-admin' );
-						submit_button();
-					?>
-				</form>
-			</div>
+				<div id="icon-options-general" class="icon32"></div>
+				<h1><?php _e( 'Woo Store Vacation', 'bs3-grid-builder' ); ?></h1>
+				<div id="poststuff">
+					<div id="post-body" class="metabox-holder columns-2">
+						<?php settings_errors(); ?>
+						<!-- main content -->
+						<div id="post-body-content">
+							<form method="POST" id="woo-store-vacation" autocomplete="off" action="options.php">
+								<div class="meta-box-sortables ui-sortable">
+									<div class="postbox">
+										<div class="handlediv" title="<?php _e('Click to toggle', 'woo-store-vacation'); ?>"><br></div>
+										<!-- Toggle -->
+										<h2 class="hndle">
+											<span>
+												<?php esc_attr_e( 'Global Settings', 'woo-store-vacation' ); ?>
+											</span>
+										</h2>
+										<div class="inside">
+											<?php
+												settings_fields( 'woo_store_vacation_option_group' );
+												do_settings_sections( 'woo-store-vacation-admin' );
+											?>
+										</div>
+										<!-- .inside -->
+									</div>
+									<!-- .postbox -->
+								</div>
+								<!-- .meta-box-sortables .ui-sortable -->
+								<?php submit_button(); ?>
+							</form>
+						</div>
+						<!-- post-body-content -->
+						<!-- sidebar -->
+						<div id="postbox-container-1" class="postbox-container">
+							<div class="meta-box-sortables">
+								<div class="postbox">
+									<div class="handlediv" title="<?php _e('Click to toggle', 'woo-store-vacation'); ?>"><br></div>
+									<!-- Toggle -->
+									<h2 class="hndle">
+										<span><?php esc_attr_e(
+												'Looking for a stylish theme?', 'woo-store-vacation'
+											); ?>
+										</span>
+									</h2>
+									<div class="inside">
+										<p>
+											<a href="https://wp.me/p8930x-8q" target="_blank">
+												<img src="https://i.imgsafe.org/6a52b7b71e.jpg" style="max-width:100%;height:auto;" />
+											</a>
+										</p>
+										<p>
+											<?php 
+												printf( __('In case you want to start an e-commerce project, the %s is one of the first things you need. The whole design of Hypermarket is ultra-responsive and Retina ready, offering you a site that can be accessed from any device, no matter the size or technology of its screen.' , 'woo-store-vacation'), '<a href="https://wp.me/p8930x-8q" target="_blank">Hypermarket WordPress Theme</a>' ); 
+											?>
+										</p>
+									</div>
+									<!-- .inside -->
+								</div>
+								<!-- .postbox -->
+							</div>
+							<!-- .meta-box-sortables -->
+						</div>
+						<!-- #postbox-container-1 .postbox-container -->
+					</div>
+					<!-- #post-body .metabox-holder .columns-2 -->
+					<br class="clear">
+				</div>
+				<!-- #poststuff -->
+			</div> <!-- .wrap -->
 		<?php }
 		public function woo_store_vacation_page_init() {
 			register_setting(
@@ -62,7 +120,7 @@ if ( !class_exists( 'WooStoreVacation' ) ) :
 			);
 			add_settings_field(
 				'enable_vacation_mode', // id
-				__('Enable Vacation Mode', 'woo-store-vacation'), // title
+				__('Set Vacation Mode', 'woo-store-vacation'), // title
 				array( $this, 'enable_vacation_mode_callback' ), // callback
 				'woo-store-vacation-admin', // page
 				'woo_store_vacation_setting_section' // section
@@ -76,21 +134,21 @@ if ( !class_exists( 'WooStoreVacation' ) ) :
 			);
 			add_settings_field(
 				'end_date', // id
-				__('End Date', 'woo-store-vacation'), // title
+				__('Closing Date', 'woo-store-vacation') . ' <abbr class="required" title="required">*</abbr>', // title
 				array( $this, 'end_date_callback' ), // callback
 				'woo-store-vacation-admin', // page
 				'woo_store_vacation_setting_section' // section
 			);
 			add_settings_field(
 				'notice_style', // id
-				__('Notice Style', 'woo-store-vacation'), // title
+				__('Notice Style', 'woo-store-vacation') . ' <abbr class="required" title="required">*</abbr>', // title
 				array( $this, 'notice_style_callback' ), // callback
 				'woo-store-vacation-admin', // page
 				'woo_store_vacation_setting_section' // section
 			);
 			add_settings_field(
 				'vacation_notice', // id
-				__('Vacation Notice', 'woo-store-vacation'), // title
+				__('Vacation Notice', 'woo-store-vacation') . ' <abbr class="required" title="required">*</abbr>', // title
 				array( $this, 'vacation_notice_callback' ), // callback
 				'woo-store-vacation-admin', // page
 				'woo_store_vacation_setting_section' // section
@@ -120,19 +178,28 @@ if ( !class_exists( 'WooStoreVacation' ) ) :
 		}
 		public function enable_vacation_mode_callback() {
 			printf(
-				'<input type="checkbox" name="woo_store_vacation_option_name[enable_vacation_mode]" id="enable_vacation_mode" value="enable_vacation_mode" %s />',
+				'<input type="checkbox" name="woo_store_vacation_option_name[enable_vacation_mode]" id="enable_vacation_mode" value="enable_vacation_mode" %s /> <label for="enable_vacation_mode"><em><small>' . esc_html__( 'Want to go vacation by closing my store publically.', 'woo-store-vacation') . '</small></em></label>',
 				( isset( $this->woo_store_vacation_options['enable_vacation_mode'] ) && $this->woo_store_vacation_options['enable_vacation_mode'] === 'enable_vacation_mode' ) ? 'checked' : ''
 			);
 		}
 		public function disable_purchase_callback() {
 			printf(
-				'<input type="checkbox" name="woo_store_vacation_option_name[disable_purchase]" id="disable_purchase" value="disable_purchase" %s /> <label for="disable_purchase"><em><small>' . esc_html__( 'Warning: With checking this setting customers won\'t be able to place an order.', 'woo-store-vacation') . '</small></em></label>',
+				'<input type="checkbox" name="woo_store_vacation_option_name[disable_purchase]" id="disable_purchase" value="disable_purchase" %s /> <label for="disable_purchase"><em><small style="color:red;">' . esc_html__( 'Warning: With checking this setting customers won\'t be able to place an order.', 'woo-store-vacation') . '</small></em></label>',
 				( isset( $this->woo_store_vacation_options['disable_purchase'] ) && $this->woo_store_vacation_options['disable_purchase'] === 'disable_purchase' ) ? 'checked' : ''
 			);
 		}
 		public function end_date_callback() {
+			$today = strtotime(current_time( 'd-m-Y', $gmt = 0 ));
+			$this->woo_store_vacation_options['end_date'];
+			$end_date = isset( $this->woo_store_vacation_options['end_date'] ) ? esc_attr(strtotime($this->woo_store_vacation_options['end_date'])) : '';
+			$invalid_date_style = '';
+			$date_passed = '';
+			if($today > $end_date && isset($end_date)):
+				$invalid_date_style = 'style="border:1px solid red;"';
+				$date_passed = '<small style="color:red;"><em> ' . __('The date has already passed.', 'woo-store-vacation') . '</em></small>';
+			endif;
 			printf(
-				'<input class="regular-text woo-store-vacation-datepicker" type="text" name="woo_store_vacation_option_name[end_date]" id="end_date" value="%s" readonly="readonly" />',
+				'<input class="regular-text woo-store-vacation-datepicker" type="text" name="woo_store_vacation_option_name[end_date]" ' . $invalid_date_style . ' id="end_date" value="%s" readonly="readonly" />' . $date_passed,
 				isset( $this->woo_store_vacation_options['end_date'] ) ? esc_attr( $this->woo_store_vacation_options['end_date']) : ''
 			);
 		}
@@ -147,7 +214,7 @@ if ( !class_exists( 'WooStoreVacation' ) ) :
 		public function vacation_notice_callback() {
 			printf(
 				'<textarea class="large-text" rows="5" name="woo_store_vacation_option_name[vacation_notice]" id="vacation_notice" />%s</textarea>',
-				isset( $this->woo_store_vacation_options['vacation_notice'] ) ? esc_attr( $this->woo_store_vacation_options['vacation_notice']) : ''
+				isset( $this->woo_store_vacation_options['vacation_notice'] ) ? esc_attr( $this->woo_store_vacation_options['vacation_notice']) : __('I am currently on vacation and products from my shop will be unavailable for next few days. Thank you for your patience and apologize for any inconvenience.', 'woo-store-vacation')
 			);
 		}
 		public function woo_store_vacation_scripts() {
@@ -158,10 +225,15 @@ if ( !class_exists( 'WooStoreVacation' ) ) :
 			wp_enqueue_script( 'woo-store-vacation-init-datepicker', $this->admin_assets_url . 'js/custom.js', array('jquery', 'jquery-ui-datepicker'), '1.0', true );
 		}
 		public function woo_store_vacation_settings_link($links) {
-			// Add settings link to plugin list table
-			$settings_link = '<a href="admin.php?page=woo-store-vacation">' . __( 'Settings', 'woo-store-vacation' ) . '</a>';
-  			array_push( $links, $settings_link );
-  			return $links;
+			// Add settings, docs and support links link to plugin list table
+  			$plugin_links = array(
+				'<a href="https://support.mypreview.one" target="_blank">' . __('Support', 'woo-store-vacation') . '</a>',
+				'<a href="https://docs.mypreview.one" target="_blank">' . __('Docs', 'woo-store-vacation') . '</a>',
+			);
+			if(class_exists('woocommerce')):
+				$plugin_links[] = '<a href="admin.php?page=woo-store-vacation">' . __( 'Settings', 'woo-store-vacation' ) . '</a>';
+			endif;
+  			return array_merge($plugin_links, $links);
 		}
 	}
 endif;
