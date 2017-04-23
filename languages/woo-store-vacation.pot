@@ -3,15 +3,16 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Woo Store Vacation\n"
-"POT-Creation-Date: 2017-02-05 12:27+0400\n"
-"PO-Revision-Date: 2017-02-05 12:26+0400\n"
+"POT-Creation-Date: 2017-04-23 13:20+0400\n"
+"PO-Revision-Date: 2017-04-23 13:20+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: woo-store-vacation.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -20,28 +21,42 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
+#: woo-store-vacation.php:99
+msgid "Cloning instances of this class is forbidden."
+msgstr ""
+
+#: woo-store-vacation.php:109
+msgid "Unserializing instances of this class is forbidden."
+msgstr ""
+
+#: woo-store-vacation.php:133
+msgid ""
+"Woo Store Vacation is enabled but not effective. It requires WooCommerce in "
+"order to work."
+msgstr ""
+
 #. Plugin Name of the plugin/theme
-#: includes/WooStoreVacation.php:29 includes/WooStoreVacation.php:40
+#: woo-store-vacation.php:147 woo-store-vacation.php:165
 msgid "Woo Store Vacation"
 msgstr ""
 
-#: includes/WooStoreVacation.php:30
+#: woo-store-vacation.php:148
 msgid "Store Vacation"
 msgstr ""
 
-#: includes/WooStoreVacation.php:49 includes/WooStoreVacation.php:75
+#: woo-store-vacation.php:174 woo-store-vacation.php:201
 msgid "Click to toggle"
 msgstr ""
 
-#: includes/WooStoreVacation.php:53
+#: woo-store-vacation.php:178
 msgid "Global Settings"
 msgstr ""
 
-#: includes/WooStoreVacation.php:79
+#: woo-store-vacation.php:204
 msgid "Looking for a stylish theme?"
 msgstr ""
 
-#: includes/WooStoreVacation.php:91
+#: woo-store-vacation.php:215
 #, php-format
 msgid ""
 "In case you want to start an e-commerce project, the %s is one of the first "
@@ -50,75 +65,53 @@ msgid ""
 "matter the size or technology of its screen."
 msgstr ""
 
-#: includes/WooStoreVacation.php:123
+#: woo-store-vacation.php:246
 msgid "Set Vacation Mode"
 msgstr ""
 
-#: includes/WooStoreVacation.php:130
+#: woo-store-vacation.php:250
 msgid "Disable Purchase"
 msgstr ""
 
-#: includes/WooStoreVacation.php:137
-msgid "Closing Date"
+#: woo-store-vacation.php:254
+msgid "Start Date"
 msgstr ""
 
-#: includes/WooStoreVacation.php:144
-msgid "Notice Style"
+#: woo-store-vacation.php:258
+msgid "End Date"
 msgstr ""
 
-#: includes/WooStoreVacation.php:151
+#: woo-store-vacation.php:262
+msgid "Text Color"
+msgstr ""
+
+#: woo-store-vacation.php:266
+msgid "Background Color"
+msgstr ""
+
+#: woo-store-vacation.php:270
 msgid "Vacation Notice"
 msgstr ""
 
-#: includes/WooStoreVacation.php:181
+#: woo-store-vacation.php:316
 msgid "Want to go vacation by closing my store publically."
 msgstr ""
 
-#: includes/WooStoreVacation.php:187
+#: woo-store-vacation.php:327
 msgid ""
 "Warning: With checking this setting customers won't be able to place an "
 "order."
 msgstr ""
 
-#: includes/WooStoreVacation.php:199
+#: woo-store-vacation.php:355
 msgid "The date has already passed."
 msgstr ""
 
-#: includes/WooStoreVacation.php:208
-msgid "Info"
-msgstr ""
-
-#: includes/WooStoreVacation.php:210
-msgid "Error"
-msgstr ""
-
-#: includes/WooStoreVacation.php:212
-msgid "Success"
-msgstr ""
-
-#: includes/WooStoreVacation.php:217
+#: woo-store-vacation.php:389
 msgid ""
 "I am currently on vacation and products from my shop will be unavailable for "
 "next few days. Thank you for your patience and apologize for any "
 "inconvenience."
-msgstr ""
-
-#: includes/WooStoreVacation.php:230
-msgid "Support"
-msgstr ""
-
-#: includes/WooStoreVacation.php:231
-msgid "Docs"
-msgstr ""
-
-#: includes/WooStoreVacation.php:234
-msgid "Settings"
-msgstr ""
-
-#: includes/requirements.php:12
-msgid ""
-"Woo Store Vacation is enabled but not effective. It requires WooCommerce in "
-"order to work."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
