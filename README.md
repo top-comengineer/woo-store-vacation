@@ -1,4 +1,7 @@
 # Woo Store Vacation
+
+![](https://ps.w.org/woo-store-vacation/assets/banner-1544x500.jpg?rev=1542924)
+
 Going on vacation? Use Woo Store Vacation settings to make sure your buyers are not disappointed by buying items and unexpectedly waiting a long time to receive them.
 
 Woo Store Vacation Mode allows you to put your shop on pause or hold mode for a certain amount of time. This feature could be helpful if:
