@@ -3,7 +3,7 @@
 Plugin Name: 	Woo Store Vacation
 Plugin URI:  	https://www.mypreview.one
 Description: 	Put your WooCommerce store in vacation or pause mode with custom notice.
-Version:     	1.0.4
+Version:     	1.1.0
 Author:      	Mahdi Yazdani
 Author URI:  	https://www.mypreview.one
 Text Domain: 	woo-store-vacation
@@ -26,7 +26,7 @@ along with Woo Store Vacation. If not, see https://www.gnu.org/licenses/gpl-2.0.
 */
 // Prevent direct file access
 if (!defined('ABSPATH')) exit;
-define('WOO_STORE_VACATION_VERSION', '1.0');
+define('WOO_STORE_VACATION_VERSION', '1.1.0');
 if (!class_exists('Woo_Store_Vacation')):
 	/**
 	 * The Woo Store Vacation - Class
@@ -87,6 +87,10 @@ if (!class_exists('Woo_Store_Vacation')):
 				$this,
 				'vacation_mode'
 			) , 10);
+			add_filter('plugin_action_links_' . $this->file , array(
+				$this,
+				'additional_links'
+			) , 10, 1);
 		}
 		/**
 		 * Cloning instances of this class is forbidden.
@@ -129,7 +133,7 @@ if (!class_exists('Woo_Store_Vacation')):
 		public function activation()
 
 		{
-			if (!class_exists('woocommerce')):
+			if (! in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))):
 				$message = esc_html__('Woo Store Vacation is enabled but not effective. It requires WooCommerce in order to work.', 'woo-product-suggest');
 				printf('<div class="notice notice-error is-dismissible"><p>%s</p></div>', $message);
 			endif;
@@ -163,6 +167,7 @@ if (!class_exists('Woo_Store_Vacation')):
 			<div class="wrap">
 				<div id="icon-options-general" class="icon32"></div>
 				<h1><?php esc_html_e('Woo Store Vacation', 'woo-store-vacation'); ?></h1>
+				<small><?php esc_html_e('Use Woo Store Vacation settings to make sure your buyers are not disappointed by buying items and unexpectedly waiting a long time to receive them.', 'woo-store-vacation'); ?></small>
 				<div id="poststuff">
 					<div id="post-body" class="metabox-holder columns-2">
 						<?php settings_errors(); ?>
@@ -201,20 +206,24 @@ if (!class_exists('Woo_Store_Vacation')):
 									<div class="handlediv" title="<?php esc_attr_e('Click to toggle', 'woo-store-vacation'); ?>"><br></div>
 									<!-- Toggle -->
 									<h2 class="hndle">
-										<span><?php esc_attr_e( 'Looking for a stylish theme?', 'woo-store-vacation'); ?>
+										<span><?php esc_attr_e('Hypermarket Plus!', 'woo-store-vacation'); ?>
 										</span>
 									</h2>
 									<div class="inside">
 										<p>
-											<a href="https://wp.me/p8930x-8q" target="_blank">
-												<img src="https://i.imgsafe.org/6a52b7b71e.jpg" style="max-width:100%;height:auto;" />
+											<a href="<?php echo esc_url('https://www.mypreview.one'); ?>" target="_blank">
+												<img src="https://i.gyazo.com/dacc397ed7399a8cd6e1df4cdf91eacd.png" style="max-width:100%;height:auto;" />
 											</a>
 										</p>
 										<p>
 											<?php 
-												printf( esc_html__('In case you want to start an e-commerce project, the %s is one of the first things you need. The whole design of Hypermarket is ultra-responsive and Retina ready, offering you a site that can be accessed from any device, no matter the size or technology of its screen.' , 'woo-store-vacation'), '<a href="https://wp.me/p8930x-8q" target="_blank">Hypermarket WordPress Theme</a>' ); 
+												printf( esc_html__('%1$s WordPress theme is all about design. It offers a beautiful and impressive look for your site, which is one of the ways through which you can retain traffic. In case you want to start an WooCommerce project, the Hypermarket theme is one of the first things you need. %2$s' , 'woo-store-vacation'), '<a href="' . esc_url('https://www.mypreview.one') . '" target="_blank">Hypermarket</a>', '<a href="' . esc_url('https://wordpress.org/themes/hypermarket') . '" target="_blank">Try Hypermarket now!</a>'); 
 											?>
 										</p>
+										<p align="center">
+													<a href="<?php echo esc_url('https://www.mypreview.one'); ?>" class="button-primary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Buy Now', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
+													<a href="<?php echo esc_url('https://demo.mypreview.one/hypermarket'); ?>" class="button-secondary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Live Demo', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
+												</p>
 									</div>
 									<!-- .inside -->
 								</div>
@@ -267,6 +276,14 @@ if (!class_exists('Woo_Store_Vacation')):
 				$this,
 				'background_color_callback'
 			) , 'woo_store_vacation_settings_sections', 'woo_store_vacation_settings_section');
+			add_settings_field('btn_txt', esc_html__('Button Text', 'woo-store-vacation'), array(
+				$this,
+				'btn_txt_callback'
+			) , 'woo_store_vacation_settings_sections', 'woo_store_vacation_settings_section');
+			add_settings_field('btn_url', esc_html__('Button URL', 'woo-store-vacation'), array(
+				$this,
+				'btn_url_callback'
+			) , 'woo_store_vacation_settings_sections', 'woo_store_vacation_settings_section');
 			add_settings_field('vacation_notice', esc_html__('Vacation Notice', 'woo-store-vacation') . ' <abbr class="required" title="required">*</abbr>', array(
 				$this,
 				'vacation_notice_callback'
@@ -299,6 +316,12 @@ if (!class_exists('Woo_Store_Vacation')):
 			if (isset($input['background_color'])) :
                $sanitary_values['background_color'] = sanitize_hex_color($input['background_color']);
             endif;
+            if (isset($input['btn_txt'])):
+				$sanitary_values['btn_txt'] = sanitize_text_field($input['btn_txt']);
+			endif;
+			if (isset($input['btn_url'])):
+				$sanitary_values['btn_url'] = esc_url($input['btn_url']);
+			endif;
 			if (isset($input['vacation_notice'])):
 				$sanitary_values['vacation_notice'] = esc_textarea($input['vacation_notice']);
 			endif;
@@ -324,7 +347,7 @@ if (!class_exists('Woo_Store_Vacation')):
 
 		{
 			$disable_purchase = (isset($this->options['disable_purchase']) && $this->options['disable_purchase'] === 'disable_purchase') ? 'checked' : '';
-			printf('<input type="checkbox" name="woo_store_vacation_options[disable_purchase]" id="disable_purchase" value="disable_purchase" %s /> <label for="disable_purchase"><em><small style="color:red;">' . esc_html__('Warning: With checking this setting customers won\'t be able to place an order.', 'woo-store-vacation') . '</small></em></label>', $disable_purchase);
+			printf('<input type="checkbox" name="woo_store_vacation_options[disable_purchase]" id="disable_purchase" value="disable_purchase" %s /> <label for="disable_purchase"><em><small style="color:red;">' . esc_html__('Warning: By enabling this, customers won\'t be able to place any order.', 'woo-store-vacation') . '</small></em></label>', $disable_purchase);
 		}
 		/**
 		 * Start Date.
@@ -378,6 +401,30 @@ if (!class_exists('Woo_Store_Vacation')):
             $background_color = isset($this->options['background_color']) ? esc_attr($this->options['background_color']) : '#e2401c';
 			printf('<input class="woo-store-vacation-background-color-field" type="text" name="woo_store_vacation_options[background_color]" id="background_color" value="%s" />', $background_color);
         }
+        /**
+		 * Notice Button Text.
+		 *
+		 * @since 1.1.0
+		 */
+        public function btn_txt_callback() 
+
+        {
+        	$btn_placeholder = esc_attr__('Contact me &#8594;', 'woo-store-vacation');
+			$btn_txt = isset($this->options['btn_txt']) ? esc_html($this->options['btn_txt']) : '';
+			printf('<input class="regular-text" type="text" name="woo_store_vacation_options[btn_txt]" id="btn_txt" placeholder="%s" value="%s" />', $btn_placeholder, $btn_txt);
+		}
+		/**
+		 * Notice Button URL.
+		 *
+		 * @since 1.1.0
+		 */
+        public function btn_url_callback() 
+
+        {
+        	$btn_placeholder = esc_attr__('https://www.example.com', 'woo-store-vacation');
+			$btn_url = isset($this->options['btn_url']) ? esc_url($this->options['btn_url']) : '';
+			printf('<input class="regular-text" type="url" name="woo_store_vacation_options[btn_url]" id="btn_url" placeholder="%s" value="%s" />', $btn_placeholder, $btn_url);
+		}
         /**
 		 * Notice Content.
 		 *
@@ -450,23 +497,30 @@ if (!class_exists('Woo_Store_Vacation')):
 		/**
 		 * Display vacation custom notice.
 		 *
-		 * @since 1.0.4
+		 * @since 1.1.0
 		 */
 		public function vacation_notice()
 
 		{
 			$options = get_option('woo_store_vacation_options');
+			$btn_txt = (isset($options['btn_txt'])) ? esc_html($options['btn_txt']) : '';
+			$btn_url = (isset($options['btn_url'])) ? esc_url($options['btn_url']) : '#';
 			$vacation_notice = (isset($options['vacation_notice'])) ? wp_kses_post(nl2br($options['vacation_notice'])) : '';
 			if (isset($vacation_notice) && !empty($vacation_notice)):
 				echo '<div id="woo-store-vacation-wrapper">';
-				wc_print_notice($vacation_notice, 'error');
+				if ($btn_txt === '' || $btn_url === '' || $btn_url === '#'):
+					$message = $vacation_notice;
+				else:
+					$message = sprintf('<a href="%s" class="woo-store-vacation-btn">%s</a> %s', $btn_url, $btn_txt, '<span class="woo-store-vacation-msg">' . $vacation_notice . '</span>');
+				endif;
+				wc_print_notice($message, 'success');
 				echo '</div>';
 			endif;
 		}
 		/**
 		 * Print inline stylesheet before closing </head> tag.
 		 *
-		 * @since 1.0.4
+		 * @since 1.1.0
 		 */
 		public function vacation_style()
 
@@ -475,10 +529,15 @@ if (!class_exists('Woo_Store_Vacation')):
 			$text_color = (isset($options['text_color'])) ? sanitize_hex_color($options['text_color']) : '#ffffff';
 			$background_color = (isset($options['background_color'])) ? sanitize_hex_color($options['background_color']) : '#e2401c';
 			echo "<style id=\"woo-store-vacation-styles\" type=\"text/css\">
-					#woo-store-vacation-wrapper .woocommerce-error {
+					#woo-store-vacation-wrapper .woocommerce-message {
 						background-color: {$background_color} !important;
 						color: {$text_color} !important;
+						height: 100%;
+						text-align: left;
 						list-style: none;
+						border-top: none;
+						border-right: none;
+						border-bottom: none;
 						border-left: .6180469716em solid rgba(0, 0, 0, .15);
 						border-radius: 2px;
 						padding: 1em 1.618em;
@@ -486,7 +545,49 @@ if (!class_exists('Woo_Store_Vacation')):
 						margin-top: 1.617924em;
 						margin-bottom: 2.617924em;
 					}
+					#woo-store-vacation-wrapper .woocommerce-message::before {
+						content: none;
+					}
+					#woo-store-vacation-wrapper .woocommerce-message .woo-store-vacation-msg {
+						display: table-cell;
+					}
+					#woo-store-vacation-wrapper .woocommerce-message .woo-store-vacation-btn {
+						color: {$text_color} !important;
+						display: table-cell;
+						float: right;
+						padding: 0;
+						background: 0 0;
+						line-height: 1.618;
+						margin-left: 2em;
+						padding-left: 1em;
+						border-width: 0;
+						border-top: none;
+						border-right: none;
+						border-bottom: none;
+						border-left-width: 1px;
+						border-left-style: solid;
+						border-left-color: rgba(255, 255, 255, .25)!important;
+						border-radius: 0;
+						box-shadow: none !important;
+						text-decoration: none;
+					}
 				  </style>";
+		}
+		/**
+		 * Display plugin docs and support links in plugins table page.
+		 *
+		 * @since 1.1.0
+		 */
+		public function additional_links($links)
+
+		{
+			$settings_url = esc_url(admin_url('admin.php?page=woo-store-vacation'));
+			$plugin_links = array();
+			$plugin_links[] = sprintf(__('<a href="%s" target="_blank">Support</a>', 'woo-store-vacation') , esc_url('https://support.mypreview.one/t/hypermarket-plus'));
+			if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))):
+				$plugin_links[] = sprintf(__('<a href="%s" target="_self">Settings</a>', 'woo-store-vacation') , esc_url($settings_url));
+			endif;
+			return array_merge($plugin_links, $links);
 		}
 	}
 endif;
