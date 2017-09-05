@@ -1,3 +1,10 @@
+/**
+ * Initialize jQuery datepicker, colorpicker
+ *
+ * @author      Mahdi Yazdani
+ * @package     Woo Store Vacation
+ * @since       1.0.4
+ */
 (function($) {
     $(function() {
     	'use strict';
