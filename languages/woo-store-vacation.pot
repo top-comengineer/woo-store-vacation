@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Woo Store Vacation\n"
-"POT-Creation-Date: 2017-04-23 13:20+0400\n"
-"PO-Revision-Date: 2017-04-23 13:20+0400\n"
+"POT-Creation-Date: 2017-07-24 23:24+0400\n"
+"PO-Revision-Date: 2017-07-24 23:24+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,97 +21,136 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: woo-store-vacation.php:99
+#: woo-store-vacation.php:103
 msgid "Cloning instances of this class is forbidden."
 msgstr ""
 
-#: woo-store-vacation.php:109
+#: woo-store-vacation.php:113
 msgid "Unserializing instances of this class is forbidden."
 msgstr ""
 
-#: woo-store-vacation.php:133
+#: woo-store-vacation.php:137
 msgid ""
 "Woo Store Vacation is enabled but not effective. It requires WooCommerce in "
 "order to work."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: woo-store-vacation.php:147 woo-store-vacation.php:165
+#: woo-store-vacation.php:151 woo-store-vacation.php:169
 msgid "Woo Store Vacation"
 msgstr ""
 
-#: woo-store-vacation.php:148
+#: woo-store-vacation.php:152
 msgid "Store Vacation"
 msgstr ""
 
-#: woo-store-vacation.php:174 woo-store-vacation.php:201
+#: woo-store-vacation.php:170
+msgid ""
+"Use Woo Store Vacation settings to make sure your buyers are not "
+"disappointed by buying items and unexpectedly waiting a long time to receive "
+"them."
+msgstr ""
+
+#: woo-store-vacation.php:179 woo-store-vacation.php:206
 msgid "Click to toggle"
 msgstr ""
 
-#: woo-store-vacation.php:178
+#: woo-store-vacation.php:183
 msgid "Global Settings"
 msgstr ""
 
-#: woo-store-vacation.php:204
-msgid "Looking for a stylish theme?"
+#: woo-store-vacation.php:209
+msgid "Hypermarket Plus!"
 msgstr ""
 
-#: woo-store-vacation.php:215
+#: woo-store-vacation.php:220
 #, php-format
 msgid ""
-"In case you want to start an e-commerce project, the %s is one of the first "
-"things you need. The whole design of Hypermarket is ultra-responsive and "
-"Retina ready, offering you a site that can be accessed from any device, no "
-"matter the size or technology of its screen."
+"%1$s WordPress theme is all about design. It offers a beautiful and "
+"impressive look for your site, which is one of the ways through which you "
+"can retain traffic. In case you want to start an WooCommerce project, the "
+"Hypermarket theme is one of the first things you need. %2$s"
 msgstr ""
 
-#: woo-store-vacation.php:246
+#: woo-store-vacation.php:224
+msgid "Buy Now"
+msgstr ""
+
+#: woo-store-vacation.php:225
+msgid "Live Demo"
+msgstr ""
+
+#: woo-store-vacation.php:255
 msgid "Set Vacation Mode"
 msgstr ""
 
-#: woo-store-vacation.php:250
+#: woo-store-vacation.php:259
 msgid "Disable Purchase"
 msgstr ""
 
-#: woo-store-vacation.php:254
+#: woo-store-vacation.php:263
 msgid "Start Date"
 msgstr ""
 
-#: woo-store-vacation.php:258
+#: woo-store-vacation.php:267
 msgid "End Date"
 msgstr ""
 
-#: woo-store-vacation.php:262
+#: woo-store-vacation.php:271
 msgid "Text Color"
 msgstr ""
 
-#: woo-store-vacation.php:266
+#: woo-store-vacation.php:275
 msgid "Background Color"
 msgstr ""
 
-#: woo-store-vacation.php:270
+#: woo-store-vacation.php:279
+msgid "Button Text"
+msgstr ""
+
+#: woo-store-vacation.php:283
+msgid "Button URL"
+msgstr ""
+
+#: woo-store-vacation.php:287
 msgid "Vacation Notice"
 msgstr ""
 
-#: woo-store-vacation.php:316
+#: woo-store-vacation.php:339
 msgid "Want to go vacation by closing my store publically."
 msgstr ""
 
-#: woo-store-vacation.php:327
-msgid ""
-"Warning: With checking this setting customers won't be able to place an "
-"order."
+#: woo-store-vacation.php:350
+msgid "Warning: By enabling this, customers won't be able to place any order."
 msgstr ""
 
-#: woo-store-vacation.php:355
+#: woo-store-vacation.php:378
 msgid "The date has already passed."
 msgstr ""
 
-#: woo-store-vacation.php:389
+#: woo-store-vacation.php:412
+msgid "Contact me &#8594;"
+msgstr ""
+
+#: woo-store-vacation.php:424
+msgid "https://www.example.com"
+msgstr ""
+
+#: woo-store-vacation.php:436
 msgid ""
 "I am currently on vacation and products from my shop will be unavailable for "
 "next few days. Thank you for your patience and apologize for any "
 "inconvenience."
+msgstr ""
+
+#: woo-store-vacation.php:586
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Support</a>"
+msgstr ""
+
+#: woo-store-vacation.php:588
+#, php-format
+msgid "<a href=\"%s\" target=\"_self\">Settings</a>"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
