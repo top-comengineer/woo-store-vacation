@@ -3,7 +3,7 @@
 Plugin Name: 	Woo Store Vacation
 Plugin URI:  	https://www.mypreview.one
 Description: 	Put your WooCommerce store in vacation or pause mode with custom notice.
-Version:     	1.1.0
+Version:     	1.2.2
 Author:      	Mahdi Yazdani
 Author URI:  	https://www.mypreview.one
 Text Domain: 	woo-store-vacation
@@ -26,7 +26,7 @@ along with Woo Store Vacation. If not, see https://www.gnu.org/licenses/gpl-2.0.
 */
 // Prevent direct file access
 if (!defined('ABSPATH')) exit;
-define('WOO_STORE_VACATION_VERSION', '1.1.0');
+define('WOO_STORE_VACATION_VERSION', '1.2.2');
 if (!class_exists('Woo_Store_Vacation')):
 	/**
 	 * The Woo Store Vacation - Class
@@ -211,19 +211,19 @@ if (!class_exists('Woo_Store_Vacation')):
 									</h2>
 									<div class="inside">
 										<p>
-											<a href="<?php echo esc_url('https://www.mypreview.one'); ?>" target="_blank">
-												<img src="https://i.gyazo.com/dacc397ed7399a8cd6e1df4cdf91eacd.png" style="max-width:100%;height:auto;" />
+											<a href="<?php echo esc_url('https://www.mypreview.one/hypermarket-plus.html'); ?>" target="_blank">
+												<img src="https://i.gyazo.com/98c5da785fd32625ebdec9cf70f9705a.png" style="max-width:100%;height:auto;" />
 											</a>
 										</p>
 										<p>
-											<?php 
-												printf( esc_html__('%1$s WordPress theme is all about design. It offers a beautiful and impressive look for your site, which is one of the ways through which you can retain traffic. In case you want to start an WooCommerce project, the Hypermarket theme is one of the first things you need. %2$s' , 'woo-store-vacation'), '<a href="' . esc_url('https://www.mypreview.one') . '" target="_blank">Hypermarket</a>', '<a href="' . esc_url('https://wordpress.org/themes/hypermarket') . '" target="_blank">Try Hypermarket now!</a>'); 
-											?>
+										<?php 
+										printf( esc_html__('%1$s WordPress theme is all about design. It offers a beautiful and impressive look for your site, which is one of the ways through which you can retain traffic. In case you want to start an WooCommerce project, the Hypermarket theme is one of the first things you need. %2$s' , 'woo-store-vacation'), '<a href="' . esc_url('https://www.mypreview.one/hypermarket-plus.html') . '" target="_blank">Hypermarket</a>', '<a href="' . esc_url('https://wordpress.org/themes/hypermarket') . '" target="_blank">Try Hypermarket now!</a>'); 
+										?>
 										</p>
 										<p align="center">
-													<a href="<?php echo esc_url('https://www.mypreview.one'); ?>" class="button-primary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Buy Now', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
-													<a href="<?php echo esc_url('https://demo.mypreview.one/hypermarket'); ?>" class="button-secondary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Live Demo', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
-												</p>
+											<a href="<?php echo esc_url('https://www.mypreview.one'); ?>" class="button-primary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Buy Now', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
+											<a href="<?php echo esc_url('https://demo.mypreview.one/hypermarket'); ?>" class="button-secondary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Live Demo', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
+										</p>
 									</div>
 									<!-- .inside -->
 								</div>
@@ -440,19 +440,20 @@ if (!class_exists('Woo_Store_Vacation')):
 		/**
 		 * Enqueue scripts and styles.
 		 * 
-		 * @since 1.0.4
+		 * @since 1.2.0
 		 */
 		public function admin_enqueue()
 
 		{
 			wp_enqueue_style('wp-color-picker');
-			wp_enqueue_script('jquery-ui-datepicker');
+			wp_enqueue_style('woo-store-vacation-jquery-ui-datepicker', $this->admin_assets_url . 'css/datepicker.css', false, false, false);
+			wp_enqueue_script('jquery-ui-datepicker', array('jquery'));
 			wp_enqueue_script('woo-store-vacation-script', $this->admin_assets_url . 'js/woo-store-vacation.js', array('jquery', 'jquery-ui-datepicker', 'wp-color-picker'), WOO_STORE_VACATION_VERSION, true );
 		}
 		/**
 		 * Retrieve plugin option value(s).
 		 *
-		 * @since 1.0.4
+		 * @since 1.2.2
 		 */
 		public function vacation_mode()
 
@@ -583,7 +584,7 @@ if (!class_exists('Woo_Store_Vacation')):
 		{
 			$settings_url = esc_url(admin_url('admin.php?page=woo-store-vacation'));
 			$plugin_links = array();
-			$plugin_links[] = sprintf(__('<a href="%s" target="_blank">Support</a>', 'woo-store-vacation') , esc_url('https://support.mypreview.one/t/hypermarket-plus'));
+			$plugin_links[] = sprintf(__('<a href="%s" target="_blank">Support</a>', 'woo-store-vacation') , esc_url('https://support.mypreview.one/t/woo-store-vacation'));
 			if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))):
 				$plugin_links[] = sprintf(__('<a href="%s" target="_self">Settings</a>', 'woo-store-vacation') , esc_url($settings_url));
 			endif;
