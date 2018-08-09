@@ -3,7 +3,7 @@
 Plugin Name: 	Woo Store Vacation
 Plugin URI:  	https://www.mypreview.one
 Description: 	Put your WooCommerce store in vacation or pause mode with custom notice.
-Version:     	1.2.2
+Version:     	1.2.4
 Author:      	Mahdi Yazdani
 Author URI:  	https://www.mypreview.one
 Text Domain: 	woo-store-vacation
@@ -26,7 +26,7 @@ along with Woo Store Vacation. If not, see https://www.gnu.org/licenses/gpl-2.0.
 */
 // Prevent direct file access
 if (!defined('ABSPATH')) exit;
-define('WOO_STORE_VACATION_VERSION', '1.2.2');
+define('WOO_STORE_VACATION_VERSION', '1.2.4');
 if (!class_exists('Woo_Store_Vacation')):
 	/**
 	 * The Woo Store Vacation - Class
@@ -158,7 +158,7 @@ if (!class_exists('Woo_Store_Vacation')):
 		/**
 		 * Render and display plugin options page.
 		 *
-		 * @since 1.0.4
+		 * @since 1.2.4
 		 */
 		public function render_plugin_page() 
 
@@ -206,23 +206,23 @@ if (!class_exists('Woo_Store_Vacation')):
 									<div class="handlediv" title="<?php esc_attr_e('Click to toggle', 'woo-store-vacation'); ?>"><br></div>
 									<!-- Toggle -->
 									<h2 class="hndle">
-										<span><?php esc_attr_e('Hypermarket Plus!', 'woo-store-vacation'); ?>
+										<span><?php esc_attr_e('Conj WordPress Theme', 'woo-store-vacation'); ?>
 										</span>
 									</h2>
 									<div class="inside">
 										<p>
-											<a href="<?php echo esc_url('https://www.mypreview.one/hypermarket-plus.html'); ?>" target="_blank">
-												<img src="https://i.gyazo.com/98c5da785fd32625ebdec9cf70f9705a.png" style="max-width:100%;height:auto;" />
+											<a href="<?php echo esc_url('https://themeforest.net/item/conj-ecommerce-wordpress-theme/21935639?ref=mypreview'); ?>" target="_blank">
+												<img src="<?php echo esc_url( $this->admin_assets_url ); ?>img/conj-banner-500x500.jpg" style="max-width:100%;height:auto;" />
 											</a>
 										</p>
 										<p>
 										<?php 
-										printf( esc_html__('%1$s WordPress theme is all about design. It offers a beautiful and impressive look for your site, which is one of the ways through which you can retain traffic. In case you want to start an WooCommerce project, the Hypermarket theme is one of the first things you need. %2$s' , 'woo-store-vacation'), '<a href="' . esc_url('https://www.mypreview.one/hypermarket-plus.html') . '" target="_blank">Hypermarket</a>', '<a href="' . esc_url('https://wordpress.org/themes/hypermarket') . '" target="_blank">Try Hypermarket now!</a>'); 
+										printf( esc_html__('Get started with the %1$sConj - eCommerce WordPress Theme%2$s which is the one thing you need to build your own stunning eCommerce website in a fast and efficient way.' , 'woo-store-vacation'), '<a href="' . esc_url('https://themeforest.net/item/conj-ecommerce-wordpress-theme/21935639?ref=mypreview') . '" target="_blank">', '</a>' ); 
 										?>
 										</p>
 										<p align="center">
-											<a href="<?php echo esc_url('https://www.mypreview.one'); ?>" class="button-primary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Buy Now', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
-											<a href="<?php echo esc_url('https://demo.mypreview.one/hypermarket'); ?>" class="button-secondary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Live Demo', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
+											<a href="<?php echo esc_url('https://themeforest.net/item/conj-ecommerce-wordpress-theme/21935639?ref=mypreview'); ?>" class="button-primary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Buy Now', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
+											<a href="<?php echo esc_url('https://www.conj.ws'); ?>" class="button-secondary" target="_blank"><strong>&nbsp;&nbsp;<?php esc_attr_e('Live Demo', 'woo-store-vacation'); ?>&nbsp;&nbsp;</strong></a>
 										</p>
 									</div>
 									<!-- .inside -->
