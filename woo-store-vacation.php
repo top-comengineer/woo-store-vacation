@@ -442,7 +442,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function end_date_callback() {
 
-			$today = strtotime( current_time( 'd-m-Y', $gmt = 0 ) );
+			$today = strtotime( current_time( 'Y-m-d', $gmt = 0 ) );
 			$value = isset( $this->options['end_date'] )  ?  $this->options['end_date']  :  NULL;
 			$is_date_passed = NULL;
 			$invalid_date_style = NULL;
