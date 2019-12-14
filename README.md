@@ -1,4 +1,5 @@
 # Woo Store Vacation
+[![Woo Store Vacation Downloads](https://img.shields.io/wordpress/plugin/dt/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Ratings](https://img.shields.io/wordpress/plugin/r/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Designed for WooCommerce](https://img.shields.io/badge/Designed%20for-WooCommerce-9a6b95.svg)](https://www.conj.ws) [![Stable Version](https://img.shields.io/badge/Stable%20version-1.3.0-8a91ff.svg)](https://wordpress.org/plugins/woo-store-vacation)
 
 ![Woo Store Vacation](https://ps.w.org/woo-store-vacation/assets/banner-1544x500.jpg?rev=1542924)
 
@@ -26,7 +27,7 @@ Want to contribute? Here's the [GitHub development repository](https://github.co
 
 **Free Support**
 
-All support is handled via a dedicated support forum, available at [Community Forums](https://support.mypreview.one "Community Forums"). Please head out there to open a new topic, in case you have any questions.
+All support is handled via a dedicated support forum, available at [Community Forums](https://wordpress.org/support/plugin/woo-store-vacation "Community Forums"). Please head out there to open a new topic, in case you have any questions.
 
 **Support this plugin**
 
