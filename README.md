@@ -3,6 +3,28 @@
 
 ![Woo Store Vacation](https://ps.w.org/woo-store-vacation/assets/banner-1544x500.jpg?rev=1542924)
 
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+►► If you are not a developer, please use the offical [plugin post page](https://wordpress.org/plugins/woo-store-vacation "Download Woo Store Vacation plugin") on wordpress.org.
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+## Installation
+
+* Download the plugin from it's GitHub Repository Release window.
+* Log into your WordPress website and navigate to **Plugins** » **Add New**.
+* Click **Upload Plugin** and **Choose File**, then select the plugin’s `.zip` file. Click **Install Now**.
+* Click **Activate** to start using your plugin right away.
+
+## Requirements
+
+* PHP version 7.2 or greater.
+* MySQL version 5.6 or greater OR MariaDB version 10.0 or greater.
+* WordPress version 5.0 or greater.
+* WooCommerce version 3.4 or greater.
+
+## Description
+
 Going on vacation? Use Woo Store Vacation settings to make sure your buyers are not disappointed by buying items and unexpectedly waiting a long time to receive them.
 
 Woo Store Vacation Mode allows you to put your shop on pause or hold mode for a certain amount of time. This feature could be helpful if:
@@ -17,18 +39,18 @@ When you turn on your store vacation mode, the plugin will display a custom noti
 
 If you want customers to be able to see products and prices, but not be able to purchase any products, it is possible to turn on "Disable Purchase" option in order to remove the purchase functionality and add to cart button, until after you come back from vacation(holiday) or end date passed.
 
-**Translators & Non-English Speakers**
+## Translators
 
 Translators are welcome to contribute to the plugin. Please use the [WordPress translation website](https://translate.wordpress.org/projects/wp-plugins/woo-store-vacation "WordPress translation website").
 
-**Get Involved**
+## Contributing
 
-Want to contribute? Here's the [GitHub development repository](https://github.com/mahdiyazdani/Woo-Store-Vacation "GitHub development repository").
+We welcome contributions in any form, and you can help reporting, testing, and detailing bugs.
 
-**Free Support**
+## Support
 
 All support is handled via a dedicated support forum, available at [Community Forums](https://wordpress.org/support/plugin/woo-store-vacation "Community Forums"). Please head out there to open a new topic, in case you have any questions.
 
-**Support this plugin**
+## Rate ⭐⭐⭐⭐⭐
 
 Don't forget to rate this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "5 shining stars") if you like it, thanks!
