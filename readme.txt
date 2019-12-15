@@ -24,7 +24,7 @@ It may be a complicated process for an E-Commerce business owner to find the tim
 
 When you turn on your store vacation mode, the plugin will display a custom notice in your shop and single product page(s), letting your buyers know you are on vacation. You can also add a customized message to your storefront and set the end date for vacation mode with a date-picker feature.
 
-If you want customers to be able to see products and prices, but not be able to purchase any products, it is possible to turn on "Disable Purchase" option in order to remove the purchase functionality and add to cart button, until after you come back from vacation(holiday) or end date passed.
+If you want customers to be able to see products and prices, but not be able to purchase any products, it is possible to turn on "Disable Purchase" option in order to remove the purchase functionality and add to cart button, until after you come back from vacation (holiday) or end date passed.
 
 **Translators & Non-English Speakers**
 
@@ -32,7 +32,7 @@ Translators are welcome to contribute to the plugin. Please use the [WordPress t
 
 **Get Involved**
 
-Want to contribute? Here's the [GitHub development repository](https://github.com/mahdiyazdani/Woo-Store-Vacation "GitHub development repository").
+Want to contribute? Here's the [GitHub development repository](https://github.com/mypreview/Woo-Store-Vacation "GitHub development repository").
 
 **Free Support**
 
