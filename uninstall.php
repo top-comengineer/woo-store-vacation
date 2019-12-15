@@ -11,7 +11,7 @@
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
-}
+} // End If Statement
 
 $option_name = 'woo_store_vacation_options';
 
