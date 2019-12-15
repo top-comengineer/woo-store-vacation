@@ -726,6 +726,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					}
 				  </style>";
 		}
+		
 		/**
 		 * Display additional links in plugins table page.
 		 * Filters the list of action links displayed for a specific plugin in the Plugins list table.
@@ -737,11 +738,11 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function additional_links( $links ) {
 
 			$plugin_links = array();
-			$settings_url = add_query_arg( 'page', 'woo-store-vacation', admin_url( 'admin.php' ) );
-			$plugin_links[] = sprintf( _x( '%sHire Me!%s', 'plugin link', 'woo-store-vacation' ) , '<a href="https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/" class="button-link-delete" target="_blank" rel="noopener noreferrer nofollow">', '</a>' );
-			$plugin_links[] = sprintf( _x( '%sSupport%s', 'plugin link', 'woo-store-vacation' ) , '<a href="https://wordpress.org/support/plugin/woo-store-vacation" target="_blank" rel="noopener noreferrer nofollow">', '</a>' );
+			$plugin_links[] = sprintf( _x( '%sHire Me!%s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/" class="button-link-delete" target="_blank" rel="noopener noreferrer nofollow" title="%s">', esc_attr_x( 'Looking for help? Hire Me!', 'upsell', 'woo-additional-terms' ) ), '</a>' );
+			$plugin_links[] = sprintf( _x( '%sSupport%s', 'plugin link', 'woo-store-vacation' ), '<a href="https://wordpress.org/support/plugin/woo-store-vacation" target="_blank" rel="noopener noreferrer nofollow">', '</a>' );
 
 			if ( $this->is_woocommerce() ) {
+				$settings_url = add_query_arg( 'page', 'woo-store-vacation', admin_url( 'admin.php' ) );
 				$plugin_links[] = sprintf( _x( '%sSettings%s', 'plugin link', 'woo-store-vacation') , sprintf( '<a href="%s" target="_self">', esc_url( $settings_url ) ), '</a>' );
 			} // End If Statement
 
