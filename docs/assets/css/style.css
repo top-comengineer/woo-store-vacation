@@ -1,0 +1,195 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Typography
+# Header
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
+
+h1,h2,h3,h4,h5,h6,p {
+    margin-top: 0;
+}
+h1 {
+    line-height: 1;
+    margin-bottom: 24px;
+    color: #333;
+    font-size: 72px;
+    font-weight: 400;
+}
+a {
+	text-decoration: none;
+    -webkit-transition: color .35s ease;
+    		transition: color .35s ease;
+}
+body {
+	margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #3c3c3c;
+    font-family: 'Rubik', sans-serif;
+}
+h4,
+.lg-txt {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 48px;
+    font-weight: 500;
+}
+.lead {
+    font-size: 20px;
+}
+.txt-center {
+    text-align: center;
+}
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+.sr-only {
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+.col-full {
+    max-width: 1140px;
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*--------------------------------------------------------------
+# Colors
+--------------------------------------------------------------*/
+.bg-dark {
+    background-color: #3c3c3c;
+}
+.bg-dark a {
+	color: #fff;
+}
+/*--------------------------------------------------------------
+# Form
+--------------------------------------------------------------*/
+.btn {
+	display: inline-flex;
+    font-weight: 500;
+    border-radius: 4px;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn--md {
+    padding: 5px 16px;
+}
+.btn--lg {
+    padding: 11px 24px;
+}
+.btn--success {
+    color: #fff;
+    background-color: #71b02f;
+    border-color: #71b02f;
+}
+.btn--success:hover {
+    background-color: #588b22;
+    border-color: #588b22;
+}
+.btn--success:focus {
+    -webkit-box-shadow: 0 0 0 3px rgba(113, 176, 47, 0.5);
+            box-shadow: 0 0 0 3px rgba(113, 176, 47, 0.5);
+}
+/*--------------------------------------------------------------
+# Element
+--------------------------------------------------------------*/
+.bdg {
+    background-color: #6e6e6e;
+    margin: 0 12px 0 4px;
+    display: inline-block;
+    padding: 3px 5px;
+    font-size: 75%;
+    line-height: 1;
+    border-radius: 4px;
+}
+.fixed {
+	position: fixed;
+    z-index: 5;
+    width: 100%;
+    top: 0;
+}
+ul.line-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.line-list__item {
+    list-style: none;
+}
+img {
+    display: block;
+}
+.mirror {
+    -webkit-transform: scalex(-1);
+            transform: scalex(-1);
+}
+.pd-t-60 {
+    padding-top: 60px;
+}
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.site-header {
+	min-height: 64px;
+}
+.site-header__container {
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.site-header__container,
+.site-brand {
+	display: flex;
+	align-items: center;
+}
+.site-brand img {
+	margin-right: 10px;
+}
+.nav__link {
+	padding: 8px;
+	display: inline-flex;
+    align-items: center;
+}
+.nav__link:focus,
+.nav__link:hover {
+	color: rgba(255, 255, 255, 0.75);
+}
+/*--------------------------------------------------------------
+# Alignment
+--------------------------------------------------------------*/
+.valign-center {
+    align-items: center;
+}
+.align-center {
+    margin: 0 auto;
+}
+/*--------------------------------------------------------------
+# Columns
+--------------------------------------------------------------*/
+.cols {
+    display: flex;
+}
+.col {
+    padding: 0 12px;
+    flex-grow: 1;
+}
+.col--40 {
+    max-width: 40%;
+    flex-basis: 40%;
+}
+@media (max-width: 768px) {
+
+}
