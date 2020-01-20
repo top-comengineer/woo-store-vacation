@@ -3,11 +3,7 @@
 
 ![Woo Store Vacation](https://ps.w.org/woo-store-vacation/assets/banner-1544x500.jpg?rev=1542924)
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-►► If you are not a developer, please use the offical [plugin post page](https://wordpress.org/plugins/woo-store-vacation "Download Woo Store Vacation plugin") on wordpress.org.
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+> ⚠️ If you are not a developer, please use the offical [plugin post page](https://wordpress.org/plugins/woo-store-vacation "Download Woo Store Vacation plugin") on wordpress.org.
 
 ## Installation
 
