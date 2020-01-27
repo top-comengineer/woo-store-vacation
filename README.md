@@ -50,3 +50,7 @@ All support is handled via a dedicated support forum, available at [Community Fo
 ## Rate ⭐⭐⭐⭐⭐
 
 Don't forget to rate this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "5 shining stars") if you like it, thanks!
+
+## Go premium 💰
+
+The premium (paid) version of the plugin is available to purchase! &#8594; [Upgrade to PRO](https://mypreview.github.io/woo-store-vacation)
