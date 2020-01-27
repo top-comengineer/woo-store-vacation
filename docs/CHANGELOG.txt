@@ -1,2 +1,4 @@
+=== Woo Store Vacation (PRO) ===
+
 = 1.0.0 =
 * Initial release.
