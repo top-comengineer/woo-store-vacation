@@ -1,83 +1,127 @@
 === Woo Store Vacation ===
-Contributors: mahdiyazdani, mypreview
+Contributors: mahdiyazdani, mypreview, gookaani
 Tags: woocommerce vacation mode,woocommerce holiday mode,woocommerce plugin,holiday message plugin,wp holiday plugin,holiday plugin wordpress,shop on vacation mode,store vacation notice,store vacation,vacation alert message
-Donate link: https://www.mypreview.one
+Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 5.3.1
 Requires PHP: 7.2
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Woo Store Vacation allows you to put your WooCommerce shop on pause or hold mode for a certain amount of time.
 
 == Description ==
-Going on vacation? Use Woo Store Vacation settings to make sure your buyers are not disappointed by buying items and unexpectedly waiting a long time to receive them.
+It might be difficult for a store owner to find a time and take a vacation, but when they do they need a plan for their online store.
 
-Woo Store Vacation Mode allows you to put your shop on pause or hold mode for a certain amount of time. This feature could be helpful if:
+Store Vacation plugin provides a robust and missing feature of the WooCommerce core out of the box by allowing the site manager to schedule a range of vacation dates and putting eCommerce functionality of the site on pause or hold mode for a certain amount of time.
+
+Pausing your store disables the checkout but keeps your store online and accessible to visitors. You can pause or temporarily close your store by defining a few simple options within a minute or two. This means customers can see your products but can't purchase them.
+
+If you want to start selling products again, then you can unpause your store at any time by deactivating the Vacation Mode or schedule the plugin which does this behind the scenes for you automatically!
+
+== Installation ==
+= Minimum Requirements =
+
+* PHP version 7.2 or greater.
+* MySQL version 5.6 or greater or MariaDB version 10.0 or greater.
+* WordPress version 5.0 or greater.
+* WooCommerce version 3.4 or greater.
+
+= Automatic installation =
+
+Automatic installation is the easiest option — WordPress will handle the file transfer, and you won’t need to leave your web browser. To do an automatic install of the plugin, log in to your WordPress dashboard, navigate to the Plugins menu, and click “Add New.”
+ 
+In the search field type “Woo Store Vacation”, then click “Search Plugins.” Once you’ve found the plugin, you can view details about it such as the point release, rating, and description. Click “Install Now,” and WordPress will take it from there.
+
+= Manual installation =
+
+The manual installation method requires downloading the plugin and uploading it to your webserver via your favorite FTP application. The WordPress codex contains [instructions on how to do this here](https://wordpress.org/support/article/managing-plugins/#manual-plugin-installation "Manual plugin installation").
+
+= Updating =
+
+Automatic updates should work smoothly, but we still recommend you back up your site.
+
+== Frequently Asked Questions ==
+= Why you might want to put your store on vacation? =
+This feature would be helpful in case:
 
 * You are traveling or ill.
 * You are temporarily unable to run your shop.
 * You need a quick break to catch up on current orders.
 
-It may be a complicated process for an E-Commerce business owner to find the time to take a vacation, but when they do they need a plan for their online store.
-
-When you turn on your store vacation mode, the plugin will display a custom notice in your shop and single product page(s), letting your buyers know you are on vacation. You can also add a customized message to your storefront and set the end date for vacation mode with a date-picker feature.
-
-If you want customers to be able to see products and prices, but not be able to purchase any products, it is possible to turn on "Disable Purchase" option in order to remove the purchase functionality and add to cart button, until after you come back from vacation (holiday) or end date passed.
-
-**Translators & Non-English Speakers**
-
-Translators are welcome to contribute to the plugin. Please use the [WordPress translation website](https://translate.wordpress.org/projects/wp-plugins/woo-store-vacation "WordPress translation website").
-
-**Get Involved**
-
-Want to contribute? Here's the [GitHub development repository](https://github.com/mypreview/Woo-Store-Vacation "GitHub development repository").
-
-**Free Support**
-
-All support is handled via a dedicated support forum, available at [Community Forums](https://wordpress.org/support/plugin/woo-store-vacation "Community Forums"). Please head out there to open a new topic, in case you have any questions.
-
-**Support this plugin**
-
-Don't forget to rate this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "5 shining stars") if you like it, thanks!
-
-== Installation ==
-1. Upload the entire 'woo-store-vacation' folder to the '/wp-content/plugins/' directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Start by visiting plugin settings at WooCommerce > Store Vacation.
-
-== Frequently Asked Questions ==
-= How do I use the plugin? =
-Start by visiting plugin settings at WooCommerce > Store Vacation.
-
-= How to turn ON vacation mode? =
-1. Go to WooCommerce > Store Vacation > Enable Vacation Mode.
-2. Check the setting to enable it.
-3. Fill in a temporary shop announcement.
-4. Click Save Settings.
-
-= How to turn OFF vacation mode? =
-1. Go to WooCommerce > Store Vacation > Enable Vacation Mode.
-2. Uncheck the setting to disable it.
-3. Click Save Settings.
-
 = Does vacation mode hurt SEO ranking? =
-Unlike similar eCommerce platforms, Woo Store Vacation is intended to keep your search engine rank intact and enabling this feature will not impact your place on SERP (Search engine results page).
-Similar tricks such as increasing your delivery time with respect to the number of days you are taking a vacation are not necessary, and you may schedule your shop for a holiday at any time.
+Not at all! Unlike similar eCommerce platforms, the plugin is intended to keep your search engine rank intact and enabling this feature will not impact your place on SERP (Search engine results page).
+
+Similar tricks such as increasing your delivery time with respect to the number of days you are taking a vacation are not necessary, and you may schedule your shop to be closed at any time.
+
+= Where do I find the plugin’s settings page? =
+1. Log into your WordPress website dashboard.
+2. Navigate to “WooCommerce” » “Store Vacation”.
+
+= How do I set up my vacation dates? =
+1. Navigate to “WooCommerce” » “Store Vacation”.
+2. Check the checkbox “Set Vacation Mode” to enable vacation mode in your shop.
+2. Enter the “Start Date” (first day) of your vacation.
+3. Enter the “End Date” (last day) of your vacation.
+4. Optionally, fill in a temporary shop announcement or vacation message.
+5. Click “Save Changes”.
+
+= What does “Disable Purchase” checkbox do? =
+Enabling this option will disable eCommerce functionality and takes out the cart, checkout process and add to cart buttons with disabling purchases for all users whether they’re logged in or not.
+
+= Why there is no message displaying on my theme!? =
+This is mainly because the theme author of yours has been overridden WooCommerce template files and modified the default order of the hooks in the shop and product view page — Consider switching to the “Storefront” theme.
+
+= How do I get help with the plugin? =
+The easiest way to receive support is to “Create a new topic” by visiting Community Forums page [here](https://wordpress.org/support/plugin/woo-store-vacation "Woo Store Vacation Support Forum").
+
+Make sure to check the “Notify me of follow-up replies via email” checkbox to receive notifications, as soon as a reply posted to your question or inquiry.
+
+*Please note that this is an opensource 100% volunteer project, and it’s not unusual to get reply days or even weeks later.*
+
+= Can I help in translating this plugin into a new language? =
+The plugin is fully translation-ready and localized using the GNU framework, and translators are welcome to contribute to the plugin.
+
+Here’s the the [WordPress translation website &#8594;](https://translate.wordpress.org/projects/wp-plugins/woo-store-vacation "WordPress translation website")
+
+= How do I contribute to this plugin? =
+We welcome contributions in any form, and you can help reporting, testing, and detailing bugs.
+
+Here’s the [GitHub development repository &#8594;](https://github.com/mypreview/Woo-Store-Vacation "GitHub development repository")
+
+= Did you like the idea behind this plugin? =
+Please share your experience by leaving this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "Rate Woo Store Vacation 5 stars") if you like it, thanks!
+
+= Is there a premium version to upgrade? =
+Yes, there is! 
+
+Currently, the key features offered by the premium (paid) version of the plugin are:
+
+* One-click store close.
+* Exclude list of user roles.
+* Unlimited date-time ranges.
+* Unlimited weekday hours.
+* Unlimited notifications.
+
+[Go Premium, Be Happy! &#8594;](https://mypreview.github.io/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
 = I need help customizing this plugin? =
 I am a full-stack developer with over five years of experience in WordPress theme and plugin development and customization. I would love to have the opportunity to discuss your project with you.
+
 [Hire me at UpWork &#8594;](https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/ "Mahdi Yazdani Freelancer Profile")
 
 == Screenshots ==
 1. Plugin Settings
-2. User Friendly Datepicker
+2. User-Friendly Datepicker
 3. Shop page notice with Info style
 4. Single product notice with Error style
 5. Category page notice with Success style
 
 == Changelog ==
+= 1.3.1 =
+* Compatibility with WooCommerce 3.9.0
+
 = 1.3.0 =
 * Updated language file.
 * Fixed fatal error while submitting store vacation dates via a non-Latin calendar.
@@ -104,7 +148,7 @@ I am a full-stack developer with over five years of experience in WordPress them
 
 = 1.1.0 =
 * Updated language file.
-* Added button text and url fields to the plugin settings page.
+* Added button text and URL fields to the plugin settings page.
 
 = 1.0.4 =
 * Updated language file.
