@@ -1,10 +1,127 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="utf-8">
+      <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="keywords" content="woo store vacation,store vacation notice,vacation mode,vacation-addon for woocommerce,woocommerce holiday,shop vacation announcement,woocommerce shop vacation,shop closed announcement,woocommerce close store,woocommerce temporarily close shop,woocommerce catalog mode plugin" />
+		<meta name="copyright" content="2020 MyPreview. All Rights Reserved." />
+		<meta name="author" content="MyPreview" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body class="landing">
-    <h1>Welcome!</h1>
+  	<header class="site-header">
+  		<div class="bg-dark fixed">
+  			<nav class="col-full site-header__container">
+  				<a class="site-brand">
+					<img alt="MyPreview logo" src="./assets/img/mypreview-logo.svg">
+					<span class="sr-only">MyPreview</span>
+  				</a>
+				<ul class="nav line-list none-list">
+	                <li class="line-list__item">
+	                  <a href="https://raw.githubusercontent.com/mypreview/woo-store-vacation/master/docs/CHANGELOG.txt" target="blank" class="nav__link">Changelog <span class="bdg">v1.0.0</span></a>
+	                </li>
+	                <li class="line-list__item">
+	                  <a href="#pricing" class="btn btn--success btn--md">Purchase Now</a>
+	                </li>
+            	</ul>
+  			</nav>
+  		</div>
+  	</header>
+  	<section class="bg-white">
+  		<div class="cols valign-center cols--pd-24 col-full pd-t-60">
+			<div class="col col--40">
+				<h1>Schedule, Set, Repeat.</h1>
+				<p class="lead">#1st solution for missing WooCommerce core feature in picking and scheduling unlimited vacation dates and times.</p>
+				<a class="btn btn--lg btn--success" href="#">Learn more</a>
+			</div>
+			<div class="col">
+				<img alt="Vacation hero image" class="align-center mirror" src="./assets/img/hero.svg" width="546px" height="466px">
+			</div>
+		</div>
+		<div class="txt-center col-full pd-t-60">
+			<p class="lg-txt">Built on all those tools you love</p>
+			<ul class="line-list none-list align-center">
+				<li class="line-list__item lg-spc"><img alt="WordPress logo" src="./assets/img/logo-1.svg"></li>
+				<li class="line-list__item lg-spc"><img alt="WooCommerce logo" src="./assets/img/logo-2.svg"></li>
+				<li class="line-list__item lg-spc"><img alt="jQuery logo" src="./assets/img/logo-3.svg"></li>
+				<li class="line-list__item lg-spc"><img alt="jQuery UI logo" src="./assets/img/logo-4.svg"></li>
+			</ul>
+		</div>
+  	</section>
+	<section id="pricing" class="txt-center col-full pd-t-60">
+		<small class="gray-color bold">SIMPLE PRICING</small>
+		<h2>A plan for all occasions</h2>
+		<p class="lead">Whether you’re a shop owner or freelancer, our pricing just makes sense
+		<br>
+		<span class="gray-color italic small">Depending on your country, VAT may apply</span>
+		</p>
+		<div class="cols align-center max-w-590">
+			<div class="col col--50 card bg-dark">
+				<p class="lead bold">Pro</p>
+				<span id="item-price"></span>
+				<span class="small">3x websites, per year</span>
+				<span class="bold">Includes:</span>
+				<ul class="none-list">
+					<li>One-click store close</li>
+					<li>Exclude list of user roles</li>
+					<li>Unlimited date-time ranges</li>
+					<li>Unlimited weekday hours</li>
+					<li>Unlimited notifications</li>
+				</ul>
+				<a href="#" class="btn btn--lg btn--success paddle_button" data-product="580975" data-theme="none">Purchase</a>
+			</div>
+			<div class="col col--50 card bg-white">
+				<p class="lead bold">Basic</p>
+				<span class="larger">Free</span>
+				<span class="small">Unlimited websites</span>
+				<span class="bold">Includes:</span>
+				<ul class="none-list">
+					<li>1 active date range</li>
+					<li>1 active notification</li>
+					<li>Manual store close</li>
+				</ul>
+				<a class="btn btn--lg btn--line-info" href="https://wordpress.org/plugins/woo-store-vacation" target="_blank" rel="noopener noreferrer nofollow">Download</a>
+			</div>
+		</div>
+		<h3 class="pd-t-60">Our users are our biggest fans</h3>
+		<p>Here are a few nice things folks have said about the plugin over the years</p>
+		<ul class="none-list cols cols--pd-60 pd-t-60">
+			<li class="review col col--50">
+				<a href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="Image" src="assets/img/avatar-1.jpg" width="72px" height="72px" class="review__avatar"></a>
+				<div class="review__content">
+					<p>“An excellent simple plugin that saved a huge amount of time. Worked first time on the flatsome theme and gave a simple way of preventing holiday ordering. I particularly liked the date picker option to select when to start and stop the holiday as assuming this reenables automatically would allow orders to recommence just before returning from holidays – so a good idea. Quite why a simple diasble store feature isn’t built into woocommerce is a bit of a mystery.”</p>
+					<a class="small" href="https://wordpress.org/support/topic/just-what-i-needed-765/" target="_blank" rel="noopener noreferrer nofollow">Lickthespoon</a>
+				</div>
+			</li>
+			<li class="review col col--50">
+				<a href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="Image" src="assets/img/avatar-2.jpg" width="72px" height="72px" class="review__avatar"></a>
+				<div class="review__content">
+					<p>“Does what it says – turns off the ability to buy any product. As a side benefit, running this plugin means no impact on your store’s Google rankings.”</p>
+					<a class="small" href="https://wordpress.org/support/topic/great-plugin-20175/" target="_blank" rel="noopener noreferrer nofollow">David Bowen</a>
+				</div>
+			</li>
+			<li class="review col col--50">
+				<a href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="Image" src="assets/img/avatar-3.jpg" width="72px" height="72px" class="review__avatar"></a>
+				<div class="review__content">
+					<p>“This is a great plugin for temporarily disabling your woocommerce shop. I use it now for Divi theme and does what is says.”</p>
+					<a class="small" href="https://wordpress.org/support/topic/great-plugin-exactly-what-i-need/" target="_blank" rel="noopener noreferrer nofollow">Pimstigter</a>
+				</div>
+			</li>
+			<li class="review col col--50">
+				<a href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="Image" src="assets/img/avatar-4.jpg" width="72px" height="72px" class="review__avatar"></a>
+				<div class="review__content">
+					<p>“This works like a mint. It’s exactly the functionality we needed for our small shop while we went on vacation for a week.”</p>
+					<a class="small" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow">Chad</a>
+				</div>
+			</li>
+		</ul>
+		<img alt="Woo Store Vacation Plugin Rating" src="https://img.shields.io/wordpress/plugin/stars/woo-store-vacation?color=%2371b02f&label=%20&logo=wordpress&style=social" />
+	</section>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+	<script type="text/javascript">Paddle.Setup({vendor:15981,completeDetails:!0}),Paddle.Product.Prices(580975,function(e){jQuery("#item-price").html(e.price.gross.replace(/(\d+\.\d{1,2})/gi,"<span>$1</span>"))});</script>
   </body>
 </html>
