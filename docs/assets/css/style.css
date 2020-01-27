@@ -33,8 +33,12 @@ h3 {
     line-height: 1.25;
     font-weight: 500;
 }
+.title {
+    font-size: 40px;
+}
 a {
     text-decoration: none;
+    color: #96588a;
     -webkit-transition: color .35s ease;
             transition: color .35s ease;
 }
@@ -62,6 +66,9 @@ small {
 .lead {
     font-size: 20px;
 }
+p.bold + p {
+    font-size: 14px;
+}
 .small {
     font-size: 13px;
 }
@@ -80,6 +87,9 @@ small {
 }
 .gray-color {
     color: #adb5bd;
+}
+.purple-color {
+    color: #96588a;
 }
 .bold {
     font-weight: 500;
@@ -166,6 +176,11 @@ html {
 /*--------------------------------------------------------------
 # Element
 --------------------------------------------------------------*/
+hr {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #e9ecef;
+}
 .bdg {
     background-color: #6e6e6e;
     margin: 0 12px 0 4px;
@@ -203,12 +218,24 @@ img {
 .pd-t-60 {
     padding-top: 60px;
 }
+.pd-t-30 {
+    padding-top: 30px;
+}
+.pd-b-13 {
+    padding-bottom: 13px;
+}
 .lg-spc {
     margin-left: 24px;
     margin-right: 24px;
 }
+.max-w-915 {
+    max-width: 915px;
+}
 .max-w-590 {
     max-width: 590px;
+}
+.max-w-365 {
+    max-width: 365px;
 }
 /*--------------------------------------------------------------
 # Header
@@ -248,6 +275,9 @@ img {
     margin: 0 auto;
     justify-content: center;
 }
+.align-right {
+    margin-left: auto;
+}
 /*--------------------------------------------------------------
 # Columns
 --------------------------------------------------------------*/
@@ -255,11 +285,13 @@ img {
     display: flex;
     flex-wrap: wrap;
 }
-.cols--pd-24 .col {
-    padding: 0 12px;
+.cols--pd-h-24 .col {
+    padding-left: 12px;
+    padding-right: 12px;
 }
-.cols--pd-60 .col {
-    padding: 0 30px;
+.cols--pd-v-24 .col {
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 .col {
     flex-grow: 1;
@@ -277,11 +309,19 @@ img {
 # card
 --------------------------------------------------------------*/
 .card {
-    padding: 36px;
     border: 1px solid #e9ecef;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    box-sizing: border-box;
+}
+.col .card {
+    height: 100%;
+}
+.card--md {
+    padding: 24px;
+}
+.card--lg {
+    padding: 36px;
 }
 .card:first-child {
     border-top-left-radius: 4px;
@@ -303,10 +343,12 @@ img {
     margin-bottom: 22px;
 }
 .card .btn {
-   margin-top: auto; 
+   margin: auto auto 0;
 }
-.paddle-gross:nth-letter(2) {
-    font-size: 2px;
+.card br {
+    content: "";
+    display: block;
+    height: 5px;
 }
 /*--------------------------------------------------------------
 # review
@@ -350,4 +392,25 @@ img {
 }
 .review__content a:hover:after {
     opacity: 1;
+}
+.review-verify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.review-verify span {
+    margin-left: 3px;
+}
+.review-verify img {
+    margin: 0 10px;
+}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+footer .cols {
+    padding-top: 25px;
+    padding-bottom: 20px;
+}
+footer p {
+    margin-bottom: 5px;
 }
