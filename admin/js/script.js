@@ -46,13 +46,7 @@
             }
         } );
 
-        $( '.woo-store-vacation-text-color-field' ).wpColorPicker( {
-            defaultColor: '#FFFFFF'
-        } );
-
-        $( '.woo-store-vacation-background-color-field' ).wpColorPicker( {
-            defaultColor: '#E2401C'
-        } );
+        $( '.woo-store-vacation-text-color-field, .woo-store-vacation-background-color-field' ).wpColorPicker();
 
         // Adds a "Reset" control to the datepicker at the bottom
         function cleanDatepicker() {
@@ -60,7 +54,7 @@
 
            $.datepicker._updateDatepicker = function( inst ) {
               old_fn.call( this, inst );
-              var buttonPane = $(this).datepicker("widget").find(".ui-datepicker-buttonpane");
+              var buttonPane = $( this ).datepicker( 'widget' ).find( '.ui-datepicker-buttonpane' );
               $( "<button type='button' class='ui-datepicker-clean ui-state-default ui-priority-primary ui-corner-all'>Delete</button>" ).appendTo( buttonPane ).on( 'click', function( ev ) {
                   $.datepicker._clearDate( inst.input );
               } ) ;
