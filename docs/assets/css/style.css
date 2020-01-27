@@ -2,7 +2,17 @@
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Typography
+# General
+# Colors
+# Form
+# Element
 # Header
+# Alignment
+# Columns
+# logos
+# card
+# review
+# Footer
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Typography
@@ -76,6 +86,7 @@ p.bold + p {
 #item-price {
     font-size: 25px;
     display: flex;
+    justify-content: center;
 }
 .larger,
 #item-price span {
@@ -98,6 +109,29 @@ p.bold + p {
 .italic {
     font-style: italic;
 }
+@media (max-width: 72em) {
+    h1 {
+        font-size: 65px;
+    }
+}
+@media (max-width: 60em) {
+    .tb-txt-center {
+        text-align: center;
+    }
+    h4,
+    .lg-txt {
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 42em) {
+    h1 {
+        font-size: 55px;
+    }
+    h2 {
+        margin-bottom: 18px;
+        font-size: 44px;
+    }
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -105,6 +139,7 @@ p.bold + p {
     height: 1px;
     padding: 0;
     margin: 0;
+    width: 1px;
     overflow: hidden;
 }
 html {
@@ -112,8 +147,8 @@ html {
 }
 .col-full {
     max-width: 1140px;
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 22px;
+    padding-left: 22px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -211,6 +246,7 @@ ul.line-list {
 }
 img {
     display: block;
+    max-width: 100%;
 }
 .mirror {
     -webkit-transform: scalex(-1);
@@ -250,6 +286,16 @@ img {
 .max-w-365 {
     max-width: 365px;
 }
+@media (max-width: 60em) {
+    .pd-b-tb-20 {
+        padding-bottom: 20px;
+    }
+}
+@media (max-width: 42em) {
+    .m-mb-b-30 {
+        margin-bottom: 30px;
+    }
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -278,6 +324,14 @@ img {
 .nav__link:hover {
     color: rgba(255, 255, 255, 0.75);
 }
+@media (max-width: 27.5em) {
+    .nav__link {
+        padding: 8px 0;
+    }
+   .nav .btn--md {
+        padding: 5px 10px;
+    }
+}
 /*--------------------------------------------------------------
 # Alignment
 --------------------------------------------------------------*/
@@ -298,10 +352,6 @@ img {
     display: flex;
     flex-wrap: wrap;
 }
-.cols--pd-h-24 .col {
-    padding-left: 12px;
-    padding-right: 12px;
-}
 .cols--pd-v-24 .col {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -310,13 +360,51 @@ img {
     flex-grow: 1;
     box-sizing: border-box;
 }
-.col--40 {
-    max-width: 40%;
-    flex-basis: 40%;
+@media (min-width: 42.0625em) {
+    .col--40 {
+        max-width: 40%;
+        flex-basis: 40%;
+    }
+    .col--50 {
+        max-width: 50%;
+        flex-basis: 50%;
+    }
+    .cols--pd-h-24 .col {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }
-.col--50 {
-    max-width: 50%;
-    flex-basis: 50%;
+@media (max-width: 60em) {
+    .col--tb-rv {
+        flex-direction: column-reverse;
+    }
+}
+@media (max-width: 60em) and (min-width: 42.0625em) {
+    .col--tb-80 {
+        max-width: 80%;
+        flex-basis: 80%;
+    }
+}
+@media (max-width: 42em) {
+    .cols {
+        flex-wrap: wrap;
+    }
+    .col {
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+}
+/*--------------------------------------------------------------
+# logos
+--------------------------------------------------------------*/
+.logos {
+    overflow-x: auto;
+}
+.logos ul {
+    min-width: 800px;
+}
+.logos li {
+    max-width: calc(25% - 48px)
 }
 /*--------------------------------------------------------------
 # card
@@ -336,15 +424,6 @@ img {
 .card--lg {
     padding: 36px;
 }
-.card:first-child {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-.card:nth-child(n+2) {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-left: 0;
-}
 .card ul,
 .card .small {
     opacity: 0.8;
@@ -363,6 +442,25 @@ img {
     display: block;
     height: 5px;
 }
+@media (min-width: 42.0625em) {
+    .card:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    .card:nth-child(n+2) {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left: 0;
+    }
+    .card:only-child {
+        border-radius: 4px;
+    }
+}
+@media (max-width: 42em) {
+    .card {
+        border-radius: 4px;
+    }
+}
 /*--------------------------------------------------------------
 # review
 --------------------------------------------------------------*/
@@ -372,6 +470,9 @@ img {
     align-items: flex-start;
 }
 .review__avatar {
+    flex: 0 0 96px;
+}
+.review__avatar img {
     width: 72px;
     border-radius: 50%;
     margin-right: 24px;
@@ -417,6 +518,18 @@ img {
 .review-verify img {
     margin: 0 10px;
 }
+@media (max-width: 42em) {
+    .review-verify {
+        flex-wrap: wrap;
+    }
+    .review-verify > a {
+        width: 100%;
+        text-align: center;
+    }
+    .review-verify img {
+        margin: 10px auto;
+    }
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -426,4 +539,21 @@ footer .cols {
 }
 footer p {
     margin-bottom: 5px;
+}
+@media (max-width: 62em) {
+    footer {
+        font-size: 14px;
+    }
+    footer .small {
+        font-size: 14px;
+    }
+}
+@media (max-width: 42em) {
+    footer .cols {
+        text-align: center;
+        flex-direction: column-reverse;
+    }
+    footer img {
+        margin: 0 auto 15px;
+    }
 }
