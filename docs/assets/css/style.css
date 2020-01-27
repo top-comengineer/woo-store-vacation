@@ -222,6 +222,9 @@ img {
 .pd-t-60 {
     padding-top: 60px;
 }
+.pd-t-50 {
+    padding-top: 50px;
+}
 .pd-t-30 {
     padding-top: 30px;
 }
@@ -231,8 +234,8 @@ img {
 .pd-b-20 {
     padding-bottom: 20px;
 }
-.pd-b-13 {
-    padding-bottom: 13px;
+.pd-b-33 {
+    padding-bottom: 33px;
 }
 .lg-spc {
     margin-left: 24px;
