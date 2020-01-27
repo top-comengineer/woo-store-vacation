@@ -114,7 +114,7 @@ p.bold + p {
         font-size: 65px;
     }
 }
-@media (max-width: 60em) {
+@media (max-width: 64em) {
     .tb-txt-center {
         text-align: center;
     }
@@ -286,7 +286,7 @@ img {
 .max-w-365 {
     max-width: 365px;
 }
-@media (max-width: 60em) {
+@media (max-width: 64em) {
     .pd-b-tb-20 {
         padding-bottom: 20px;
     }
@@ -369,17 +369,21 @@ img {
         max-width: 50%;
         flex-basis: 50%;
     }
+    .col--60 {
+        max-width: 60%;
+        flex-basis: 60%;
+    }
     .cols--pd-h-24 .col {
         padding-left: 12px;
         padding-right: 12px;
     }
 }
-@media (max-width: 60em) {
+@media (max-width: 64em) {
     .col--tb-rv {
         flex-direction: column-reverse;
     }
 }
-@media (max-width: 60em) and (min-width: 42.0625em) {
+@media (max-width: 64em) and (min-width: 42.0625em) {
     .col--tb-80 {
         max-width: 80%;
         flex-basis: 80%;
