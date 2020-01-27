@@ -13,16 +13,16 @@
  * any later version.
  *
  * @link              		https://www.mypreview.one
- * @since             		1.3.0
+ * @since             		1.3.1
  * @package           		woo-store-vacation
  * @author     		  		MyPreview (Github: @mahdiyazdani, @mypreview)
  * @copyright 		  		© 2015 - 2019 MyPreview. All Rights Reserved.
  *
  * @wordpress-plugin
  * Plugin Name:       		Woo Store Vacation
- * Plugin URI:        		https://www.mypreview.one
+ * Plugin URI:        		https://mypreview.github.io/woo-store-vacation
  * Description:       		Put your WooCommerce store in vacation or pause mode with custom notice.
- * Version:           		1.3.0
+ * Version:           		1.3.1
  * Author:            		MyPreview
  * Author URI:        		https://www.mypreview.one
  * License:           		GPL-2.0
@@ -30,7 +30,7 @@
  * Text Domain:       		woo-store-vacation
  * Domain Path:       		/languages
  * WC requires at least: 	3.4.0
- * WC tested up to: 		3.8.1
+ * WC tested up to: 		3.9.0
  */
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -42,8 +42,10 @@ if ( ! defined( 'WPINC' ) ) {
  * @see 	https://codex.wordpress.org/Function_Reference/plugin_basename
  * @see 	http://php.net/manual/en/language.constants.predefined.php
  */
-define( 'WOO_STORE_VACATION_VERSION', '1.3.0' );
+define( 'WOO_STORE_VACATION_VERSION', '1.3.1' );
 define( 'WOO_STORE_VACATION_FILE', __FILE__ );
+define( 'WOO_STORE_VACATION_NAME', get_file_data( WOO_STORE_VACATION_FILE, array( 'name' => 'Plugin Name' ) )['name'] );
+define( 'WOO_STORE_VACATION_URI', get_file_data( WOO_STORE_VACATION_FILE, array( 'uri' => 'Plugin URI' ) )['uri'] );
 define( 'WOO_STORE_VACATION_BASENAME', basename( WOO_STORE_VACATION_FILE ) );
 define( 'WOO_STORE_VACATION_PLUGIN_BASENAME', plugin_basename( WOO_STORE_VACATION_FILE ) );
 define( 'WOO_STORE_VACATION_DIR_URL', plugin_dir_url( WOO_STORE_VACATION_FILE ) );
@@ -95,12 +97,14 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		protected function __construct() {
 
 			add_action( 'init', 																		array( $this, 'textdomain' ), 				10 );
-			add_action( 'admin_notices', 																array( $this, 'activation' ), 				10 );
+			add_action( 'admin_notices', 																array( $this, 'admin_notices' ), 			10 );
+			add_action( 'wp_ajax_woo_store_vacation_dismiss_upsell', 									array( $this, 'dismiss_upsell' ), 			10 );
 			add_action( 'admin_menu', 																	array( $this, 'add_submenu_page' ), 	   999 );
 			add_action( 'admin_init', 																	array( $this, 'register_settings' ), 		10 );
 			add_action( 'admin_enqueue_scripts', 														array( $this, 'enqueue' ), 					10 );
 			add_action( 'woocommerce_loaded', 															array( $this, 'close_the_shop' ), 			10 );
-			add_filter( sprintf( 'plugin_action_links_%s', WOO_STORE_VACATION_PLUGIN_BASENAME ), 		array( $this, 'additional_links' ), 	 10, 1 );
+			add_filter( 'plugin_row_meta', 																array( $this, 'meta_links' ), 			 10, 2 );
+			add_filter( sprintf( 'plugin_action_links_%s', WOO_STORE_VACATION_PLUGIN_BASENAME ), 		array( $this, 'action_links' ), 	 	 10, 1 );
 
 		}
 
@@ -147,12 +151,33 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @access 	public
 		 * @return  void
 		 */
-		public function activation() {
+		public function admin_notices() {
 
-			if ( ! $this->is_woocommerce() ) {
-				$message = sprintf( esc_html_x( 'Woo Store Vacation plugin requires the following plugin:%sWooCommerce%s', 'admin notice', 'woo-store-vacation' ), '<a href="https://wordpress.org/plugins/woocommerce" target="_blank" rel="noopener noreferrer nofollow"><em>', '</em></a>' );
-				printf( '<div class="notice notice-warning notice-alt"><p>%s</p></div>', $message );
+			// Query WooCommerce activation.
+			if ( ! $this->_is_woocommerce() ) {
+				$message = sprintf( esc_html_x( '%s requires the following plugin: %sWooCommerce%s', 'admin notice', 'woo-store-vacation' ), sprintf( '<i class="dashicons dashicons-admin-plugins" style="vertical-align:sub"></i> <strong>%s</strong>', WOO_STORE_VACATION_NAME ), '<a href="https://wordpress.org/plugins/woocommerce" target="_blank" rel="noopener noreferrer nofollow"><em>', '</em></a>' );
+				printf( '<div class="notice notice-error notice-alt"><p>%s</p></div>', wp_kses_post( $message ) );
+				return;
 			} // End If Statement
+
+			if ( ! get_transient( 'woo_store_vacation_upsell' ) ) {
+				$message = sprintf( esc_html_x( '%s Looking to schedule your shop for vacation based on different dates, times (hours) and even weekdays? &#8594; %sUpgrade to PRO%s', 'admin notice', 'woo-store-vacation' ), '<i class="dashicons dashicons-calendar-alt" style="vertical-align:sub"></i>', sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow"><em>', esc_url( WOO_STORE_VACATION_URI ) ), '</em></a>' );
+				printf( '<div class="notice notice-error woocommerce-message notice-alt is-dismissible"><p>%s</p></div>', $message );
+			} // End If Statement
+
+		}
+
+		/**
+		 * AJAX dismiss up-sell admin notice.
+		 * 
+		 * @access 	public
+		 * @return 	void
+		 */
+		public function dismiss_upsell() {
+
+			check_ajax_referer( 'woo-store-vacation-upsell-nonce' );
+			set_transient( 'woo_store_vacation_upsell', TRUE, WEEK_IN_SECONDS );
+			wp_die();
 
 		}
 
@@ -213,7 +238,41 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 									<div class="handlediv"></div>
 									<h2 class="hndle">
 										<span><?php 
-											esc_attr_e( 'Looking for help? Hire Me!', 'woo-store-vacation' ); 
+											_ex( 'Schedule your shop’s vacations', 'upsell', 'woo-store-vacation' ); 
+										?></span>
+									</h2>
+									<div class="inside">
+										<h4><?php
+											_ex( 'Key features:', 'upsell', 'woo-store-vacation' );
+										?></h4>
+										<ul>
+											<li><?php 
+												_ex( '&#x2714; One-click store close', 'upsell', 'woo-store-vacation' );
+											?></li>
+											<li><?php 
+												_ex( '&#x2714; Exclude list of user roles', 'upsell', 'woo-store-vacation' );
+											?></li>
+											<li><?php 
+												_ex( '&#x2714; Unlimited date-time ranges', 'upsell', 'woo-store-vacation' );
+											?></li>
+											<li><?php 
+												_ex( '&#x2714; Unlimited weekday hours', 'upsell', 'woo-store-vacation' );
+											?></li>
+											<li><?php 
+												_ex( '&#x2714; Unlimited notifications', 'upsell', 'woo-store-vacation' );
+											?></li>
+										</ul>
+										<br/>
+										<p align="center"><?php 
+											printf( esc_html_x( '%sUpgrade to PRO &#8594;%s', 'upsell', 'woo-store-vacation' ), sprintf( '<a href="%s" class="button-secondary button-link-delete" target="_blank" rel="noopener noreferrer nofollow" style="width:100%%">', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' ); 
+										?></p>
+									</div>
+								</div>
+								<div class="postbox">
+									<div class="handlediv"></div>
+									<h2 class="hndle">
+										<span><?php 
+											_ex( 'Looking for help? Hire Me!', 'upsell', 'woo-store-vacation' ); 
 										?></span>
 									</h2>
 									<div class="inside">
@@ -228,25 +287,25 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 										?></h4>
 										<ul>
 											<li><?php 
-												_ex( 'Theme creation from scratch', 'upsell', 'woo-store-vacation' );
+												_ex( '&#x2714; Theme creation from scratch', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Plugin development & customization', 'upsell', 'woo-store-vacation' );
+												_ex( '&#x2714; Plugin development & customization', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Gutenberg custom block development', 'upsell', 'woo-store-vacation' );
+												_ex( '&#x2714; Gutenberg custom block development', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'HTML/CSS to WordPress', 'upsell', 'woo-store-vacation' );
+												_ex( '&#x2714; HTML/CSS to WordPress', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'PSD/Sketch/Figma to WordPress', 'upsell', 'woo-store-vacation' );
+												_ex( '&#x2714; PSD/Sketch/Figma to WordPress', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Troubleshooting/Error fix', 'upsell', 'woo-store-vacation' );
+												_ex( '&#x2714; Troubleshooting/Error fix', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Transferring WordPress websites', 'upsell', 'woo-store-vacation' );
+												_ex( '&#x2714; Transferring WordPress websites', 'upsell', 'woo-store-vacation' );
 											?></li>
 										</ul>
 										<h4><?php
@@ -254,25 +313,25 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 										?></h4>
 										<ul>
 											<li><?php 
-												_ex( 'Verified Freelancer of UpWork', 'upsell', 'woo-store-vacation' );
+												_ex( '&#9733; Verified Freelancer of UpWork', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Rated 5.0 out of 5.0 for services', 'upsell', 'woo-store-vacation' );
+												_ex( '&#9733; Rated 5.0 out of 5.0 for services', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Guaranteeing 100% satisfaction', 'upsell', 'woo-store-vacation' );
+												_ex( '&#9733; Guaranteeing 100% satisfaction', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Competitive pricing & support', 'upsell', 'woo-store-vacation' );
+												_ex( '&#9733; Competitive pricing & support', 'upsell', 'woo-store-vacation' );
 											?></li>
 											<li><?php 
-												_ex( 'Expert in WooCommerce', 'upsell', 'woo-store-vacation' );
+												_ex( '&#9733; Expert in WooCommerce', 'upsell', 'woo-store-vacation' );
 											?></li>
 										</ul>
 										<br/>
 										<p align="center">
 											<a href="https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/" class="button-primary" target="_blank" rel="noopener noreferrer nofollow" style="width:100%"><?php 
-												esc_attr_e( 'Hire me &#8594;', 'woo-store-vacation' ); 
+												_ex( 'Hire me &#8594;', 'upsell', 'woo-store-vacation' ); 
 										?></a>
 										</p>
 									</div>
@@ -378,7 +437,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function vacation_mode_callback() {
 
-			$value = ( isset( $this->options['vacation_mode'] ) )  ?  $this->options['vacation_mode']  :  NULL;
+			$value = ( isset( $this->options['vacation_mode'] ) ) ? $this->options['vacation_mode'] : NULL;
 			printf( 
 				'<input 
 					type="checkbox" 
@@ -400,7 +459,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function disable_purchase_callback() {
 
-			$value = ( isset( $this->options['disable_purchase'] ) )  ?  $this->options['disable_purchase']  :  NULL;
+			$value = ( isset( $this->options['disable_purchase'] ) ) ? $this->options['disable_purchase'] : NULL;
 			printf( 
 				'<input 
 					type="checkbox" 
@@ -422,7 +481,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function start_date_callback() {
 
-			$value = isset( $this->options['start_date'] )  ?  $this->options['start_date']  :  NULL;
+			$value = isset( $this->options['start_date'] ) ? $this->options['start_date'] : NULL;
 			printf('
 				<input 
 					type="text" 
@@ -437,13 +496,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * End Date.
 		 *
-		 *@access 	public
+		 * @access 	public
 		 * @return  void
 		 */
 		public function end_date_callback() {
 
 			$today = strtotime( current_time( 'Y-m-d', $gmt = 0 ) );
-			$value = isset( $this->options['end_date'] )  ?  $this->options['end_date']  :  NULL;
+			$value = isset( $this->options['end_date'] ) ? $this->options['end_date'] : NULL;
 			$is_date_passed = NULL;
 			$invalid_date_style = NULL;
 
@@ -473,12 +532,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function text_color_callback() {
 
-            $value = isset( $this->options['text_color'] )  ?  $this->options['text_color']  :  '#FFFFFF';
+            $value = isset( $this->options['text_color'] ) ? $this->options['text_color'] : '#FFFFFF';
 			printf(
 				'<input 
 					type="text" 
 					class="woo-store-vacation-text-color-field" 
-					name="woo_store_vacation_options[text_color]" 
+					name="woo_store_vacation_options[text_color]"
+					data-default-color="#FFFFFF"
 					id="text_color" 
 					value="%s" 
 				/>', sanitize_hex_color( $value ) );
@@ -493,12 +553,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function background_color_callback() {
 
-			$value = isset( $this->options['background_color'] )  ?  $this->options['background_color']  :  '#E2401C';
+			$value = isset( $this->options['background_color'] ) ? $this->options['background_color'] : '#E2401C';
 			printf(
 				'<input 
 					type="text" 
 					class="woo-store-vacation-background-color-field" 
 					name="woo_store_vacation_options[background_color]" 
+					data-default-color="#E2401C"
 					id="background_color" 
 					value="%s" 
 				/>', sanitize_hex_color( $value ) );
@@ -514,7 +575,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
         public function btn_txt_callback() {
 
         	$placeholder = _x( 'Contact me &#8594;', 'settings field placeholder', 'woo-store-vacation' );
-			$value = isset( $this->options['btn_txt'] )  ?  $this->options['btn_txt']  :  NULL;
+			$value = isset( $this->options['btn_txt'] ) ? $this->options['btn_txt'] : NULL;
 			printf( 
 				'<input 
 					type="text" 
@@ -530,13 +591,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Notice Button URL.
 		 *
-		 *@access 	public
+		 * @access 	public
 		 * @return  void
 		 */
         public function btn_url_callback() {
 
         	$placeholder = _x( 'https://www.example.com', 'settings field placeholder', 'woo-store-vacation' );
-			$value = isset( $this->options['btn_url'] )  ?  $this->options['btn_url']  :  NULL;
+			$value = isset( $this->options['btn_url'] ) ? $this->options['btn_url'] : NULL;
 			printf(
 				'<input 
 					type="url" 
@@ -552,13 +613,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
         /**
 		 * Notice Content.
 		 *
-		 *@access 	public
+		 * @access 	public
 		 * @return  void
 		 */
         public function vacation_notice_callback() {
 
 			$placeholder = _x( 'I am currently on vacation and products from my shop will be unavailable for next few days. Thank you for your patience and apologize for any inconvenience.', 'woo-store-vacation' );
-			$value = isset( $this->options['vacation_notice'] )  ?  esc_attr( $this->options['vacation_notice'] )  :  NULL;
+			$value = isset( $this->options['vacation_notice'] ) ? esc_attr( $this->options['vacation_notice'] ) : NULL;
 			printf(
 				'<textarea 
 					class="large-text" 
@@ -580,16 +641,21 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 			global $pagenow;
 
-			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG  ?  ''  :  '.min';
-			// Enqueue a CSS stylesheet.
-			wp_register_style( 'woo-store-vacation-style', sprintf( '%sadmin/css/style%s.css', WOO_STORE_VACATION_DIR_URL, $min ), array( 'wp-color-picker' ), WOO_STORE_VACATION_VERSION, 'screen' );
-			wp_register_style( 'woo-store-vacation-upsell', sprintf( '%sadmin/css/upsell%s.css', WOO_STORE_VACATION_DIR_URL, $min ), array(), WOO_STORE_VACATION_VERSION, 'screen' );
+			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+			// Make sure that the WooCommerce plugin is active.
+			if ( $this->_is_woocommerce() ) {
+				wp_register_style( 'jquery-ui-style', sprintf( '%s/assets/css/jquery-ui/jquery-ui.min.css', WC()->plugin_url() ), array( 'wp-color-picker' ), WC_VERSION, 'screen' );
+			} // End If Statement
+			
 			// Enqueue a script.
 			wp_register_script( 'woo-store-vacation-script', sprintf( '%sadmin/js/script%s.js', WOO_STORE_VACATION_DIR_URL, $min ), array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker' ), WOO_STORE_VACATION_VERSION, TRUE );
+			wp_enqueue_script( 'woo-store-vacation-upsell-script', sprintf( '%sadmin/js/upsell%s.js', WOO_STORE_VACATION_DIR_URL, $min ), array( 'jquery' ), WOO_STORE_VACATION_VERSION, TRUE );
+			wp_localize_script( 'woo-store-vacation-upsell-script', 'wsv_vars', array( 'dismiss_nonce' => wp_create_nonce( 'woo-store-vacation-upsell-nonce' ) ) );
 
 			// Make sure the current screen displays plugin’s settings page.
 			if ( 'admin.php' === $pagenow && isset( $_GET['page'] ) && 'woo-store-vacation' === $_GET['page'] ) {
-				wp_enqueue_style( 'woo-store-vacation-style' );
+				wp_enqueue_style( 'jquery-ui-style' );
 				wp_enqueue_script( 'woo-store-vacation-script' );
 			} // End If Statement
 
@@ -609,19 +675,19 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
             $timezone = new DateTimeZone( 'UTC' );
 
 			$get_options = (array) get_option( 'woo_store_vacation_options' );
-			$vacation_mode = isset( $get_options['vacation_mode'] )  ?  $get_options['vacation_mode']  :  NULL;
-			$disable_purchase = isset( $get_options['disable_purchase'] )  ?  $get_options['disable_purchase']  :  NULL;
-			$start_date = isset( $get_options['start_date'] )  ?  $get_options['start_date']  :  NULL;
-			$end_date = isset( $get_options['end_date'] )  ?  $get_options['end_date']  :  NULL;
+			$vacation_mode = isset( $get_options['vacation_mode'] ) ? $get_options['vacation_mode'] : NULL;
+			$disable_purchase = isset( $get_options['disable_purchase'] ) ? $get_options['disable_purchase'] : NULL;
+			$start_date = isset( $get_options['start_date'] ) ? $get_options['start_date'] : NULL;
+			$end_date = isset( $get_options['end_date'] ) ? $get_options['end_date'] : NULL;
 			
 			if ( isset( $vacation_mode, $start_date, $end_date ) && wc_string_to_bool( $vacation_mode ) && ! empty( $start_date ) && ! empty( $end_date ) ) {
 				// Parses a time string according to a specified format
 				$start_date = DateTime::createFromFormat( 'Y-m-d', $start_date, $timezone );
                 $end_date = DateTime::createFromFormat( 'Y-m-d', $end_date, $timezone );
-                $start_date_formatted = ( is_object( $start_date ) && ! empty( $start_date ) )  ?  $start_date->format( 'Y-m-d' )  :  NULL;
-                $end_date_formatted = ( is_object( $end_date ) && ! empty( $end_date ) )  ?  $end_date->format( 'Y-m-d' )  :  NULL;
-                $start_date_timestamp = ( ! empty( $start_date_formatted ) )  ?  strtotime( $start_date_formatted )  :  NULL;
-                $end_date_timestamp = ( ! empty( $end_date_formatted ) )  ?  strtotime( $end_date_formatted )  :  NULL;
+                $start_date_formatted = ( is_object( $start_date ) && ! empty( $start_date ) ) ? $start_date->format( 'Y-m-d' ) : NULL;
+                $end_date_formatted = ( is_object( $end_date ) && ! empty( $end_date ) ) ? $end_date->format( 'Y-m-d' ) : NULL;
+                $start_date_timestamp = ( ! empty( $start_date_formatted ) ) ? strtotime( $start_date_formatted ) : NULL;
+                $end_date_timestamp = ( ! empty( $end_date_formatted ) ) ? strtotime( $end_date_formatted ) : NULL;
 
 				if ( $today_timestamp >= $start_date_timestamp && $today_timestamp <= $end_date_timestamp ) {
 					if ( isset( $disable_purchase ) && wc_string_to_bool( $disable_purchase ) ) {
@@ -647,9 +713,9 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function vacation_notice() {
 
 			$get_options = (array) get_option( 'woo_store_vacation_options' );
-			$btn_txt = isset( $get_options['btn_txt'] )  ?  $get_options['btn_txt']  :  NULL;
-			$btn_url = isset( $get_options['btn_url'] )  ?  $get_options['btn_url']  :  NULL;
-			$notice = isset( $get_options['vacation_notice'] )  ?  $get_options['vacation_notice']  :  NULL;
+			$btn_txt = isset( $get_options['btn_txt'] ) ? $get_options['btn_txt'] : NULL;
+			$btn_url = isset( $get_options['btn_url'] ) ? $get_options['btn_url'] : NULL;
+			$notice = isset( $get_options['vacation_notice'] ) ? $get_options['vacation_notice'] : NULL;
 
 			if ( isset( $notice ) && ! empty( $notice ) ) :
 				?><div id="woo-store-vacation"><?php
@@ -679,8 +745,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			} // End If Statement
 
 			$get_options = (array) get_option( 'woo_store_vacation_options' );
-			$text_color = isset( $get_options['text_color'] )  ?  $get_options['text_color']  :  '#FFFFFF';
-			$background_color = isset( $get_options['background_color'] )  ?  $get_options['background_color']  :  '#E2401C';
+			$text_color = isset( $get_options['text_color'] ) ? $get_options['text_color'] : '#FFFFFF';
+			$background_color = isset( $get_options['background_color'] ) ? $get_options['background_color'] : '#E2401C';
 
 			echo "<style id='woo-store-vacation' type='text/css'>
 					#woo-store-vacation .woocommerce-info {
@@ -726,22 +792,43 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					}
 				  </style>";
 		}
+
+		/**
+		 * Display additional links in plugins table page.
+		 * Filters the array of row meta for each plugin in the Plugins list table.
+		 *
+		 * @access 	public
+		 * @param   array 		$links
+		 * @param 	string 		$plugin_file_name
+		 * @return  array 		$links
+		 */
+		public function meta_links( $links, $plugin_file_name ) {
+
+			$plugin_links = array();
+
+			if ( strpos( $plugin_file_name, WOO_STORE_VACATION_BASENAME ) ) {
+				$plugin_links[] = sprintf( _x( '%sUpgrade to PRO%s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow" class="button-link-delete">', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
+			} // End If Statement
+
+			return array_merge( $links, $plugin_links );
+
+		}
 		
 		/**
 		 * Display additional links in plugins table page.
 		 * Filters the list of action links displayed for a specific plugin in the Plugins list table.
 		 *
 		 * @access 	public
-		 * @param   array 	$links
-		 * @return  array 	$links
+		 * @param   array 		$links
+		 * @return  array 		$links
 		 */
-		public function additional_links( $links ) {
+		public function action_links( $links ) {
 
 			$plugin_links = array();
 			$plugin_links[] = sprintf( _x( '%sHire Me!%s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/" class="button-link-delete" target="_blank" rel="noopener noreferrer nofollow" title="%s">', esc_attr_x( 'Looking for help? Hire Me!', 'upsell', 'woo-additional-terms' ) ), '</a>' );
 			$plugin_links[] = sprintf( _x( '%sSupport%s', 'plugin link', 'woo-store-vacation' ), '<a href="https://wordpress.org/support/plugin/woo-store-vacation" target="_blank" rel="noopener noreferrer nofollow">', '</a>' );
 
-			if ( $this->is_woocommerce() ) {
+			if ( $this->_is_woocommerce() ) {
 				$settings_url = add_query_arg( 'page', 'woo-store-vacation', admin_url( 'admin.php' ) );
 				$plugin_links[] = sprintf( _x( '%sSettings%s', 'plugin link', 'woo-store-vacation') , sprintf( '<a href="%s" target="_self">', esc_url( $settings_url ) ), '</a>' );
 			} // End If Statement
@@ -756,7 +843,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @access 	private
 		 * @return  void
 		 */
-		private function is_woocommerce() {
+		private function _is_woocommerce() {
 
 			if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 				return FALSE;
@@ -777,9 +864,7 @@ endif;
 if ( ! function_exists( 'woo_store_vacation_init' ) ) :
 	
 	function woo_store_vacation_init() {
-
 		return Woo_Store_Vacation::instance();
-
 	}
 
 	woo_store_vacation_init();
