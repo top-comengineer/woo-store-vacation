@@ -7,7 +7,7 @@
 		<meta name="keywords" content="woo store vacation,store vacation notice,vacation mode,vacation-addon for woocommerce,woocommerce holiday,shop vacation announcement,woocommerce shop vacation,shop closed announcement,woocommerce close store,woocommerce temporarily close shop,woocommerce catalog mode plugin" />
 		<meta name="copyright" content="2020 MyPreview. All Rights Reserved." />
 		<meta name="author" content="MyPreview" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flickity@2.2.1/dist/flickity.min.css" />
 		<link rel="stylesheet" href="./assets/css/style.css" />
 		<link rel="apple-touch-icon" sizes="57x57" href="./assets/img/apple-icon-57x57.png" />
 		<link rel="apple-touch-icon" sizes="60x60" href="./assets/img/apple-icon-60x60.png" />
@@ -29,7 +29,7 @@
   		<div class="bg-dark fixed">
   			<nav class="col-full site-header__container">
   				<a class="site-brand" href="javascript:window.location.reload();">
-					<img alt="MyPreview logo" src="./assets/img/mypreview-logo.svg">
+					<img alt="MyPreview logo" src="./assets/img/mypreview-logo.svg" />
 					<span class="sr-only">MyPreview</span>
   				</a>
 				<ul class="nav line-list none-list">
@@ -48,31 +48,59 @@
 			<div class="col col--40 col--tb-80 align-center max-w-590 tb-txt-center">
 				<h1>Schedule, Set, Repeat.</h1>
 				<p class="lead">#1st solution for missing WooCommerce core feature in picking and scheduling unlimited vacation dates and times.</p>
-				<a class="btn btn--lg btn--success" href="#">Learn more</a>
+				<a class="btn btn--lg btn--success" href="#screenshots">Learn more</a>
 			</div>
 			<div class="col col--60 pd-b-33">
-				<img alt="Vacation hero image" class="align-center mirror" src="./assets/img/hero.svg" width="546">
+				<img alt="Vacation hero image" class="align-center mirror" src="./assets/img/hero.svg" width="546" />
 			</div>
 		</div>
 		<div class="txt-center col-full pd-t-60 pd-b-33">
 			<p class="lg-txt">Built on all those tools you love</p>
 			<div class="logos pd-b-20">
 				<ul class="line-list none-list align-center">
-					<li class="line-list__item lg-spc"><img alt="WordPress logo" src="./assets/img/logo-1.svg"></li>
-					<li class="line-list__item lg-spc"><img alt="WooCommerce logo" src="./assets/img/logo-2.svg"></li>
-					<li class="line-list__item lg-spc"><img alt="jQuery logo" src="./assets/img/logo-3.svg"></li>
-					<li class="line-list__item lg-spc"><img alt="jQuery UI logo" src="./assets/img/logo-4.svg"></li>
+					<li class="line-list__item lg-spc"><img alt="WordPress logo" src="./assets/img/logo-1.svg" /></li>
+					<li class="line-list__item lg-spc"><img alt="WooCommerce logo" src="./assets/img/logo-2.svg" /></li>
+					<li class="line-list__item lg-spc"><img alt="jQuery logo" src="./assets/img/logo-3.svg" /></li>
+					<li class="line-list__item lg-spc"><img alt="jQuery UI logo" src="./assets/img/logo-4.svg" /></li>
 				</ul>
 			</div>
 		</div>
   	</section>
-	<section id="pricing" class="txt-center col-full pd-t-70">
-		<small class="gray-color bold">SIMPLE PRICING</small>
+  	<section class="bg-dark pd-t-70 pd-b-50" id="screenshots">
+		<div class="txt-center col-full" >
+			<small class="gray-color bold">UTMOST FEATURES</small>
+			<h2>Greatly simplified interface</h2>
+			<p class="lead max-w-845 align-center">Unlimited range of shoppable dates and times to put your store on pause along with displaying a customized notice on your shop.</p>
+		</div>
+		<div class="main-carousel pd-t-50 pd-b-20" data-flickity='{ "cellAlign": "center", "contain": true, "prevNextButtons": false, "pageDots":false, "wrapAround":true, "autoPlay":5000, "imagesLoaded":true }'>
+        	<div class="carousel-cell txt-center">
+              	<img alt="schedule vacation mode" src="assets/img/screen-1.png" class="rounded m-b-24" />
+            	<span class="bold">Put WooCommerce store on vacation mode</span>
+          	</div>
+          	<div class="carousel-cell txt-center">
+              <img alt="schedule date and time" src="assets/img/screen-2.png" class="rounded m-b-24" />
+            	<span class="bold">Use the date picker to set the vacation date</span>
+          	</div>
+          	<div class="carousel-cell txt-center">
+              	<img alt="schedule weekday" src="assets/img/screen-3.png" class="rounded m-b-24" />
+            	<span class="bold">Pause weekly on the day and time that you select</span>
+         	</div>
+         	<div class="carousel-cell txt-center">
+              	<img alt="vacation message" src="assets/img/screen-4.png" class="rounded m-b-24" />
+            	<span class="bold">Customer notice of shop closing</span>
+          	</div>
+          	<div class="carousel-cell txt-center">
+              	<img alt="force close and user roles" src="assets/img/screen-5.png" class="rounded m-b-24" />
+            	<span class="bold">Exclude specific user And one click close</span>
+          	</div>
+          </div>
+  	</section>
+	<section id="pricing" class="txt-center col-full">
+		<small class="gray-color bold pd-t-70">SIMPLE PRICING</small>
 		<h2>A plan for all occasions</h2>
 		<p class="lead">Whether you’re a shop owner or freelancer, our pricing just makes sense
-		<br>
-		<span class="gray-color italic small">Depending on your country, VAT may apply</span>
-		</p>
+		<br/>
+		<span class="gray-color italic small">Depending on your country, VAT may apply</span></p>
 		<div class="cols align-center max-w-590 pd-t-30">
 			<div class="col col--50 card card--lg bg-dark m-mb-b-30">
 				<p class="lead bold">Pro</p>
@@ -105,28 +133,28 @@
 		<p>Here are a few nice things folks have said about the plugin over the years</p>
 		<ul class="align-center max-w-915 none-list cols cols--pd-h-24 pd-t-60 pd-b-20">
 			<li class="review col col--50">
-				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-1.jpg" width="72" height="72"></a>
+				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-1.jpg" width="72" height="72" /></a>
 				<div class="review__content">
 					<p>“An excellent simple plugin that saved a huge amount of time. Worked first time on the flatsome theme and gave a simple way of preventing holiday ordering. I particularly liked the date picker option to select when to start and stop the holiday as assuming this reenables automatically would allow orders to recommence just before returning from holidays – so a good idea. Quite why a simple diasble store feature isn’t built into woocommerce is a bit of a mystery.”</p>
 					<a class="small" href="https://wordpress.org/support/topic/just-what-i-needed-765/" target="_blank" rel="noopener noreferrer nofollow">Lickthespoon</a>
 				</div>
 			</li>
 			<li class="review col col--50">
-				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-2.jpg" width="72" height="72"></a>
+				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-2.jpg" width="72" height="72" /></a>
 				<div class="review__content">
 					<p>“Does what it says – turns off the ability to buy any product. As a side benefit, running this plugin means no impact on your store’s Google rankings.”</p>
 					<a class="small" href="https://wordpress.org/support/topic/great-plugin-20175/" target="_blank" rel="noopener noreferrer nofollow">David Bowen</a>
 				</div>
 			</li>
 			<li class="review col col--50">
-				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-3.jpg" width="72" height="72"></a>
+				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-3.jpg" width="72" height="72" /></a>
 				<div class="review__content">
 					<p>“This is a great plugin for temporarily disabling your woocommerce shop. I use it now for Divi theme and does what is says.”</p>
 					<a class="small" href="https://wordpress.org/support/topic/great-plugin-exactly-what-i-need/" target="_blank" rel="noopener noreferrer nofollow">Pimstigter</a>
 				</div>
 			</li>
 			<li class="review col col--50">
-				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-4.jpg" width="72" height="72"></a>
+				<a class="review__avatar" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow"><img alt="User avatar" src="assets/img/avatar-4.jpg" width="72" height="72" /></a>
 				<div class="review__content">
 					<p>“This works like a mint. It’s exactly the functionality we needed for our small shop while we went on vacation for a week.”</p>
 					<a class="small" href="https://wordpress.org/support/topic/very-handy-plugin-64/" target="_blank" rel="noopener noreferrer nofollow">Chad</a>
@@ -206,12 +234,12 @@
 				<p class="small">Trademarks and brands are the property of their respective owners.</p>
 			</div>
 			<div class="col col--50">
-				<img class="align-right" width="250" alt="credit cards" src="./assets/img/credit-card.png">
+				<img class="align-right" width="250" alt="credit cards" src="./assets/img/credit-card.png" />
 			</div>
 		</div>
 	</footer>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flickity@2.2.1/dist/flickity.pkgd.min.js"></script>
 	<script src="https://cdn.paddle.com/paddle/paddle.js"></script>
 	<script type="text/javascript">Paddle.Setup({vendor:15981,completeDetails:!0}),Paddle.Product.Prices(580975,function(e){jQuery("#item-price").html(e.price.gross.replace(/(\d+\.\d{1,2})/gi,"<span>$1</span>"))});</script>
   </body>
