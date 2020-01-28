@@ -12,6 +12,7 @@
 # logos
 # card
 # review
+# Carouserl
 # Footer
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -129,7 +130,7 @@ p.bold + p {
     }
     h2 {
         margin-bottom: 18px;
-        font-size: 44px;
+        font-size: 40px;
     }
 }
 /*--------------------------------------------------------------
@@ -248,6 +249,9 @@ img {
     display: block;
     max-width: 100%;
 }
+.rounded {
+    border-radius: 4px;
+}
 .mirror {
     -webkit-transform: scalex(-1);
             transform: scalex(-1);
@@ -273,12 +277,18 @@ img {
 .pd-b-33 {
     padding-bottom: 33px;
 }
+.m-b-24 {
+    margin-bottom: 24px;
+}
 .lg-spc {
     margin-left: 24px;
     margin-right: 24px;
 }
 .max-w-915 {
     max-width: 915px;
+}
+.max-w-845 {
+    max-width: 845px;
 }
 .max-w-590 {
     max-width: 590px;
@@ -357,21 +367,21 @@ img {
     padding-bottom: 12px;
 }
 .col {
-    flex-grow: 1;
     box-sizing: border-box;
+    width: 100%;
 }
 @media (min-width: 42.0625em) {
     .col--40 {
         max-width: 40%;
-        flex-basis: 40%;
+        flex: 0 0 40%;
     }
     .col--50 {
         max-width: 50%;
-        flex-basis: 50%;
+        flex: 0 0 50%;
     }
     .col--60 {
         max-width: 60%;
-        flex-basis: 60%;
+        flex: 0 0 60%;
     }
     .cols--pd-h-24 .col {
         padding-left: 12px;
@@ -385,17 +395,13 @@ img {
 }
 @media (max-width: 64em) and (min-width: 42.0625em) {
     .col--tb-80 {
-        max-width: 80%;
-        flex-basis: 80%;
+        flex: 0 0 80%;
+        flex: 0 0 80%;
     }
 }
 @media (max-width: 42em) {
     .cols {
         flex-wrap: wrap;
-    }
-    .col {
-        max-width: 100%;
-        flex-basis: 100%;
     }
 }
 /*--------------------------------------------------------------
@@ -532,6 +538,33 @@ img {
     }
     .review-verify img {
         margin: 10px auto;
+    }
+}
+/*--------------------------------------------------------------
+# Carouserl
+--------------------------------------------------------------*/
+.carousel-cell {
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 50%;
+    transition: opacity .35s ease;
+    transition: opacity .35s ease;
+    transition: opacity .35s ease;
+}
+.carousel-cell:not(.is-selected) {
+    opacity: .2;
+}
+@media (max-width: 62em) {
+    .carousel-cell {
+        width: 80%;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+@media (max-width: 37.5em) {
+    .carousel-cell {
+        font-size: 12px;
+        line-height: 1;
     }
 }
 /*--------------------------------------------------------------
