@@ -554,6 +554,9 @@ img {
 .carousel-cell:not(.is-selected) {
     opacity: .2;
 }
+.carousel-cell img {
+    width: 100%;
+}
 @media (max-width: 62em) {
     .carousel-cell {
         width: 80%;
