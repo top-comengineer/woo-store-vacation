@@ -22,12 +22,14 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="96x96" href="./assets/img/favicon-96x96.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon-16x16.png" />
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157123630-1"></script>
+		<!-- Analytics Tracking -->
 		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'UA-157123630-1');
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-102511149-1', 'auto');
+			ga('send', 'pageview');
 		</script>
   </head>
 
@@ -86,7 +88,7 @@
           	</div>
           	<div class="carousel-cell txt-center">
               <img alt="schedule date and time" src="assets/img/screen-2.png" class="rounded m-b-24" />
-            	<span class="bold">Use the date picker to set the vacation date</span>
+            	<span class="bold">Temporarily close your WooCommerce powered shop at any time</span>
           	</div>
           	<div class="carousel-cell txt-center">
               	<img alt="schedule weekday" src="assets/img/screen-3.png" class="rounded m-b-24" />
@@ -94,11 +96,11 @@
          	</div>
          	<div class="carousel-cell txt-center">
               	<img alt="vacation message" src="assets/img/screen-4.png" class="rounded m-b-24" />
-            	<span class="bold">Customer notice of shop closing</span>
+            	<span class="bold">Set of notifications to display in the shop and single product pages</span>
           	</div>
           	<div class="carousel-cell txt-center">
               	<img alt="force close and user roles" src="assets/img/screen-5.png" class="rounded m-b-24" />
-            	<span class="bold">Exclude specific user And one click close</span>
+            	<span class="bold">Bypass vacation mode settings for a set chosen user roles</span>
           	</div>
           </div>
   	</section>
