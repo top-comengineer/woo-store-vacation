@@ -13,7 +13,7 @@
  * any later version.
  *
  * @link              		https://www.mypreview.one
- * @since             		1.3.1
+ * @since             		1.3.2
  * @package           		woo-store-vacation
  * @author     		  		MyPreview (Github: @mahdiyazdani, @mypreview)
  * @copyright 		  		© 2015 - 2019 MyPreview. All Rights Reserved.
@@ -22,7 +22,7 @@
  * Plugin Name:       		Woo Store Vacation
  * Plugin URI:        		https://mypreview.github.io/woo-store-vacation
  * Description:       		Put your WooCommerce store in vacation or pause mode with custom notice.
- * Version:           		1.3.1
+ * Version:           		1.3.2
  * Author:            		MyPreview
  * Author URI:        		https://www.mypreview.one
  * License:           		GPL-2.0
@@ -30,7 +30,7 @@
  * Text Domain:       		woo-store-vacation
  * Domain Path:       		/languages
  * WC requires at least: 	3.4.0
- * WC tested up to: 		3.9.0
+ * WC tested up to: 		3.9.2
  */
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -42,7 +42,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @see 	https://codex.wordpress.org/Function_Reference/plugin_basename
  * @see 	http://php.net/manual/en/language.constants.predefined.php
  */
-define( 'WOO_STORE_VACATION_VERSION', '1.3.1' );
+define( 'WOO_STORE_VACATION_VERSION', '1.3.2' );
 define( 'WOO_STORE_VACATION_FILE', __FILE__ );
 define( 'WOO_STORE_VACATION_NAME', get_file_data( WOO_STORE_VACATION_FILE, array( 'name' => 'Plugin Name' ) )['name'] );
 define( 'WOO_STORE_VACATION_URI', get_file_data( WOO_STORE_VACATION_FILE, array( 'uri' => 'Plugin URI' ) )['uri'] );
@@ -692,7 +692,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 				if ( $today_timestamp >= $start_date_timestamp && $today_timestamp <= $end_date_timestamp ) {
 					if ( isset( $disable_purchase ) && wc_string_to_bool( $disable_purchase ) ) {
 						// Make all products unpurchasable.
-						add_filter( 'woocommerce_is_purchasable',          	'__return_false',                       -1 );
+						add_filter( 'woocommerce_is_purchasable',          	'__return_false',              PHP_INT_MAX );
 					} // End If Statement
 
 					add_action( 'woocommerce_before_shop_loop',             array( $this, 'vacation_notice' ), 		 5 );
