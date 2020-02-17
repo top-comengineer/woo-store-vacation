@@ -5,7 +5,7 @@ Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 5.3.1
 Requires PHP: 7.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,7 +88,7 @@ Here’s the the [WordPress translation website &#8594;](https://translate.wordp
 = How do I contribute to this plugin? =
 We welcome contributions in any form, and you can help reporting, testing, and detailing bugs.
 
-Here’s the [GitHub development repository &#8594;](https://github.com/mypreview/Woo-Store-Vacation "GitHub development repository")
+Here’s the [GitHub development repository &#8594;](https://github.com/mypreview/woo-store-vacation "GitHub development repository")
 
 = Did you like the idea behind this plugin? =
 Please share your experience by leaving this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "Rate Woo Store Vacation 5 stars") if you like it, thanks!
@@ -119,6 +119,10 @@ I am a full-stack developer with over five years of experience in WordPress them
 5. Category page notice with Success style
 
 == Changelog ==
+= 1.3.2 =
+* Delay purchasable filter to run AFTER all other hooks have completed preventing from getting overridden by a third-party extension.
+* Compatibility with WooCommerce 3.9.2
+
 = 1.3.1 =
 * Compatibility with WooCommerce 3.9.0
 
