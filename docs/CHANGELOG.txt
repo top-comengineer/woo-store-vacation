@@ -1,4 +1,8 @@
 === Woo Store Vacation (PRO) ===
 
-= 1.0.0 =
+= 2020.02.17 - Version 1.0.1 =
+* Fix: Delay purchasable filter to run AFTER all other hooks have completed preventing from getting overridden by a third-party extension.
+* Compatibility: WooCommerce 3.9.2.
+
+= 2020.01.28 - Version 1.0.0 =
 * Initial release.
