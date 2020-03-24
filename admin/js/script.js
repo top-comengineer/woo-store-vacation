@@ -3,7 +3,6 @@
  *
  * @since       1.3.0
  * @package     Woo Store Vacation
- * @author      MyPreview (Github: @mahdiyazdani, @mypreview)
  */
 ( function( wp, $ ) {
         'use strict';
