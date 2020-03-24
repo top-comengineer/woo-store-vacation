@@ -3,7 +3,6 @@
  * Unistall Woo Store Vacation.
  * Fired when the plugin is uninstalled.
  *
- * @author      Mahdi Yazdani
  * @package     Woo Store Vacation
  * @since       1.3.1
  */
@@ -16,5 +15,5 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 delete_transient( 'woo_store_vacation_upsell' );
 $option_name = 'woo_store_vacation_options';
 delete_option( $option_name );
-// For site options in Multisite
+// For site options in Multisite.
 delete_site_option( $option_name );
