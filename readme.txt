@@ -3,9 +3,9 @@ Contributors: mahdiyazdani, mypreview, gookaani
 Tags: woocommerce vacation mode,woocommerce holiday mode,woocommerce plugin,holiday message plugin,wp holiday plugin,holiday plugin wordpress,shop on vacation mode,store vacation notice,store vacation,vacation alert message
 Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
-Tested up to: 5.3.1
+Tested up to: 5.4.0
 Requires PHP: 7.2
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,18 @@ Store Vacation plugin provides a robust and missing feature of the WooCommerce c
 Pausing your store disables the checkout but keeps your store online and accessible to visitors. You can pause or temporarily close your store by defining a few simple options within a minute or two. This means customers can see your products but can't purchase them.
 
 If you want to start selling products again, then you can unpause your store at any time by deactivating the Vacation Mode or schedule the plugin which does this behind the scenes for you automatically!
+
+> **BECOME A PREMIUM USER**
+> 
+> Store Vacation plugin has a premium version which comes with several additional benefits:
+> * One-click store close.
+> * Exclude list of user roles.
+> * Allow **Shop Managers** to edit.
+> * Unlimited date-time ranges.
+> * Unlimited weekday hours.
+> * Unlimited notifications.
+>
+> [Upgrade to premium! &#8594;](https://mypreview.github.io/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
 == Installation ==
 = Minimum Requirements =
@@ -100,6 +112,7 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 
 * One-click store close.
 * Exclude list of user roles.
+* Allow **Shop Managers** to edit.
 * Unlimited date-time ranges.
 * Unlimited weekday hours.
 * Unlimited notifications.
@@ -109,7 +122,7 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 = I need help customizing this plugin? =
 I am a full-stack developer with over five years of experience in WordPress theme and plugin development and customization. I would love to have the opportunity to discuss your project with you.
 
-[Hire me at UpWork &#8594;](https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/ "Mahdi Yazdani Freelancer Profile")
+[Hire me on UpWork &#8594;](https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/ "Mahdi Yazdani Freelancer Profile")
 
 == Screenshots ==
 1. Plugin Settings
@@ -119,6 +132,11 @@ I am a full-stack developer with over five years of experience in WordPress them
 5. Category page notice with Success style
 
 == Changelog ==
+= 1.3.3 =
+* Multiple code standards improvements.
+* Compatibility with WordPress 5.4.0
+* Compatibility with WooCommerce 4.0.1
+
 = 1.3.2 =
 * Delay purchasable filter to run AFTER all other hooks have completed preventing from getting overridden by a third-party extension.
 * Compatibility with WooCommerce 3.9.2
