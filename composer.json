@@ -2,7 +2,7 @@
   "name": "mypreview/woo-store-vacation",
   "description": "Put your WooCommerce store in vacation or pause mode with custom notice.",
   "homepage": "https://wordpress.org/plugins/woo-store-vacation/",
-  "type": "wordpress-theme",
+  "type": "wordpress-plugin",
   "license": "GPL-3.0+",
   "require": {
     "php": ">=7.2",
