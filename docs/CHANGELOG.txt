@@ -1,5 +1,13 @@
 === Woo Store Vacation (PRO) ===
 
+= 2020.04.04 - Version 1.0.2 =
+* Fix: Multiple code standards improvements.
+* Fix: Removed minimum date/time from the datepicker module.
+* Update: Language file.
+* Update: Refactored and re-organized underlying code.
+* Compatibility: WordPress 5.4.0
+* Compatibility: WooCommerce 4.0.1
+
 = 2020.02.17 - Version 1.0.1 =
 * Fix: Delay purchasable filter to run AFTER all other hooks have completed preventing from getting overridden by a third-party extension.
 * Compatibility: WooCommerce 3.9.2.
