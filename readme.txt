@@ -23,6 +23,7 @@ If you want to start selling products again, then you can unpause your store at 
 > **BECOME A PREMIUM USER**
 > 
 > Store Vacation plugin has a premium version which comes with several additional benefits:
+>
 > * One-click store close.
 > * Exclude list of user roles.
 > * Allow **Shop Managers** to edit.
@@ -95,7 +96,7 @@ Make sure to check the “Notify me of follow-up replies via email” checkbox t
 = Can I help in translating this plugin into a new language? =
 The plugin is fully translation-ready and localized using the GNU framework, and translators are welcome to contribute to the plugin.
 
-Here’s the the [WordPress translation website &#8594;](https://translate.wordpress.org/projects/wp-plugins/woo-store-vacation "WordPress translation website")
+Here’s the [WordPress translation website &#8594;](https://translate.wordpress.org/projects/wp-plugins/woo-store-vacation "WordPress translation website")
 
 = How do I contribute to this plugin? =
 We welcome contributions in any form, and you can help reporting, testing, and detailing bugs.
@@ -189,5 +190,5 @@ I am a full-stack developer with over five years of experience in WordPress them
 = 1.0.1 =
 * Fixed time calculation bug with strtotime method.
 
-= 1.0 =
+= 1.0.0 =
 * Initial release.
