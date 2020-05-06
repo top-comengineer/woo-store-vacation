@@ -1,5 +1,12 @@
 === Woo Store Vacation (PRO) ===
 
+= 2020.05.07 - Version 1.1.0 =
+* Fix: Multiple code standards improvements.
+* Feature: Added a node (menu item) to the Admin Bar toolbar in case the vacation mode is activated.
+* Update: Language file.
+* Compatibility: WordPress 5.4.1
+* Compatibility: WooCommerce 4.1.0
+
 = 2020.04.04 - Version 1.0.2 =
 * Fix: Multiple code standards improvements.
 * Fix: Removed minimum date/time from the datepicker module.
