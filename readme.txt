@@ -3,9 +3,9 @@ Contributors: mahdiyazdani, mypreview, gookaani
 Tags: woocommerce vacation mode,woocommerce holiday mode,woocommerce plugin,holiday message plugin,wp holiday plugin,holiday plugin wordpress,shop on vacation mode,store vacation notice,store vacation,vacation alert message
 Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
-Tested up to: 5.4.0
+Tested up to: 5.4.1
 Requires PHP: 7.2
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,10 @@ I am a full-stack developer with over five years of experience in WordPress them
 5. Category page notice with Success style
 
 == Changelog ==
+= 1.3.4 =
+* Compatibility with WordPress 5.4.1
+* Compatibility with WooCommerce 4.1.0
+
 = 1.3.3 =
 * Multiple code standards improvements.
 * Compatibility with WordPress 5.4.0
