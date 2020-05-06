@@ -13,14 +13,14 @@
  * any later version.
  *
  * @link                    https://www.mypreview.one
- * @since                   1.3.2
+ * @since                   1.3.4
  * @package                 woo-store-vacation
  *
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.github.io/woo-store-vacation
  * Description:             Put your WooCommerce store in vacation or pause mode with custom notice.
- * Version:                 1.3.3
+ * Version:                 1.3.4
  * Author:                  MyPreview
  * Author URI:              https://www.mypreview.one
  * License:                 GPL-2.0
@@ -28,7 +28,7 @@
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
  * WC requires at least:    3.4.0
- * WC tested up to:         4.0.1
+ * WC tested up to:         4.1.0
  */
 
 // If this file is called directly, abort.
@@ -794,7 +794,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 				?>
 				</div>
 				<?php
-			endif; // End If Statement
+			endif; // End If Statement.
 
 		}
 
@@ -911,10 +911,18 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * Query WooCommerce activation
 		 *
 		 * @return  bool
+		 * @phpcs:disable PSR2.Methods.MethodDeclaration.Underscore
 		 */
 		private function _is_woocommerce() {
 
-			if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			// This statement prevents from producing fatal errors,
+			// in case the WooCommerce plugin is not activated on the site.
+			$woocommerce_plugin     = apply_filters( 'woo_store_vacation_woocommerce_path', 'woocommerce/woocommerce.php' );
+			$subsite_active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+			$network_active_plugins = apply_filters( 'active_plugins', get_site_option( 'active_sitewide_plugins' ) );
+
+			// Bail early in case the plugin is not activated on the website.
+			if ( ( empty( $subsite_active_plugins ) || ! in_array( $woocommerce_plugin, $subsite_active_plugins ) ) && ( empty( $network_active_plugins ) || ! array_key_exists( $woocommerce_plugin, $network_active_plugins ) ) ) {
 				return false;
 			} // End If Statement
 
