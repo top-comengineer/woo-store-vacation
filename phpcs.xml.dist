@@ -38,6 +38,7 @@
 
     <rule ref="WordPress">
         <exclude name="WordPress.VIP.DirectDatabaseQuery.NoCaching" />
+        <exclude name="WordPress.VIP.SuperGlobalInputUsage.AccessDetected" />
         <exclude name="WordPress.VIP.DirectDatabaseQuery.DirectQuery" />
         <exclude name="WordPress.VIP.DirectDatabaseQuery.SchemaChange" />
         <exclude name="WordPress.VIP.FileSystemWritesDisallow.file_ops_fwrite" />
@@ -46,6 +47,9 @@
         <exclude name="WordPress.VIP.RestrictedVariables.user_meta__wpdb__usermeta" />
         <exclude name="WordPress.VIP.PostsPerPage.posts_per_page_posts_per_page" />
         <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints___COOKIE" />
+    </rule>
+    <rule ref="WooCommerce-Core">
+        <exclude name="Core.Commenting.CommentTags.AuthorTag" />
     </rule>
     <rule ref="WordPress.VIP.ValidatedSanitizedInput">
         <properties>
@@ -60,6 +64,11 @@
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array" value="woo-store-vacation" />
+        </properties>
+    </rule>
+    <rule ref="WordPress.Files.FileName">
+        <properties>
+            <property name="strict_class_file_names" value="false" />
         </properties>
     </rule>
     <rule ref="Squiz.Commenting">
