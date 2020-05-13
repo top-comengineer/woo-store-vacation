@@ -1,5 +1,9 @@
 === Woo Store Vacation (PRO) ===
 
+= 2020.05.14 - Version 1.1.1 =
+* Fix: Initialize core class to retrieve full translated weekday to support non-English weekday names.
+* Tweak: Display regional language in date and time pickers as per the WordPress setting.
+
 = 2020.05.07 - Version 1.1.0 =
 * Fix: Multiple code standards improvements.
 * Feature: Added a node (menu item) to the Admin Bar toolbar in case the vacation mode is activated.
