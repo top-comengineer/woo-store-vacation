@@ -42,8 +42,8 @@ if ( ! defined( 'WPINC' ) ) {
  * @see     https://codex.wordpress.org/Function_Reference/plugin_basename
  * @see     http://php.net/manual/en/language.constants.predefined.php
  */
-define( 'WOO_STORE_VACATION_VERSION', '1.3.3' );
 define( 'WOO_STORE_VACATION_FILE', __FILE__ );
+define( 'WOO_STORE_VACATION_VERSION', get_file_data( WOO_STORE_VACATION_FILE, array( 'version' => 'Version' ) )['version'] );
 define( 'WOO_STORE_VACATION_NAME', get_file_data( WOO_STORE_VACATION_FILE, array( 'name' => 'Plugin Name' ) )['name'] );
 define( 'WOO_STORE_VACATION_URI', get_file_data( WOO_STORE_VACATION_FILE, array( 'uri' => 'Plugin URI' ) )['uri'] );
 define( 'WOO_STORE_VACATION_BASENAME', basename( WOO_STORE_VACATION_FILE ) );
