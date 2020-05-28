@@ -30,6 +30,7 @@ h1 {
     font-size: 72px;
     font-weight: 400;
 }
+.h2,
 h2 {
     margin-bottom: 24px;
     font-size: 56px;
@@ -128,6 +129,7 @@ p.bold + p {
     h1 {
         font-size: 55px;
     }
+    .h2,
     h2 {
         margin-bottom: 18px;
         font-size: 40px;
@@ -569,6 +571,21 @@ img {
         font-size: 12px;
         line-height: 1;
     }
+}
+/*--------------------------------------------------------------
+# Fancybox
+--------------------------------------------------------------*/
+.fancybox-content {
+    max-width: 840px;
+    border-radius: 4px;
+    max-height: 700px;
+}
+.fancybox-toolbar {
+    opacity: 1;
+    visibility: visible;
+}
+.fancybox-iframe {
+    border-radius: 4px;
 }
 /*--------------------------------------------------------------
 # Footer
