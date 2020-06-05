@@ -24,25 +24,25 @@ h1,h2,h3,h4,h5,h6,p {
     margin-top: 0;
 }
 h1 {
+    font-weight: 400;
     line-height: 1;
     margin-bottom: 24px;
     color: #333;
     font-size: 72px;
-    font-weight: 400;
 }
 .h2,
 h2 {
-    margin-bottom: 24px;
     font-size: 56px;
+    line-height: 1.15;
+    margin-bottom: 24px;
     font-weight: 400;
     letter-spacing: -.02em;
-    line-height: 1.15;
 }
 h3 {
     font-size: 24px;
-    letter-spacing: -.02em;
-    margin-bottom: 20px;
     line-height: 1.25;
+    margin-bottom: 20px;
+    letter-spacing: -.02em;
     font-weight: 500;
 }
 .title {
@@ -56,9 +56,9 @@ a {
             transition: color .35s ease;
 }
 body {
-    margin: 0;
     font-size: 16px;
     line-height: 1.5;
+    margin: 0;
     color: #3c3c3c;
     background-color: #f8f9fa;
     font-family: 'Rubik', sans-serif;
@@ -71,10 +71,16 @@ h4,
     font-weight: 500;
 }
 small {
-    margin-bottom: 24px;
     font-size: 14px;
+    margin-bottom: 24px;
     letter-spacing: 1px;
     display: block;
+}
+h5 {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-weight: 500;
 }
 .lead {
     font-size: 20px;
@@ -92,9 +98,9 @@ p.bold + p {
 }
 .larger,
 #item-price span {
-    letter-spacing: -.02em;
     font-size: 72px;
     line-height: 1.1;
+    letter-spacing: -.02em;
 }
 .txt-center {
     text-align: center;
@@ -253,10 +259,6 @@ img {
 }
 .rounded {
     border-radius: 4px;
-}
-.mirror {
-    -webkit-transform: scalex(-1);
-            transform: scalex(-1);
 }
 .pd-t-70 {
     padding-top: 70px;
@@ -426,6 +428,11 @@ img {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    -webkit-transition: background-color .35s ease, border-color .35s ease, -webkit-box-shadow .2s ease;
+    transition: background-color .35s ease, border-color .35s ease, -webkit-box-shadow .2s ease;
+    -o-transition: background-color .35s ease, border-color .35s ease, box-shadow .2s ease;
+    transition: background-color .35s ease, border-color .35s ease, box-shadow .2s ease;
+    transition: background-color .35s ease, border-color .35s ease, box-shadow .2s ease, -webkit-box-shadow .2s ease;
 }
 .col .card {
     height: 100%;
@@ -453,6 +460,9 @@ img {
     content: "";
     display: block;
     height: 5px;
+}
+a.card:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
 }
 @media (min-width: 42.0625em) {
     .card:first-child {
@@ -571,6 +581,33 @@ img {
         font-size: 12px;
         line-height: 1;
     }
+}
+/*--------------------------------------------------------------
+# Tabs
+--------------------------------------------------------------*/
+.tabs {
+    justify-content: center;
+}
+
+.tab-links {
+    padding: 0 12px 0 0;
+    margin: 0;
+    order: 2;
+}
+.tab-links li {
+    list-style: none;
+}
+.tab-links a {
+    color: inherit;
+}
+.tab-links p {
+    margin-bottom: 0;
+}
+.tab-links .active .card {
+    background-color: #fff;
+}
+.tab-links li:not(.active) .card {
+    border-color: transparent;
 }
 /*--------------------------------------------------------------
 # Fancybox
