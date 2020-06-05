@@ -516,11 +516,11 @@ a.card:hover {
     -webkit-box-orient: vertical;
 }
 .review__content a:before {
-    content: "―";
+    content: "\2014";
     margin-right: 3px;
 }
 .review__content a:after {
-    content: "→";
+    content: "\21AA";
     opacity: 0;
     margin-left: 3px;
     -webkit-transition: opacity .25s ease;
