@@ -4,6 +4,8 @@
 * Update: Language file.
 * Feature: Exclude product types from being non-purchasable.
 * Feature: Added UTC and local time as a hint above the schedule tables.
+* Feature: Added language configuration file to support WPML/Polylang.
+* Compatibility: WooCommerce 4.2.0
 
 = 2020.05.14 - Version 1.1.1 =
 * Fix: Initialize core class to retrieve full translated weekday to support non-English weekday names.
