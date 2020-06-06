@@ -5,7 +5,7 @@ Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 5.4.1
 Requires PHP: 7.2
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,9 @@ Make sure to check the “Notify me of follow-up replies via email” checkbox t
 
 *Please note that this is an opensource 100% volunteer project, and it’s not unusual to get reply days or even weeks later.*
 
+= Does this plugin supports WPML? =
+Yes. The plugin is translation-ready and has a config file to support both WPML and Polylang plugins fully.
+
 = Can I help in translating this plugin into a new language? =
 The plugin is fully translation-ready and localized using the GNU framework, and translators are welcome to contribute to the plugin.
 
@@ -133,6 +136,10 @@ I am a full-stack developer with over five years of experience in WordPress them
 5. Category page notice with Success style
 
 == Changelog ==
+= 1.3.5 =
+* Added language configuration file to support WPML/Polylang.
+* Compatibility with WooCommerce 4.2.0
+
 = 1.3.4 =
 * Compatibility with WordPress 5.4.1
 * Compatibility with WooCommerce 4.1.0
