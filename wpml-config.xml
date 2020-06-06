@@ -1,0 +1,9 @@
+<wpml-config>
+	<admin-texts>
+		<key name="woo_store_vacation_options">
+			<key name="btn_txt" />
+			<key name="btn_url" />
+			<key name="vacation_notice" />
+		</key>
+	</admin-texts>
+</wpml-config>
