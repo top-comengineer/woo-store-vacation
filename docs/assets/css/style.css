@@ -13,6 +13,8 @@
 # card
 # review
 # Carouserl
+# Tabs
+# Fancybox
 # Footer
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -139,6 +141,10 @@ p.bold + p {
     h2 {
         margin-bottom: 18px;
         font-size: 40px;
+    }
+
+    .title {
+        font-size: 32px;
     }
 }
 /*--------------------------------------------------------------
@@ -400,9 +406,15 @@ img {
         flex-direction: column-reverse;
     }
 }
+@media (max-width: 72em) and (min-width: 42.0625em) {
+    .col--lp-50 {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+}
 @media (max-width: 64em) and (min-width: 42.0625em) {
     .col--tb-80 {
-        flex: 0 0 80%;
+        max-width: 80%;
         flex: 0 0 80%;
     }
 }
@@ -612,20 +624,37 @@ a.card:hover {
 .tab-links li:not(.active) .card {
     border-color: transparent;
 }
+@media (max-width: 64em) and (min-width: 42.0625em) {
+    .tab-links li:not(.active) p {
+        display: none
+    }
+}
+@media (max-width: 42em) {
+    .tab-content img {
+        margin: 0 auto 30px;
+    }
+}
 /*--------------------------------------------------------------
 # Fancybox
 --------------------------------------------------------------*/
-.fancybox-content {
-    max-width: 840px;
-    border-radius: 4px;
-    max-height: 720px;
-}
 .fancybox-toolbar {
     opacity: 1;
     visibility: visible;
 }
 .fancybox-iframe {
     border-radius: 4px;
+}
+@media (min-width: 64.0625em) {
+    .fancybox-content {
+        max-height: 720px;
+        max-width: 840px;
+        border-radius: 4px;
+    }
+}
+@media (max-width: 64em) {
+    .fancybox-slide {
+        padding: 0;
+    }
 }
 /*--------------------------------------------------------------
 # Footer
