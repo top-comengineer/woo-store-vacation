@@ -26,6 +26,7 @@ If you want to start selling products again, then you can unpause your store at 
 >
 > * One-click store close.
 > * Exclude list of user roles.
+> * Exclude list of product types.
 > * Allow **Shop Managers** to edit.
 > * Unlimited date-time ranges.
 > * Unlimited weekday hours.
@@ -116,6 +117,7 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 
 * One-click store close.
 * Exclude list of user roles.
+* Exclude list of product types.
 * Allow **Shop Managers** to edit.
 * Unlimited date-time ranges.
 * Unlimited weekday hours.

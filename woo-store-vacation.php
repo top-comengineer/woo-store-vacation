@@ -265,6 +265,11 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 											</li>
 											<li>
 											<?php
+												echo esc_html_x( '&#x2714; Exclude list of product types', 'upsell', 'woo-store-vacation' );
+											?>
+											</li>
+											<li>
+											<?php
 												echo esc_html_x( '&#x2714; Allow Shop Managers to edit', 'upsell', 'woo-store-vacation' );
 											?>
 											</li>
