@@ -1,6 +1,6 @@
 === Woo Store Vacation (PRO) ===
 
-= 2020.06.X - Version 1.2.0 =
+= 2020.06.07 - Version 1.2.0 =
 * Update: Language file.
 * Feature: Exclude product types from being non-purchasable.
 * Feature: Added UTC and local time as a hint above the schedule tables.
