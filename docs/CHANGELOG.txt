@@ -1,5 +1,12 @@
 === Woo Store Vacation (PRO) ===
 
+= 2020.06.21 - Version 1.2.1 =
+* Fix: Code standards improvements.
+* Fix: Error in not detecting `Sunday` in closing down the shop.
+* Update: Language file.
+* Feature: Drag and drop sorting support for submitted vacation notices and date/times.
+* Compatibility: WordPress 5.4.2
+
 = 2020.06.07 - Version 1.2.0 =
 * Update: Language file.
 * Feature: Exclude product types from being non-purchasable.
