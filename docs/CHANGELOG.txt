@@ -1,5 +1,9 @@
 === Woo Store Vacation (PRO) ===
 
+= 2020.06.28 - Version 1.2.2 =
+* Fix: Checks the list of defined functions, to make sure plugin class instance is called only once.
+* Fix: Undefined fatal error class definition in checking for automatic plugin updates.
+
 = 2020.06.21 - Version 1.2.1 =
 * Fix: Code standards improvements.
 * Fix: Error in not detecting `Sunday` in closing down the shop.
