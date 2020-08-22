@@ -4,16 +4,16 @@
  * Fired when the plugin is uninstalled.
  *
  * @package     Woo Store Vacation
- * @since       1.3.1
+ * @since       1.3.8
  */
 
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
-} // End If Statement
+}
 
 delete_transient( 'woo_store_vacation_upsell' );
-$option_name = 'woo_store_vacation_options';
-delete_option( $option_name );
+$woo_store_vacation_option_name = 'woo_store_vacation_options';
+delete_option( $woo_store_vacation_option_name );
 // For site options in Multisite.
-delete_site_option( $option_name );
+delete_site_option( $woo_store_vacation_option_name );
