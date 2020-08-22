@@ -1,78 +1,114 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Coding Standards">
+<ruleset name="WordPress Plugin Coding Standards">
     <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
-    <!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/blob/develop/WordPress-Core/ruleset.xml -->
+    <!-- See https://github.com/WordPress/WordPress-Coding-Standards -->
+    <!-- See https://github.com/PHPCompatibility/PHPCompatibilityWP -->
 
-    <description>WooCommerce dev PHP_CodeSniffer ruleset.</description>
+    <!-- Set a description for this ruleset. -->
+    <description>A custom set of code standard rules to check for WordPress plugins.</description>
 
-    <!-- Exclude paths -->
-    <file>./</file>
+    <!--
+    #############################################################################
+    COMMAND LINE ARGUMENTS
+    https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml
+    #############################################################################
+    -->
+
+    <!-- Pass some flags to PHPCS:
+         p flag: Show progress of the run.
+         s flag: Show sniff codes in all reports.
+    -->
+    <arg value="ps"/>
+
+    <!-- Strip the filepaths down to the relevant bit. -->
+    <arg name="basepath" value="./"/>
+
+    <!-- Check up to 8 files simultanously. -->
+    <arg name="parallel" value="8"/>
+
+    <!-- Only check the PHP files. JS, and CSS files are checked separately with @wordpress/scripts package. -->
+    <arg name="extensions" value="php"/>
+
+    <!-- Check all files in this directory and the directories below it. -->
+    <file>.</file>
+
+    <!-- Exclude patterns. -->
     <exclude-pattern>*/vendor/*</exclude-pattern>
     <exclude-pattern>*/.wordpress-org/*</exclude-pattern>
     <exclude-pattern>*/node_modules/*</exclude-pattern>
     <exclude-pattern>*/languages/*</exclude-pattern>
-    <exclude-pattern>*/admin/*</exclude-pattern>
-    <exclude-pattern>*/docs/*</exclude-pattern>
+    <exclude-pattern>*/dist/*</exclude-pattern>
+    <exclude-pattern>*/src/*</exclude-pattern>
     <exclude-pattern>/index\.php</exclude-pattern>
 
-    <!-- Only check the PHP files. JS files are checked separately with JSCS and JSHint. -->
-    <arg name="extensions" value="php" />
 
-    <!-- Show progress, show the error codes for each message (source). -->
-    <arg value="ps" />
+    <!--
+    #############################################################################
+    USE THE WordPress AND THE Theme Review RULESET
+    #############################################################################
+    -->
 
-    <!-- Check up to 8 files simultaneously. -->
-    <arg name="parallel" value="8" />
-
-    <!-- Configs -->
-    <config name="testVersion" value="7.2-" />
-    <config name="minimum_supported_wp_version" value="5.0" />
-
-    <!-- Rules -->
-    <rule ref="WooCommerce-Core" />
-    <rule ref="PHPCompatibility">
-        <exclude name="PHPCompatibility.PHP.NewFunctions.hash_equalsFound" />
-        <exclude name="PHPCompatibility.PHP.NewInterfaces.jsonserializableFound" />
-        <exclude name="PHPCompatibility.PHP.NewKeywords.t_namespaceFound" />
-    </rule>
-
+     <!-- Include the WordPress ruleset, with select exclusions. -->
     <rule ref="WordPress">
-        <exclude name="WordPress.VIP.DirectDatabaseQuery.NoCaching" />
-        <exclude name="WordPress.VIP.SuperGlobalInputUsage.AccessDetected" />
-        <exclude name="WordPress.VIP.DirectDatabaseQuery.DirectQuery" />
-        <exclude name="WordPress.VIP.DirectDatabaseQuery.SchemaChange" />
-        <exclude name="WordPress.VIP.FileSystemWritesDisallow.file_ops_fwrite" />
-        <exclude name="WordPress.VIP.OrderByRand" />
-        <exclude name="WordPress.VIP.RestrictedFunctions" />
-        <exclude name="WordPress.VIP.RestrictedVariables.user_meta__wpdb__usermeta" />
-        <exclude name="WordPress.VIP.PostsPerPage.posts_per_page_posts_per_page" />
-        <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints___COOKIE" />
-    </rule>
-    <rule ref="WooCommerce-Core">
+        <exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+        <exclude name="Core.Commenting.CommentTags.AccessTag" />
         <exclude name="Core.Commenting.CommentTags.AuthorTag" />
     </rule>
-    <rule ref="WordPress.VIP.ValidatedSanitizedInput">
-        <properties>
-            <property name="customSanitizingFunctions" type="array" value="wc_clean,wc_sanitize_tooltip,wc_format_decimal,wc_stock_amount,wc_sanitize_permalink,wc_sanitize_textarea" />
-        </properties>
-    </rule>
-    <rule ref="WordPress.XSS.EscapeOutput">
-        <properties>
-            <property name="customEscapingFunctions" type="array" value="wc_help_tip,wc_sanitize_tooltip" />
-        </properties>
-    </rule>
+    <rule ref="WooCommerce-Core" />
+    <!-- Let's also check that everything is properly documented. -->
+    <rule ref="WordPress-Docs"/>
+
+    <!--
+    #############################################################################
+    SNIFF SPECIFIC CONFIGURATION
+    #############################################################################
+    -->
+
+    <!-- Verify that the text_domain is set to the desired text-domain.
+         Multiple valid text domains can be provided as a comma-delimited list. -->
     <rule ref="WordPress.WP.I18n">
         <properties>
-            <property name="text_domain" type="array" value="woo-store-vacation" />
+            <property name="text_domain" type="array" value="woo-store-vacation"/>
         </properties>
     </rule>
-    <rule ref="WordPress.Files.FileName">
+
+    <!-- Set the minimum supported WP version. This is used by several sniffs.
+         The minimum version set here should be in line with the minimum WP version
+         as set in the "Requires at least" tag in the readme.txt file. -->
+    <config name="minimum_supported_wp_version" value="5.0" />
+
+    <rule ref="WordPress.Arrays.MultipleStatementAlignment">
         <properties>
-            <property name="strict_class_file_names" value="false" />
+            <!-- No need to adjust alignment of large arrays when the item with the largest key is removed. -->
+            <property name="exact" value="false"/>
+            <!-- Don't align multi-line items if ALL items in the array are multi-line. -->
+            <property name="alignMultilineItems" value="!=100"/>
+            <!-- Array assignment operator should always be on the same line as the array key. -->
+            <property name="ignoreNewlines" value="false"/>
         </properties>
     </rule>
-    <rule ref="Squiz.Commenting">
-        <exclude name="Squiz.Commenting.LongConditionClosingComment" />
-        <exclude name="Squiz.Commenting.PostStatementComment" />
+
+    <!-- Verify that everything in the global namespace is prefixed with a theme specific prefix.
+         Multiple valid prefixes can be provided as a comma-delimited list. -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="woo_store_vacation"/>
+                <element value="Woo_Store_Vacation"/>
+                <element value="WOO_STORE_VACATION"/>
+            </property>
+        </properties>
     </rule>
+
+    <!--
+    #############################################################################
+    USE THE PHPCompatibility RULESET
+    #############################################################################
+    -->
+
+    <config name="testVersion" value="7.2-" />
+    <!-- Include sniffs for PHP cross-version compatibility. -->
+    <rule ref="PHPCompatibilityWP" />
+
 </ruleset>
