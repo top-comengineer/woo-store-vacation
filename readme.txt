@@ -3,11 +3,11 @@ Contributors: mahdiyazdani, mypreview, gookaani
 Tags: vacation mode,woocommerce plugin,woocommerce,ecommerce,calendar,alert message
 Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 7.2
-Stable tag: 1.3.7
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 1.3.8
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Woo Store Vacation allows you to put your WooCommerce shop on pause or hold mode for a certain amount of time.
 
@@ -126,18 +126,24 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 [Go Premium, Be Happy! &#8594;](https://mypreview.github.io/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
 = I need help customizing this plugin? =
-I am a full-stack developer with over five years of experience in WordPress theme and plugin development and customization. I would love to have the opportunity to discuss your project with you.
+Professional engineer and independent creative technologist in tech · over 6 years experience working from prototype to production · developing WordPress products, services, and eCommerce solutions.
 
-[Hire me on UpWork &#8594;](https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94/ "Mahdi Yazdani Freelancer Profile")
+[Available for hire &#8594;](https://mahdiyazdani.com "Mahdi Yazdani’s personal website")
 
 == Screenshots ==
-1. Plugin Settings
-2. User-Friendly Datepicker
-3. Shop page notice with Info style
-4. Single product notice with Error style
-5. Category page notice with Success style
+1. Plugin’s settings page
+2. User-Friendly datepicker
+3. Displaying a notice at the top of shop page
+4. Displaying a notice at the top of product page
+5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.3.8 =
+* Updated language file.
+* Multiple code standards improvements.
+* Compatibility with WordPress 5.5
+* Compatibility with WooCommerce 4.4
+
 = 1.3.7 =
 * Compatibility with WooCommerce 4.3
 
