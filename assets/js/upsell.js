@@ -1,7 +1,7 @@
 /**
  * WordPress admin enhancements, specific to plugin's up-sell admin notice.
  *
- * @since       1.3.1
+ * @since       1.3.8
  * @package     Woo Store Vacation
  */
 ( function( wp, $ ) {
@@ -13,7 +13,7 @@
 
 	$( function() {
 		// Dismiss up-sell banner notice on user click!
-		$( document ).on( 'click', '.notice-error.woocommerce-message.is-dismissible .notice-dismiss', function() {
+		$( document ).on( 'click', '.notice-info.woocommerce-message.is-dismissible .notice-dismiss', function() {
 			$.ajax( {
 				type: 'POST',
 				url: ajaxurl,
