@@ -1,54 +1,36 @@
 {
   "name": "mypreview/woo-store-vacation",
-  "description": "Put your WooCommerce store in vacation or pause mode with custom notice.",
-  "homepage": "https://wordpress.org/plugins/woo-store-vacation",
   "type": "wordpress-plugin",
-  "license": "GPL-3.0+",
+  "description": "Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.",
+  "keywords": [
+    "WordPress",
+    "Plugin"
+  ],
+  "homepage": "https://wordpress.org/plugins/woo-store-vacation",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Mahdi Yazdani",
+      "homepage": "https://mahdiyazdani.com"
+    }
+  ],
   "require": {
-    "php": ">=7.2",
-    "composer/installers": "~1.2"
+    "php": ">=7.2"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "*",
-    "wp-coding-standards/wpcs": "^0.14",
-    "phpunit/phpunit": "6.*",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+    "wp-coding-standards/wpcs": "^2.3.0",
+    "phpunit/phpunit": "^7",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "php-parallel-lint/php-parallel-lint": "^1.2.0",
     "woocommerce/woocommerce-git-hooks": "*",
     "woocommerce/woocommerce-sniffs": "*",
-    "wimg/php-compatibility": "^8.0",
-    "wp-cli/i18n-command": "^2.2",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3"
+    "wp-cli/i18n-command": "^2.2"
   },
   "scripts": {
-    "pre-update-cmd": [
-      "WooCommerce\\GitHooks\\Hooks::preHooks"
-    ],
-    "pre-install-cmd": [
-      "WooCommerce\\GitHooks\\Hooks::preHooks"
-    ],
-    "post-install-cmd": [
-      "WooCommerce\\GitHooks\\Hooks::postHooks"
-    ],
-    "post-update-cmd": [
-      "WooCommerce\\GitHooks\\Hooks::postHooks"
-    ],
-    "test": [
-      "phpunit"
-    ],
-    "phpcs": [
-      "phpcs -s -p"
-    ],
-    "phpcbf": [
-      "phpcbf -p"
-    ],
-    "make-pot": [
-      "wp i18n make-pot . languages/woo-store-vacation.pot"
-    ]
-  },
-  "extra": {
-    "scripts-description": {
-      "test": "Run unit tests",
-      "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
-      "phpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
-    }
+    "lint:wpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+    "lint:wpcs-fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+    "lint:php": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor --exclude node_modules .",
+    "make-pot": "wp i18n make-pot . languages/woo-store-vacation.pot"
   }
 }
