@@ -1,5 +1,10 @@
 === Woo Store Vacation (PRO) ===
 
+= 2020.08.31 - Version 1.2.4 =
+* Update: Language file.
+* Compatibility: WordPress 5.5
+* Compatibility: WooCommerce 4.4
+
 = 2020.07.09 - Version 1.2.3 =
 * Update: Language file.
 * Compatibility: WooCommerce 4.3.0
