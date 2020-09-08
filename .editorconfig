@@ -11,7 +11,7 @@ end_of_line = lf
 insert_final_newline = false
 
 # Matches multiple files with brace expansion notation
-[*.{js,php,css}]
+[*.{js,jsx,php,css}]
 charset = utf-8
 indent_style = tab
 indent_size = 4
