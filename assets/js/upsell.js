@@ -1,29 +1,30 @@
+/* global ajaxurl, wsvVars */
+
 /**
  * WordPress admin enhancements, specific to plugin's up-sell admin notice.
  *
  * @since       1.3.8
- * @package     Woo Store Vacation
+ * @package
  */
-( function( wp, $ ) {
+( function ( wp, $ ) {
 	'use strict';
 
 	if ( ! wp ) {
 		return;
 	} // End If Statement
 
-	$( function() {
+	$( function () {
 		// Dismiss up-sell banner notice on user click!
-		$( document ).on( 'click', '.notice-info.woocommerce-message.is-dismissible .notice-dismiss', function() {
+		$( document ).on( 'click', '.notice-info.woocommerce-message.is-dismissible .notice-dismiss', function () {
 			$.ajax( {
 				type: 'POST',
 				url: ajaxurl,
-				data: { 
-					_ajax_nonce: wsv_vars.dismiss_nonce, 
-					action: 'woo_store_vacation_dismiss_upsell' 
+				data: {
+					_ajax_nonce: wsvVars.dismiss_nonce,
+					action: 'woo_store_vacation_dismiss_upsell',
 				},
-				dataType: 'json'
+				dataType: 'json',
 			} );
 		} );
 	} );
-
 } )( window.wp, jQuery );
