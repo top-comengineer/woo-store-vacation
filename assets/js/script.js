@@ -39,6 +39,13 @@
 		},
 	} );
 
+	// Override the _goToToday method outside of the library itself.
+	const oldGoToToday = $.datepicker._gotoToday;
+	$.datepicker._gotoToday = function ( id ) {
+		oldGoToToday.call( this, id );
+		this._selectDate( id );
+	};
+
 	$( '.woo-store-vacation-text-color-field, .woo-store-vacation-background-color-field' ).wpColorPicker();
 
 	// Adds a "Reset" control to the datepicker at the bottom
