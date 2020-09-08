@@ -2,7 +2,6 @@
  * Initialize jQuery datepicker, colorpicker
  *
  * @since       1.3.9
- * @package
  */
 ( function ( wp, $ ) {
 	'use strict';
