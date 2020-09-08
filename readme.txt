@@ -5,7 +5,7 @@ Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 7.2
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,6 +138,11 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.3.9 =
+* Updated language file.
+* Removed minimum date from the datepicker module.
+* Bail early, in case the store closing request is for an administrative interface page.
+
 = 1.3.8 =
 * Updated language file.
 * Multiple code standards improvements.
