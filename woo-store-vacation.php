@@ -13,14 +13,14 @@
  * any later version.
  *
  * @link                    https://www.mypreview.one
- * @since                   1.3.8
+ * @since                   1.3.9
  * @package                 woo-store-vacation
  *
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.github.io/woo-store-vacation
  * Description:             Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.
- * Version:                 1.3.8
+ * Version:                 1.3.9
  * Author:                  MyPreview
  * Author URI:              https://mahdiyazdani.com
  * License:                 GPL-3.0
@@ -734,7 +734,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			// Enqueue a script.
 			wp_register_script( sprintf( '%s-script', WOO_STORE_VACATION_SLUG ), sprintf( '%sassets/js/script%s.js', WOO_STORE_VACATION_DIR_URL, $min ), array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker' ), WOO_STORE_VACATION_VERSION, true );
 			wp_enqueue_script( sprintf( '%s-upsell-script', WOO_STORE_VACATION_SLUG ), sprintf( '%sassets/js/upsell%s.js', WOO_STORE_VACATION_DIR_URL, $min ), array( 'jquery' ), WOO_STORE_VACATION_VERSION, true );
-			wp_localize_script( sprintf( '%s-upsell-script', WOO_STORE_VACATION_SLUG ), 'wsv_vars', array( 'dismiss_nonce' => wp_create_nonce( sprintf( '%s-upsell-nonce', WOO_STORE_VACATION_SLUG ) ) ) );
+			wp_localize_script( sprintf( '%s-upsell-script', WOO_STORE_VACATION_SLUG ), 'wsvVars', array( 'dismiss_nonce' => wp_create_nonce( sprintf( '%s-upsell-nonce', WOO_STORE_VACATION_SLUG ) ) ) );
 
 			// Make sure the current screen displays plugin’s settings page.
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -748,10 +748,15 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Determine whether the shop should be closed or not!
 		 *
-		 * @since   1.3.8
+		 * @since   1.3.9
 		 * @return  void
 		 */
 		public function close_the_shop() {
+			// Bail early, in case the current request is for an administrative interface page.
+			if ( is_admin() ) {
+				return;
+			}
+
 			// Get today’s date and timestamp.
 			$today_date      = gmdate( 'Y-m-d' );
 			$today_timestamp = (int) strtotime( $today_date );
