@@ -173,7 +173,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					if ( ! get_transient( 'woo_store_vacation_upsell' ) ) {
 						/* translators: 1: Dashicon, 2: HTML symbol, 3: Open anchor tag, 4: Close anchor tag. */
 						$message = sprintf( esc_html_x( '%1$s Automate your closings by defining an unlimited number of vacation dates, times (hours), and weekdays without any manual effort needed. %2$s %3$sUpgrade to PRO%4$s', 'admin notice', 'woo-store-vacation' ), '<i class="dashicons dashicons-calendar-alt" style="vertical-align:sub"></i>', '&#8594;', sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow"><button class="button-primary">', esc_url( WOO_STORE_VACATION_URI ) ), '</button></a>' );
-						printf( '<div class="notice notice-info woocommerce-message notice-alt is-dismissible"><p>%s</p></div>', wp_kses_post( $message ) );
+						printf( '<div id="woo-store-vacation-dismiss-upsell" class="notice notice-info woocommerce-message notice-alt is-dismissible"><p>%s</p></div>', wp_kses_post( $message ) );
 					}
 				}
 			}
