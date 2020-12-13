@@ -14,7 +14,7 @@
 
 	$( function () {
 		// Dismiss up-sell banner notice on user click!
-		$( document ).on( 'click', '.notice-info.woocommerce-message.is-dismissible .notice-dismiss', function () {
+		$( document ).on( 'click', '#woo-store-vacation-dismiss-upsell .notice-dismiss', function () {
 			$.ajax( {
 				type: 'POST',
 				url: ajaxurl,
