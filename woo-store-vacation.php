@@ -13,22 +13,24 @@
  * any later version.
  *
  * @link                    https://www.mypreview.one
- * @since                   1.3.9
+ * @since                   1.4.0
  * @package                 woo-store-vacation
  *
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.github.io/woo-store-vacation
  * Description:             Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.
- * Version:                 1.3.9
+ * Version:                 1.4.0
  * Author:                  MyPreview
  * Author URI:              https://mahdiyazdani.com
  * License:                 GPL-3.0
+ * Requires at least: 		WordPress 5.0
+ * Requires PHP:      		7.2.0
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
  * WC requires at least:    3.4.0
- * WC tested up to:         4.4
+ * WC tested up to:         4.8
  */
 
 // If this file is called directly, abort.
@@ -152,7 +154,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Query WooCommerce activation.
 		 *
-		 * @since   1.3.8
+		 * @since   1.4.0
 		 * @return  void
 		 */
 		public function admin_notices() {
@@ -172,8 +174,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 				} else {
 					if ( ! get_transient( 'woo_store_vacation_upsell' ) ) {
 						/* translators: 1: Dashicon, 2: HTML symbol, 3: Open anchor tag, 4: Close anchor tag. */
-						$message = sprintf( esc_html_x( '%1$s Automate your closings by defining an unlimited number of vacation dates, times (hours), and weekdays without any manual effort needed. %2$s %3$sUpgrade to PRO%4$s', 'admin notice', 'woo-store-vacation' ), '<i class="dashicons dashicons-calendar-alt" style="vertical-align:sub"></i>', '&#8594;', sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow"><button class="button-primary">', esc_url( WOO_STORE_VACATION_URI ) ), '</button></a>' );
-						printf( '<div id="woo-store-vacation-dismiss-upsell" class="notice notice-info woocommerce-message notice-alt is-dismissible"><p>%s</p></div>', wp_kses_post( $message ) );
+						$message = sprintf( esc_html_x( '%1$s Automate your closings by defining unlimited number of vacation dates, times (hours), and weekdays without any manual effort needed. %2$s %3$sUpgrade to PRO%4$s', 'admin notice', 'woo-store-vacation' ), '<i class="dashicons dashicons-calendar-alt" style="vertical-align:sub"></i>', '&#8594;', sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow"><button class="button-primary">', esc_url( WOO_STORE_VACATION_URI ) ), '</button></a>' );
+						printf( '<div id="%s-dismiss-upsell" class="notice notice-info woocommerce-message notice-alt is-dismissible"><p>%s</p></div>', WOO_STORE_VACATION_SLUG, wp_kses_post( $message ) );
 					}
 				}
 			}
@@ -204,7 +206,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Render and display plugin options page.
 		 *
-		 * @since   1.3.8
+		 * @since   1.4.0
 		 * @return  void
 		 */
 		public function render_plugin_page() {
@@ -302,7 +304,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 										<p align="center">
 										<?php
 											/* translators: 1: Open anchor tag, 2: Close anchor tag. */
-											printf( esc_html_x( '%1$sUpgrade to PRO &#8594;%2$s', 'upsell', 'woo-store-vacation' ), sprintf( '<a href="%s" class="button-secondary button-link-delete" target="_blank" rel="noopener noreferrer nofollow" style="width:100%%">', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
+											printf( esc_html_x( '%1$sUpgrade to PRO &#8594;%2$s', 'upsell', 'woo-store-vacation' ), sprintf( '<a href="%s" class="button-primary button-link-delete" target="_blank" rel="noopener noreferrer nofollow" style="width:100%%">', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
 										?>
 										</p>
 									</div>
@@ -404,7 +406,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 										</ul>
 										<br/>
 										<p align="center">
-											<a href="<?php echo esc_url( WOO_STORE_VACATION_AUTHOR_URI ); ?>" class="button-primary" target="_blank" rel="noopener noreferrer nofollow" style="width:100%">
+											<a href="<?php echo esc_url( WOO_STORE_VACATION_AUTHOR_URI ); ?>" class="button-secondary" target="_blank" rel="noopener noreferrer nofollow" style="width:100%">
 												<?php echo esc_html_x( 'Hire me &#8594;', 'upsell', 'woo-store-vacation' ); ?>
 										</a>
 										</p>
@@ -491,7 +493,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 			// Button URL.
 			if ( isset( $input['btn_url'] ) ) {
-				$sanitary_values['btn_url'] = esc_url_raw( $input['btn_url'] );
+				$sanitary_values['btn_url'] = filter_var( $input['btn_url'], FILTER_SANITIZE_URL );
 			}
 
 			// Vacation Notice.
@@ -736,9 +738,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			wp_enqueue_script( sprintf( '%s-upsell-script', WOO_STORE_VACATION_SLUG ), sprintf( '%sassets/js/upsell%s.js', WOO_STORE_VACATION_DIR_URL, $min ), array( 'jquery' ), WOO_STORE_VACATION_VERSION, true );
 			wp_localize_script( sprintf( '%s-upsell-script', WOO_STORE_VACATION_SLUG ), 'wsvVars', array( 'dismiss_nonce' => wp_create_nonce( sprintf( '%s-upsell-nonce', WOO_STORE_VACATION_SLUG ) ) ) );
 
-			// Make sure the current screen displays plugin’s settings page.
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			if ( 'admin.php' === $pagenow && isset( $_GET['page'] ) && WOO_STORE_VACATION_SLUG === $_GET['page'] ) {
+			if ( $this->_is_plugin_page() ) {
 				wp_enqueue_style( 'jquery-ui-style' );
 				wp_enqueue_style( 'woocommerce-activation' );
 				wp_enqueue_script( sprintf( '%s-script', WOO_STORE_VACATION_SLUG ) );
@@ -809,7 +809,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 				if ( empty( $btn_txt ) || empty( $btn_url ) || '#' === $btn_url ) {
 					$message = wp_kses_post( nl2br( $notice ) );
 				} else {
-					$message = sprintf( '<a href="%1$s" class="%2$s__btn" target="_self">%3$s</a> <span class="%2$s__msg">%4$s</span>', esc_url( $btn_url ), esc_attr( WOO_STORE_VACATION_SLUG ), esc_html( $btn_txt ), wp_kses_post( nl2br( $notice ) ) );
+					$message = sprintf( '<a href="%1$s" class="%2$s__btn" target="_self">%3$s</a> <span class="%2$s__msg">%4$s</span>', esc_url( $btn_url ), sanitize_html_class( WOO_STORE_VACATION_SLUG ), esc_html( $btn_txt ), wp_kses_post( nl2br( $notice ) ) );
 				}
 
 					wc_print_notice( $message, apply_filters( 'woo_store_vacation_notice_type', 'notice' ) );
@@ -960,7 +960,6 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @since    1.3.8
 		 * @param    string $css    CSS styles.
 		 * @return   void|string
-		 * @phpcs:disable PSR2.Methods.MethodDeclaration.Underscore
 		 */
 		private function _minify_css( $css ) {
 			// Bail early if we have no $css properties to trim and minify.
@@ -1017,11 +1016,27 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		}
 
 		/**
+		 * Determine whteher the current screen is displaying plugin’s settings page.
+		 *
+		 * @since    1.4.0
+		 * @return   bool
+		 */
+		private function _is_plugin_page() {
+			global $pagenow;
+
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( 'admin.php' === $pagenow && isset( $_GET['page'] ) && WOO_STORE_VACATION_SLUG === $_GET['page'] ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		/**
 		 * Query WooCommerce activation
 		 *
 		 * @since    1.3.8
 		 * @return   bool
-		 * @phpcs:disable PSR2.Methods.MethodDeclaration.Underscore
 		 */
 		private function _is_woocommerce() {
 			// This statement prevents from producing fatal errors,
