@@ -3,7 +3,7 @@
 /**
  * WordPress admin enhancements, specific to plugin's up-sell admin notice.
  *
- * @since       1.3.8
+ * @since       1.4.0
  */
 ( function ( wp, $ ) {
 	'use strict';
