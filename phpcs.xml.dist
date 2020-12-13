@@ -41,21 +41,24 @@
     <exclude-pattern>*/src/*</exclude-pattern>
     <exclude-pattern>/index\.php</exclude-pattern>
 
-
     <!--
     #############################################################################
     USE THE WordPress AND THE Theme Review RULESET
     #############################################################################
     -->
 
-     <!-- Include the WordPress ruleset, with select exclusions. -->
+    <!-- Include the WordPress ruleset, with select exclusions. -->
     <rule ref="WordPress">
         <exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
         <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+        <exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
         <exclude name="Core.Commenting.CommentTags.AccessTag" />
         <exclude name="Core.Commenting.CommentTags.AuthorTag" />
     </rule>
+
+    <!-- Include the WooCommerce ruleset. -->
     <rule ref="WooCommerce-Core" />
+
     <!-- Let's also check that everything is properly documented. -->
     <rule ref="WordPress-Docs"/>
 
