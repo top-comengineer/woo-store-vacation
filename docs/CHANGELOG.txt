@@ -1,5 +1,9 @@
 === Woo Store Vacation (PRO) ===
 
+= 2021.01.19 - Version 1.2.6 =
+* Compatibility with WordPress 5.6
+* Compatibility with WooCommerce 4.9
+
 = 2020.09.01 - Version 1.2.5 =
 * Fix: Miscalculation when finding scheduled date range.
 
