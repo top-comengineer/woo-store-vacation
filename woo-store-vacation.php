@@ -523,7 +523,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 				checked( $value, 'true', false )
 			);
 			/* translators: 1: Open label tag, 2: Close label tag. */
-			printf( esc_html_x( '%1$sWant to go vacation by closing my store publically.%2$s', 'settings field help', 'woo-store-vacation' ), '<label for="vacation_mode"><em><small>', '</small></em></label>' );
+			printf( esc_html_x( '%1$sTurn on Vacation mode and close my store publicly.%2$s', 'settings field help', 'woo-store-vacation' ), '<label for="vacation_mode"><em><small>', '</small></em></label>' );
 		}
 
 		/**
