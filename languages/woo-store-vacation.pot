@@ -1,21 +1,21 @@
-# Copyright (C) 2020 MyPreview
+# Copyright (C) 2021 MyPreview
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Woo Store Vacation 1.3.9\n"
+"Project-Id-Version: Woo Store Vacation 1.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-store-vacation\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-08T11:35:52+00:00\n"
+"POT-Creation-Date: 2021-03-10T22:32:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: woo-store-vacation\n"
 
 #. Plugin Name of the plugin
-#: woo-store-vacation.php:216
+#: woo-store-vacation.php:218
 msgid "Woo Store Vacation"
 msgstr ""
 
@@ -35,281 +35,281 @@ msgstr ""
 msgid "https://mahdiyazdani.com"
 msgstr ""
 
-#: woo-store-vacation.php:128
+#: woo-store-vacation.php:130
 msgctxt "clone"
 msgid "Cloning instances of this class is forbidden."
 msgstr ""
 
-#: woo-store-vacation.php:138
+#: woo-store-vacation.php:140
 msgctxt "wakeup"
 msgid "Unserializing instances of this class is forbidden."
 msgstr ""
 
 #. translators: 1: Dashicon, 2: Open anchor tag, 3: Close anchor tag.
-#: woo-store-vacation.php:162
+#: woo-store-vacation.php:164
 msgctxt "admin notice"
 msgid "%1$s requires the following plugin: %2$sWooCommerce%3$s"
 msgstr ""
 
 #. translators: 1: Dashicon, 2: HTML symbol, 3: Open anchor tag, 4: Close anchor tag.
-#: woo-store-vacation.php:175
+#: woo-store-vacation.php:177
 msgctxt "admin notice"
-msgid "%1$s Automate your closings by defining an unlimited number of vacation dates, times (hours), and weekdays without any manual effort needed. %2$s %3$sUpgrade to PRO%4$s"
+msgid "%1$s Automate your closings by defining unlimited number of vacation dates, times (hours), and weekdays without any manual effort needed. %2$s %3$sUpgrade to PRO%4$s"
 msgstr ""
 
-#: woo-store-vacation.php:201
+#: woo-store-vacation.php:203
 msgctxt "page title"
 msgid "Woo Store Vacation"
 msgstr ""
 
-#: woo-store-vacation.php:201
+#: woo-store-vacation.php:203
 msgctxt "menu title"
 msgid "Store Vacation"
 msgstr ""
 
-#: woo-store-vacation.php:227
+#: woo-store-vacation.php:229
 msgid "Settings"
 msgstr ""
 
-#: woo-store-vacation.php:250
+#: woo-store-vacation.php:252
 msgctxt "upsell"
 msgid "Schedule your shop’s vacations"
 msgstr ""
 
-#: woo-store-vacation.php:255
+#: woo-store-vacation.php:257
 msgctxt "upsell"
 msgid "Key features:"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:261
+#: woo-store-vacation.php:263
 msgctxt "upsell"
 msgid "%s One-click store close"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:267
+#: woo-store-vacation.php:269
 msgctxt "upsell"
 msgid "%s Exclude list of user roles"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:273
+#: woo-store-vacation.php:275
 msgctxt "upsell"
 msgid "%s Exclude list of product types"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:279
+#: woo-store-vacation.php:281
 msgctxt "upsell"
 msgid "%s Allow Shop Managers to edit"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:285
+#: woo-store-vacation.php:287
 msgctxt "upsell"
 msgid "%s Unlimited date-time ranges"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:291
+#: woo-store-vacation.php:293
 msgctxt "upsell"
 msgid "%s Unlimited weekday hours"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:297
+#: woo-store-vacation.php:299
 msgctxt "upsell"
 msgid "%s Unlimited notifications"
 msgstr ""
 
 #. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: woo-store-vacation.php:305
+#: woo-store-vacation.php:307
 msgctxt "upsell"
 msgid "%1$sUpgrade to PRO &#8594;%2$s"
 msgstr ""
 
 #. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: woo-store-vacation.php:313
+#: woo-store-vacation.php:315
 #: woo-store-vacation.php:919
 msgctxt "upsell"
 msgid "Looking for help? Hire Me!"
 msgstr ""
 
-#: woo-store-vacation.php:318
+#: woo-store-vacation.php:320
 msgctxt "upsell"
 msgid "I am a full-stack developer with over five years of experience in WordPress theme and plugin development and customization."
 msgstr ""
 
-#: woo-store-vacation.php:321
+#: woo-store-vacation.php:323
 msgctxt "upsell"
 msgid "I would love to have the opportunity to discuss your project with you."
 msgstr ""
 
-#: woo-store-vacation.php:324
+#: woo-store-vacation.php:326
 msgctxt "upsell"
 msgid "My services include:"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:330
+#: woo-store-vacation.php:332
 msgctxt "upsell"
 msgid "%s Theme creation from scratch"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:336
+#: woo-store-vacation.php:338
 msgctxt "upsell"
 msgid "%s Plugin development & customization"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:342
+#: woo-store-vacation.php:344
 msgctxt "upsell"
 msgid "%s Gutenberg custom block development"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:348
+#: woo-store-vacation.php:350
 msgctxt "upsell"
 msgid "%s HTML/CSS to WordPress"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:354
+#: woo-store-vacation.php:356
 msgctxt "upsell"
 msgid "%s PSD/Sketch/Figma to WordPress"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:360
+#: woo-store-vacation.php:362
 msgctxt "upsell"
 msgid "%s Troubleshooting/Error fix"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:366
+#: woo-store-vacation.php:368
 msgctxt "upsell"
 msgid "%s Transferring WordPress websites"
 msgstr ""
 
-#: woo-store-vacation.php:371
+#: woo-store-vacation.php:373
 msgctxt "upsell"
 msgid "Why clients choose me?"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:377
+#: woo-store-vacation.php:379
 msgctxt "upsell"
 msgid "%s Verified Top-Rated Plus freelancer"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:383
+#: woo-store-vacation.php:385
 msgctxt "upsell"
 msgid "%s Rated 5.0 out of 5.0 for services"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:389
+#: woo-store-vacation.php:391
 msgctxt "upsell"
 msgid "%s Guaranteeing 100%% satisfaction"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:395
+#: woo-store-vacation.php:397
 msgctxt "upsell"
 msgid "%s Competitive pricing & support"
 msgstr ""
 
 #. translators: %s: HTML Symbol.
-#: woo-store-vacation.php:401
+#: woo-store-vacation.php:403
 msgctxt "upsell"
 msgid "%s Expert in WooCommerce"
 msgstr ""
 
-#: woo-store-vacation.php:408
+#: woo-store-vacation.php:410
 msgctxt "upsell"
 msgid "Hire me &#8594;"
 msgstr ""
 
 #. translators: %s: Abbr tag.
-#: woo-store-vacation.php:434
+#: woo-store-vacation.php:436
 msgctxt "settings field label"
 msgid "Set Vacation Mode %s"
 msgstr ""
 
-#: woo-store-vacation.php:435
+#: woo-store-vacation.php:437
 msgctxt "settings field label"
 msgid "Disable Purchase"
 msgstr ""
 
 #. translators: %s: Abbr tag.
-#: woo-store-vacation.php:437
+#: woo-store-vacation.php:439
 msgctxt "settings field label"
 msgid "Start Date %s"
 msgstr ""
 
 #. translators: %s: Abbr tag.
-#: woo-store-vacation.php:439
+#: woo-store-vacation.php:441
 msgctxt "settings field label"
 msgid "End Date %s"
 msgstr ""
 
-#: woo-store-vacation.php:440
+#: woo-store-vacation.php:442
 msgctxt "settings field label"
 msgid "Text Color"
 msgstr ""
 
-#: woo-store-vacation.php:441
+#: woo-store-vacation.php:443
 msgctxt "settings field label"
 msgid "Background Color"
 msgstr ""
 
-#: woo-store-vacation.php:442
+#: woo-store-vacation.php:444
 msgctxt "settings field label"
 msgid "Button Text"
 msgstr ""
 
-#: woo-store-vacation.php:443
+#: woo-store-vacation.php:445
 msgctxt "settings field label"
 msgid "Button URL"
 msgstr ""
 
-#: woo-store-vacation.php:444
+#: woo-store-vacation.php:446
 msgctxt "settings field label"
 msgid "Vacation Notice"
 msgstr ""
 
 #. translators: 1: Open label tag, 2: Close label tag.
-#: woo-store-vacation.php:524
+#: woo-store-vacation.php:526
 msgctxt "settings field help"
-msgid "%1$sWant to go vacation by closing my store publically.%2$s"
+msgid "%1$sTurn on Vacation mode and close my store publicly.%2$s"
 msgstr ""
 
 #. translators: 1: Open label tag, 2: Close label tag.
-#: woo-store-vacation.php:546
+#: woo-store-vacation.php:548
 msgctxt "settings field help"
 msgid "%1$sThis will disable eCommerce functionality and takes out the cart, checkout process and add to cart buttons.%2$s"
 msgstr ""
 
 #. translators: 1: Open small tag, 2: Close small tag.
-#: woo-store-vacation.php:585
+#: woo-store-vacation.php:587
 msgctxt "error message"
 msgid "%1$sThe date has already passed.%2$s"
 msgstr ""
 
-#: woo-store-vacation.php:656
+#: woo-store-vacation.php:658
 msgctxt "settings field placeholder"
 msgid "Contact me &#8594;"
 msgstr ""
 
-#: woo-store-vacation.php:679
+#: woo-store-vacation.php:681
 msgctxt "settings field placeholder"
 msgid "https://www.example.com"
 msgstr ""
 
-#: woo-store-vacation.php:702
+#: woo-store-vacation.php:704
 msgctxt "settings field placeholder"
 msgid "I am currently on vacation and products from my shop will be unavailable for next few days. Thank you for your patience and apologize for any inconvenience."
 msgstr ""
