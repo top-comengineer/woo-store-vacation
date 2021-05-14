@@ -1,22 +1,16 @@
 {
 	"name": "woo-store-vacation",
-	"title": "Woo Store Vacation",
-	"description": "Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.",
 	"version": "1.4.1",
-	"author": "MyPreview",
-	"author_shop": "https://www.mypreview.one",
-	"author_uri": "https://mahdiyazdani.com",
-	"requires": "5.0",
-	"tested_up_to": "5.5",
-	"license": "GPL-3.0",
-	"copyright": "© 2015 - 2021 MyPreview. All Rights Reserved.",
+	"description": "Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.",
+	"bugs": {
+		"url": "https://github.com/mypreview/woo-store-vacation/issues"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mypreview/woo-store-vacation.git"
 	},
-	"bugs": {
-		"url": "https://github.com/mypreview/woo-store-vacation/issues"
-	},
+	"license": "GPL-3.0",
+	"author": "MyPreview",
 	"scripts": {
 		"lint:js": "eslint assets/ --ext=js,jsx",
 		"lint:js-fix": "eslint assets/ --ext=js,jsx --fix",
@@ -26,27 +20,33 @@
 		"makepot": "composer make-pot",
 		"reformat-files": "prettier --ignore-path .eslintignore --write \"**/*.{js,jsx,json,ts,tsx}\""
 	},
-	"devDependencies": {
-		"@babel/core": "7.13.10",
-		"@wordpress/babel-preset-default": "5.0.1",
-		"@wordpress/browserslist-config": "^3.0.1",
-		"@wordpress/eslint-plugin": "^8.0.2",
-		"@wordpress/i18n": "3.14.0",
-		"babel-core": "7.0.0-bridge.0",
-		"babel-eslint": "10.1.0",
-		"cross-env": "7.0.3",
-		"eslint": "7.21.0",
-		"eslint-config-prettier": "8.1.0",
-		"prettier": "npm:wp-prettier@2.2.1-beta-1"
-	},
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
 	],
+	"eslintConfig": {
+		"extends": "wordpress"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.14.2",
+		"@wordpress/babel-preset-default": "^5.2.2",
+		"@wordpress/browserslist-config": "^3.0.3",
+		"@wordpress/eslint-plugin": "^9.0.4",
+		"@wordpress/i18n": "^3.20.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "10.1.0",
+		"cross-env": "7.0.3",
+		"eslint": "^7.26.0",
+		"eslint-config-prettier": "^8.3.0",
+		"prettier": "npm:wp-prettier@2.2.1-beta-1"
+	},
 	"engines": {
 		"node": ">=10.10.0",
 		"npm": ">=6.4.0"
 	},
-	"eslintConfig": {
-		"extends": "wordpress"
-	}
+	"author_shop": "https://www.mypreview.one",
+	"author_uri": "https://mahdiyazdani.com",
+	"copyright": "© 2015 - 2021 MyPreview. All Rights Reserved.",
+	"requires": "5.0",
+	"tested_up_to": "5.5",
+	"title": "Woo Store Vacation"
 }
