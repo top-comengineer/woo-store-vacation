@@ -1,5 +1,14 @@
 === Woo Store Vacation (PRO) ===
 
+= 2021.05.14 - Version 1.2.7 =
+* Compatibility with WordPress 5.7
+* Compatibility with WooCommerce 5.3
+* Feature: Added new hooks to allow third-party plugins to add their own functionality when the shop is closed:
+  * woo_store_vacation_pro_shop_closed
+  * woo_store_vacation_pro_shop_closed_force
+  * woo_store_vacation_pro_shop_closed_weekday
+  * woo_store_vacation_pro_shop_closed_schedule
+
 = 2021.01.19 - Version 1.2.6 =
 * Compatibility with WordPress 5.6
 * Compatibility with WooCommerce 4.9
