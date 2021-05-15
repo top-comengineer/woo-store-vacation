@@ -54,8 +54,8 @@ h3 {
 a {
     text-decoration: none;
     color: #96588a;
-    -webkit-transition: color .35s ease;
-            transition: color .35s ease;
+    -webkit-transition: color .35s ease, opacity .35s ease;
+            transition: color .35s ease, opacity .35s ease;
 }
 body {
     font-size: 16px;
@@ -342,17 +342,31 @@ img {
     padding: 8px;
     display: inline-flex;
     align-items: center;
+    justify-content: flex-end;
 }
 .nav__link:focus,
 .nav__link:hover {
-    color: rgba(255, 255, 255, 0.75);
+    opacity: .75;
 }
 @media (max-width: 27.5em) {
-    .nav__link {
-        padding: 8px 0;
-    }
    .nav .btn--md {
-        padding: 5px 10px;
+        padding: 5px;
+        font-size: 12px;
+        margin: 5px 0;
+    }
+    .site-header {
+        font-size: 14px;
+    }
+    .nav__link {
+        padding: 8px 5px;
+    }
+}
+@media (max-width: 25em) {
+    .hide-on-mobile {
+        display: none;
+    }
+    .nav__link {
+        padding: 8px 12px;
     }
 }
 /*--------------------------------------------------------------
