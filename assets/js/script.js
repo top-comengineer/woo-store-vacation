@@ -46,7 +46,9 @@
 		this._selectDate( id );
 	};
 
-	$( '.woo-store-vacation-text-color-field, .woo-store-vacation-background-color-field' ).wpColorPicker();
+	$(
+		'.woo-store-vacation-text-color-field, .woo-store-vacation-background-color-field'
+	).wpColorPicker();
 
 	// Adds a "Reset" control to the datepicker at the bottom
 	function cleanDatepicker() {
@@ -54,7 +56,9 @@
 
 		$.datepicker._updateDatepicker = function ( inst ) {
 			oldFn.call( this, inst );
-			const buttonPane = $( this ).datepicker( 'widget' ).find( '.ui-datepicker-buttonpane' );
+			const buttonPane = $( this )
+				.datepicker( 'widget' )
+				.find( '.ui-datepicker-buttonpane' );
 			$(
 				"<button type='button' class='ui-datepicker-clean ui-state-default ui-priority-primary ui-corner-all'>Delete</button>"
 			)

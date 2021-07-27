@@ -14,16 +14,20 @@
 
 	$( function () {
 		// Dismiss up-sell banner notice on user click!
-		$( document ).on( 'click', '#woo-store-vacation-dismiss-upsell .notice-dismiss', function () {
-			$.ajax( {
-				type: 'POST',
-				url: ajaxurl,
-				data: {
-					_ajax_nonce: wsvVars.dismiss_nonce,
-					action: 'woo_store_vacation_dismiss_upsell',
-				},
-				dataType: 'json',
-			} );
-		} );
+		$( document ).on(
+			'click',
+			'#woo-store-vacation-dismiss-upsell .notice-dismiss',
+			function () {
+				$.ajax( {
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						_ajax_nonce: wsvVars.dismiss_nonce,
+						action: 'woo_store_vacation_dismiss_upsell',
+					},
+					dataType: 'json',
+				} );
+			}
+		);
 	} );
 } )( window.wp, jQuery );
