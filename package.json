@@ -1,52 +1,33 @@
 {
-	"name": "woo-store-vacation",
-	"version": "1.4.1",
+	"name": "@mypreview/woo-store-vacation",
+	"version": "1.4.2",
+	"private": true,
 	"description": "Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.",
+	"homepage": "https://github.com/mypreview/woo-store-vacation#readme",
 	"bugs": {
 		"url": "https://github.com/mypreview/woo-store-vacation/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/mypreview/woo-store-vacation.git"
+		"url": "git+https://github.com/mypreview/woo-store-vacation.git"
 	},
-	"license": "GPL-3.0",
+	"license": "GPL-3.0-or-later",
 	"author": "MyPreview",
 	"scripts": {
-		"lint:js": "eslint assets/ --ext=js,jsx",
-		"lint:js-fix": "eslint assets/ --ext=js,jsx --fix",
+		"lint:js": "eslint assets --ext=js,jsx,json,ts,tsx",
+		"lint:js-fix": "eslint assets --ext=js,jsx,json,ts,tsx --fix",
+		"format": "prettier --ignore-path .eslintignore --write \"**/*.{js,jsx,json,ts,tsx}\"",
+		"lint:php": "composer lint:php",
 		"lint:wpcs": "composer lint:wpcs",
 		"lint:wpcs-fix": "composer lint:wpcbf",
-		"lint:php": "composer lint:php",
-		"makepot": "composer make-pot",
-		"reformat-files": "prettier --ignore-path .eslintignore --write \"**/*.{js,jsx,json,ts,tsx}\""
-	},
-	"browserslist": [
-		"extends @wordpress/browserslist-config"
-	],
-	"eslintConfig": {
-		"extends": "wordpress"
+		"makepot": "composer make-pot"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.14.2",
-		"@wordpress/babel-preset-default": "^5.2.2",
-		"@wordpress/browserslist-config": "^3.0.3",
-		"@wordpress/eslint-plugin": "^9.0.4",
-		"@wordpress/i18n": "^3.20.0",
-		"babel-core": "^6.26.3",
-		"babel-eslint": "10.1.0",
-		"cross-env": "7.0.3",
-		"eslint": "^7.26.0",
-		"eslint-config-prettier": "^8.3.0",
-		"prettier": "npm:wp-prettier@2.2.1-beta-1"
-	},
-	"engines": {
-		"node": ">=10.10.0",
-		"npm": ">=6.4.0"
-	},
-	"author_shop": "https://www.mypreview.one",
-	"author_uri": "https://mahdiyazdani.com",
-	"copyright": "© 2015 - 2021 MyPreview. All Rights Reserved.",
-	"requires": "5.0",
-	"tested_up_to": "5.5",
-	"title": "Woo Store Vacation"
+		"@babel/core": "^7.9.0",
+		"@wordpress/eslint-plugin": "^9.0.6",
+		"@wordpress/prettier-config": "^1.1.0",
+		"lint-staged": "^11.0.1",
+		"prettier": "npm:wp-prettier@^2.2.1-beta-1",
+		"wp-prettier": "^2.2.1-beta-1"
+	}
 }
