@@ -5,7 +5,7 @@ Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.2
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,6 +138,9 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.4.3 =
+* Compatibility with PHP 8.0
+
 = 1.4.2 =
 * Compatibility with WordPress 5.8
 * Compatibility with WooCommerce 5.5
