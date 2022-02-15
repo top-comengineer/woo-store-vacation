@@ -3,9 +3,9 @@ Contributors: mahdiyazdani, mypreview, gookaani
 Tags: vacation mode,woocommerce plugin,woocommerce,ecommerce,calendar,alert message
 Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.2
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,6 +138,10 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.4.4 =
+* Compatibility with WordPress 5.9
+* Compatibility with WooCommerce 6.2
+
 = 1.4.3 =
 * Compatibility with PHP 8.0
 
