@@ -20,7 +20,7 @@
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.github.io/woo-store-vacation
  * Description:             Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.
- * Version:                 1.4.3
+ * Version:                 1.4.4
  * Author:                  MyPreview
  * Author URI:              https://mahdiyazdani.com
  * License:                 GPL-3.0
@@ -30,7 +30,7 @@
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
  * WC requires at least:    3.4.0
- * WC tested up to:         5.5
+ * WC tested up to:         6.2
  */
 
 // If this file is called directly, abort.
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * Ensures only one instance of `Woo_Store_Vacation` is loaded or can be loaded.
 		 *
 		 * @since   1.0.0
-		 * @return  instance
+		 * @return    instance
 		 */
 		public static function instance() {
 			if ( is_null( self::$instance ) ) {
@@ -103,8 +103,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Setup class.
 		 *
-		 * @since   1.3.8
-		 * @return  void
+		 * @since     1.3.8
+		 * @return    void
 		 */
 		protected function __construct() {
 			add_action( 'init', array( $this, 'textdomain' ) );
@@ -123,8 +123,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Cloning instances of this class is forbidden.
 		 *
-		 * @since   1.0.0
-		 * @return  void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function __clone() {
 			_doing_it_wrong( __FUNCTION__, esc_html_x( 'Cloning instances of this class is forbidden.', 'clone', 'woo-store-vacation' ), esc_html( WOO_STORE_VACATION_VERSION ) );
@@ -133,8 +133,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Unserializing instances of this class is forbidden.
 		 *
-		 * @since   1.0.0
-		 * @return  void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function __wakeup() {
 			_doing_it_wrong( __FUNCTION__, esc_html_x( 'Unserializing instances of this class is forbidden.', 'wakeup', 'woo-store-vacation' ), esc_html( WOO_STORE_VACATION_VERSION ) );
@@ -144,8 +144,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * Load languages file and text domains.
 		 * Define the internationalization functionality.
 		 *
-		 * @since   1.0.0
-		 * @return  void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function textdomain() {
 			load_plugin_textdomain( 'woo-store-vacation', false, dirname( dirname( WOO_STORE_VACATION_PLUGIN_BASENAME ) ) . '/languages/' );
@@ -154,8 +154,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Query WooCommerce activation.
 		 *
-		 * @since   1.4.0
-		 * @return  void
+		 * @since     1.4.0
+		 * @return    void
 		 */
 		public function admin_notices() {
 			// Query WooCommerce activation.
@@ -184,8 +184,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * AJAX dismiss up-sell admin notice.
 		 *
-		 * @since   1.3.8
-		 * @return  void
+		 * @since     1.3.8
+		 * @return    void
 		 */
 		public function dismiss_upsell() {
 			check_ajax_referer( sprintf( '%s-upsell-nonce', WOO_STORE_VACATION_SLUG ) );
@@ -196,8 +196,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Create plugin options page.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function add_submenu_page() {
 			add_submenu_page( 'woocommerce', _x( 'Woo Store Vacation', 'page title', 'woo-store-vacation' ), _x( 'Store Vacation', 'menu title', 'woo-store-vacation' ), 'manage_woocommerce', WOO_STORE_VACATION_SLUG, array( $this, 'render_plugin_page' ) );
@@ -206,8 +206,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Render and display plugin options page.
 		 *
-		 * @since   1.4.0
-		 * @return  void
+		 * @since     1.4.0
+		 * @return    void
 		 */
 		public function render_plugin_page() {
 			$this->options = (array) get_option( 'woo_store_vacation_options' ); ?>
@@ -424,8 +424,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Register plugin settings
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function register_settings() {
 			// Register a setting and its data.
@@ -449,9 +449,9 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Sanitization Callback.
 		 *
-		 * @since   1.3.0
-		 * @param   array $input    An array of option's value.
-		 * @return  array
+		 * @since     1.3.0
+		 * @param     array $input    An array of option's value.
+		 * @return    array
 		 */
 		private function sanitize( $input ) {
 			$sanitary_values = array();
@@ -507,8 +507,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Vacation Mode.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function vacation_mode_callback() {
 			$value = ( isset( $this->options['vacation_mode'] ) ) ? $this->options['vacation_mode'] : null;
@@ -529,8 +529,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Disable Purchase.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function disable_purchase_callback() {
 			$value = ( isset( $this->options['disable_purchase'] ) ) ? $this->options['disable_purchase'] : null;
@@ -551,8 +551,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Start Date.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function start_date_callback() {
 			$value = isset( $this->options['start_date'] ) ? $this->options['start_date'] : null;
@@ -572,8 +572,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * End Date.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function end_date_callback() {
 			$today              = strtotime( current_time( 'Y-m-d', $gmt = 0 ) );
@@ -607,8 +607,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Text Color.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function text_color_callback() {
 			$value = isset( $this->options['text_color'] ) ? $this->options['text_color'] : '#FFFFFF';
@@ -629,8 +629,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Background Color.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function background_color_callback() {
 			$value = isset( $this->options['background_color'] ) ? $this->options['background_color'] : '#E2401C';
@@ -651,8 +651,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Notice Button Text.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function btn_txt_callback() {
 			$placeholder = _x( 'Contact me &#8594;', 'settings field placeholder', 'woo-store-vacation' );
@@ -674,8 +674,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Notice Button URL.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function btn_url_callback() {
 			$placeholder = _x( 'https://www.example.com', 'settings field placeholder', 'woo-store-vacation' );
@@ -697,8 +697,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Notice Content.
 		 *
-		 * @since   1.3.0
-		 * @return  void
+		 * @since     1.3.0
+		 * @return    void
 		 */
 		public function vacation_notice_callback() {
 			$placeholder = _x( 'I am currently on vacation and products from my shop will be unavailable for next few days. Thank you for your patience and apologize for any inconvenience.', 'settings field placeholder', 'woo-store-vacation' );
@@ -719,8 +719,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Enqueue scripts and styles.
 		 *
-		 * @since   1.3.8
-		 * @return  void
+		 * @since     1.3.8
+		 * @return    void
 		 */
 		public function enqueue() {
 			global $pagenow;
@@ -748,8 +748,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Determine whether the shop should be closed or not!
 		 *
-		 * @since   1.3.9
-		 * @return  void
+		 * @since     1.3.9
+		 * @return    void
 		 */
 		public function close_the_shop() {
 			// Bail early, in case the current request is for an administrative interface page.
@@ -795,8 +795,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Adds and store a notice.
 		 *
-		 * @since   1.3.8
-		 * @return  void
+		 * @since     1.3.8
+		 * @return    void
 		 */
 		public function vacation_notice() {
 			$get_options = (array) get_option( 'woo_store_vacation_options' );
@@ -821,8 +821,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * Print inline stylesheet before closing </head> tag.
 		 * Specific to `Store vacation` notice message.
 		 *
-		 * @since   1.4.3
-		 * @return  void
+		 * @since     1.4.3
+		 * @return    void
 		 */
 		public function inline_css() {
 			// Bailout, if any of the pages below are not displaying at the moment.
@@ -889,10 +889,10 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * Display additional links in plugins table page.
 		 * Filters the array of row meta for each plugin in the Plugins list table.
 		 *
-		 * @since   1.3.8
-		 * @param   array  $links               An array of the plugin's metadata, including the version, author, author URI, and plugin URI.
-		 * @param   string $plugin_file_name    Path to the plugin file relative to the plugins directory.
-		 * @return  array
+		 * @since     1.3.8
+		 * @param     array  $links               An array of the plugin's metadata, including the version, author, author URI, and plugin URI.
+		 * @param     string $plugin_file_name    Path to the plugin file relative to the plugins directory.
+		 * @return    array
 		 */
 		public function meta_links( $links, $plugin_file_name ) {
 			$plugin_links = array();
@@ -909,9 +909,9 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * Display additional links in plugins table page.
 		 * Filters the list of action links displayed for a specific plugin in the Plugins list table.
 		 *
-		 * @since   1.3.8
-		 * @param   array $links  Plugin table/item action links.
-		 * @return  array
+		 * @since     1.3.8
+		 * @param     array $links  Plugin table/item action links.
+		 * @return    array
 		 */
 		public function action_links( $links ) {
 			$plugin_links = array();
@@ -932,8 +932,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Set the activation hook for a plugin.
 		 *
-		 * @since   1.3.8
-		 * @return  void
+		 * @since     1.3.8
+		 * @return    void
 		 */
 		public function activation() {
 			// Set up the admin notice to be displayed on activation.
@@ -946,8 +946,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Set the deactivation hook for a plugin.
 		 *
-		 * @since   1.3.8
-		 * @return  void
+		 * @since     1.3.8
+		 * @return    void
 		 */
 		public function deactivation() {
 			delete_transient( 'woo_store_vacation_upsell' );
@@ -957,9 +957,9 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Minifies the given CSS styles.
 		 *
-		 * @since    1.3.8
-		 * @param    string $css    CSS styles.
-		 * @return   void|string
+		 * @since      1.3.8
+		 * @param      string $css    CSS styles.
+		 * @return     void|string
 		 */
 		private function _minify_css( $css ) {
 			// Bail early if we have no $css properties to trim and minify.
@@ -1016,10 +1016,10 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		}
 
 		/**
-		 * Determine whteher the current screen is displaying plugin’s settings page.
+		 * Determine whether the current screen is displaying plugin’s settings page.
 		 *
-		 * @since    1.4.0
-		 * @return   bool
+		 * @since      1.4.0
+		 * @return     bool
 		 */
 		private function _is_plugin_page() {
 			global $pagenow;
@@ -1035,8 +1035,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Query WooCommerce activation
 		 *
-		 * @since    1.3.8
-		 * @return   bool
+		 * @since      1.3.8
+		 * @return     bool
 		 */
 		private function _is_woocommerce() {
 			// This statement prevents from producing fatal errors,
@@ -1064,7 +1064,8 @@ if ( ! function_exists( 'woo_store_vacation_init' ) ) :
 	/**
 	 * Returns the main instance of Woo_Store_Vacation to prevent the need to use globals.
 	 *
-	 * @return  object(class)   Woo_Store_Vacation::instance
+	 * @since     1.0.0
+	 * @return    object(class)   Woo_Store_Vacation::instance
 	 */
 	function woo_store_vacation_init() {
 		return Woo_Store_Vacation::instance();
