@@ -1,4 +1,7 @@
 === Woo Store Vacation (PRO) ===
+= 2022.02.15 - Version 1.2.8 =
+* Compatibility with WordPress 5.9
+* Compatibility with WooCommerce 6.2
 
 = 2021.05.14 - Version 1.2.7 =
 * Compatibility with WordPress 5.7
