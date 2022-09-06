@@ -1,0 +1,11 @@
+#$ vendor/bin/phpstan analyze
+
+includes:
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+	level: max
+	paths:
+		- woo-store-vacation.php
+		- uninstall.php
+		- includes/

@@ -5,7 +5,7 @@ Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 7.2
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,12 +21,14 @@ Pausing your store disables the checkout but keeps your store online and accessi
 If you want to start selling products again, then you can unpause your store at any time by deactivating the Vacation Mode or schedule the plugin which does this behind the scenes for you automatically!
 
 > **BECOME A PREMIUM USER**
-> 
+>
 > Store Vacation plugin has a premium version which comes with several additional benefits:
 >
 > * One-click store close.
 > * Exclude list of user roles.
 > * Exclude list of product types.
+> * Exclude products individually.
+> * Display notice via shortcode or block.
 > * Allow **Shop Managers** to edit.
 > * Unlimited date-time ranges.
 > * Unlimited weekday hours.
@@ -45,7 +47,7 @@ If you want to start selling products again, then you can unpause your store at 
 = Automatic installation =
 
 Automatic installation is the easiest option — WordPress will handle the file transfer, and you won’t need to leave your web browser. To do an automatic install of the plugin, log in to your WordPress dashboard, navigate to the Plugins menu, and click “Add New.”
- 
+
 In the search field type “Woo Store Vacation”, then click “Search Plugins.” Once you’ve found the plugin, you can view details about it such as the point release, rating, and description. Click “Install Now,” and WordPress will take it from there.
 
 = Manual installation =
@@ -108,17 +110,23 @@ We welcome contributions in any form, and you can help reporting, testing, and d
 Here’s the [GitHub development repository &#8594;](https://github.com/mypreview/woo-store-vacation "GitHub development repository")
 
 = Did you like the idea behind this plugin? =
+If you or your company use any of my projects or like what I’m doing, please consider [making a donation](https://www.buymeacoffee.com/mahdiyazdani) so I can continue maintaining and evolving all my projects and new ones. I’m in this for the long run.
+
+--AND/OR--
+
 Please share your experience by leaving this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "Rate Woo Store Vacation 5 stars") if you like it, thanks!
 
 = Is there a premium version to upgrade? =
-Yes, there is! 
+Yes, there is!
 
 Currently, the key features offered by the premium (paid) version of the plugin are:
 
 * One-click store close.
 * Exclude list of user roles.
 * Exclude list of product types.
+* Exclude products individually.
 * Allow **Shop Managers** to edit.
+* Display notice via shortcode or block.
 * Unlimited date-time ranges.
 * Unlimited weekday hours.
 * Unlimited notifications.
@@ -138,6 +146,9 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.4.6 =
+* Compatibility with WooCommerce 6.8
+
 = 1.4.5 =
 * Compatibility with WordPress 6.0
 * Compatibility with WooCommerce 6.5
@@ -215,11 +226,11 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 * Updated WooCommerce hook names.
 
 = 1.2.2 =
-* Fixed miscalculation of strtotime method.
+* Fixed miscalculation of "strtotime" method.
 
 = 1.2.1 =
 * Compatibility with WordPress 4.9.
-* Fixed miscalculation of strtotime method.
+* Fixed miscalculation of "strtotime" method.
 
 = 1.2.0 =
 * Added custom datepicker stylesheet file.

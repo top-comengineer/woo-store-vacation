@@ -7,30 +7,32 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * Woo Store Vacation is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * You can redistribute this plugin/software and/or modify it under
+ * the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
  * @link                    https://www.mypreview.one
  * @since                   1.4.3
  * @package                 woo-store-vacation
+ * @author                  MyPreview (Github: @mahdiyazdani, @gooklani, @mypreview)
+ * @copyright               © 2015 - 2022 MyPreview. All Rights Reserved.
  *
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.github.io/woo-store-vacation
  * Description:             Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.
- * Version:                 1.4.5
- * Author:                  MyPreview
- * Author URI:              https://mahdiyazdani.com
- * License:                 GPL-3.0
+ * Version:                 1.4.6
+ * Author:                  Mahdi Yazdani
+ * Author URI:              https://www.mahdiyazdani.com
  * Requires at least:       5.0
- * Requires PHP:            7.2.0
+ * Requires PHP:            7.2
+ * License:                 GPL-3.0
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
- * WC requires at least:    3.4.0
- * WC tested up to:         6.2
+ * WC requires at least:    3.4
+ * WC tested up to:         6.8
  */
 
 // If this file is called directly, abort.
@@ -112,7 +114,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			add_action( 'wp_ajax_woo_store_vacation_dismiss_upsell', array( $this, 'dismiss_upsell' ) );
 			add_action( 'admin_menu', array( $this, 'add_submenu_page' ), 999 );
 			add_action( 'admin_init', array( $this, 'register_settings' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ), 99 );
 			add_action( 'woocommerce_loaded', array( $this, 'close_the_shop' ) );
 			add_filter( 'plugin_row_meta', array( $this, 'meta_links' ), 10, 2 );
 			add_filter( sprintf( 'plugin_action_links_%s', WOO_STORE_VACATION_PLUGIN_BASENAME ), array( $this, 'action_links' ) );
@@ -273,6 +275,18 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 												<?php
 												/* translators: %s: HTML Symbol. */
 												printf( esc_html_x( '%s Exclude list of product types', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
+												?>
+											</li>
+											<li>
+												<?php
+												/* translators: %s: HTML Symbol. */
+												printf( esc_html_x( '%s Exclude products individually', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
+												?>
+											</li>
+											<li>
+												<?php
+												/* translators: %s: HTML Symbol. */
+												printf( esc_html_x( '%s Display notice via shortcode or block', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
 												?>
 											</li>
 											<li>
@@ -513,12 +527,12 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function vacation_mode_callback() {
 			$value = ( isset( $this->options['vacation_mode'] ) ) ? $this->options['vacation_mode'] : null;
 			printf(
-				'<input 
-					type="checkbox" 
-					name="woo_store_vacation_options[vacation_mode]" 
-					id="vacation_mode" 
-					value="true" 
-					%s 
+				'<input
+					type="checkbox"
+					name="woo_store_vacation_options[vacation_mode]"
+					id="vacation_mode"
+					value="true"
+					%s
 				/>',
 				checked( $value, 'true', false )
 			);
@@ -535,12 +549,12 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function disable_purchase_callback() {
 			$value = ( isset( $this->options['disable_purchase'] ) ) ? $this->options['disable_purchase'] : null;
 			printf(
-				'<input 
-					type="checkbox" 
-					name="woo_store_vacation_options[disable_purchase]" 
-					id="disable_purchase" 
-					value="true" 
-					%s 
+				'<input
+					type="checkbox"
+					name="woo_store_vacation_options[disable_purchase]"
+					id="disable_purchase"
+					value="true"
+					%s
 				/>',
 				checked( $value, 'true', false )
 			);
@@ -557,13 +571,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function start_date_callback() {
 			$value = isset( $this->options['start_date'] ) ? $this->options['start_date'] : null;
 			printf(
-				'<input 
-					type="text" 
-					class="regular-text woo-store-vacation-start-datepicker" 
-					name="woo_store_vacation_options[start_date]" 
-					id="start_date" 
-					value="%s" 
-					readonly="readonly" 
+				'<input
+					type="text"
+					class="regular-text woo-store-vacation-start-datepicker"
+					name="woo_store_vacation_options[start_date]"
+					id="start_date"
+					value="%s"
+					readonly="readonly"
 				/>',
 				esc_attr( $value )
 			);
@@ -588,13 +602,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			}
 
 			printf(
-				'<input 
-					type="text" 
-					class="regular-text %s-end-datepicker" 
-					name="woo_store_vacation_options[end_date]" 
-					id="end_date" 
-					value="%s" 
-					readonly="readonly" 
+				'<input
+					type="text"
+					class="regular-text %s-end-datepicker"
+					name="woo_store_vacation_options[end_date]"
+					id="end_date"
+					value="%s"
+					readonly="readonly"
 					%s
 				/> %s',
 				esc_attr( WOO_STORE_VACATION_SLUG ),
@@ -613,13 +627,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function text_color_callback() {
 			$value = isset( $this->options['text_color'] ) ? $this->options['text_color'] : '#FFFFFF';
 			printf(
-				'<input 
-					type="text" 
-					class="%s-text-color-field" 
+				'<input
+					type="text"
+					class="%s-text-color-field"
 					name="woo_store_vacation_options[text_color]"
 					data-default-color="#FFFFFF"
-					id="text_color" 
-					value="%s" 
+					id="text_color"
+					value="%s"
 				/>',
 				esc_attr( WOO_STORE_VACATION_SLUG ),
 				sanitize_hex_color( $value ) // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
@@ -635,13 +649,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function background_color_callback() {
 			$value = isset( $this->options['background_color'] ) ? $this->options['background_color'] : '#E2401C';
 			printf(
-				'<input 
-					type="text" 
-					class="%s-background-color-field" 
-					name="woo_store_vacation_options[background_color]" 
+				'<input
+					type="text"
+					class="%s-background-color-field"
+					name="woo_store_vacation_options[background_color]"
 					data-default-color="#E2401C"
-					id="background_color" 
-					value="%s" 
+					id="background_color"
+					value="%s"
 				/>',
 				esc_attr( WOO_STORE_VACATION_SLUG ),
 				sanitize_hex_color( $value ) // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
@@ -658,13 +672,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			$placeholder = _x( 'Contact me &#8594;', 'settings field placeholder', 'woo-store-vacation' );
 			$value       = isset( $this->options['btn_txt'] ) ? $this->options['btn_txt'] : null;
 			printf(
-				'<input 
-					type="text" 
-					class="regular-text" 
-					name="woo_store_vacation_options[btn_txt]" 
-					id="btn_txt" 
-					placeholder="%s" 
-					value="%s" 
+				'<input
+					type="text"
+					class="regular-text"
+					name="woo_store_vacation_options[btn_txt]"
+					id="btn_txt"
+					placeholder="%s"
+					value="%s"
 				/>',
 				esc_attr( $placeholder ),
 				esc_html( $value )
@@ -681,13 +695,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			$placeholder = _x( 'https://www.example.com', 'settings field placeholder', 'woo-store-vacation' );
 			$value       = isset( $this->options['btn_url'] ) ? $this->options['btn_url'] : null;
 			printf(
-				'<input 
-					type="url" 
-					class="regular-text" 
-					name="woo_store_vacation_options[btn_url]" 
-					id="btn_url" 
-					placeholder="%s" 
-					value="%s" 
+				'<input
+					type="url"
+					class="regular-text"
+					name="woo_store_vacation_options[btn_url]"
+					id="btn_url"
+					placeholder="%s"
+					value="%s"
 				/>',
 				esc_attr( $placeholder ),
 				esc_url( $value )
@@ -704,11 +718,11 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			$placeholder = _x( 'I am currently on vacation and products from my shop will be unavailable for next few days. Thank you for your patience and apologize for any inconvenience.', 'settings field placeholder', 'woo-store-vacation' );
 			$value       = isset( $this->options['vacation_notice'] ) ? esc_attr( $this->options['vacation_notice'] ) : null;
 			printf(
-				'<textarea 
-					class="large-text" 
-					rows="5" 
-					name="woo_store_vacation_options[vacation_notice]" 
-					id="vacation_notice" 
+				'<textarea
+					class="large-text"
+					rows="5"
+					name="woo_store_vacation_options[vacation_notice]"
+					id="vacation_notice"
 					placeholder="%s"
 				>%s</textarea>',
 				esc_attr( $placeholder ),
@@ -1041,7 +1055,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		private function _is_woocommerce() {
 			// This statement prevents from producing fatal errors,
 			// in case the WooCommerce plugin is not activated on the site.
-			$woocommerce_plugin = apply_filters( 'woo_store_vacation_woocommerce_path', 'woocommerce/woocommerce.php' );
+			$woocommerce_plugin = apply_filters( 'woo_store_vacation_woocommerce_path', 'woocommerce/woocommerce.php' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
 			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			$subsite_active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
 			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound

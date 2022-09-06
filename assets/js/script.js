@@ -1,7 +1,9 @@
+/* global jQuery */
+
 /**
  * Initialize jQuery datepicker, colorpicker
  *
- * @since       1.3.9
+ * @since    1.3.9
  */
 ( function ( wp, $ ) {
 	'use strict';
