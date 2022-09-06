@@ -1,10 +1,4 @@
-!.eslintrc.js
-build
-build-module
-coverage
-languages
 node_modules
 vendor
-legacy
-dist
+docs
 *.min.js
