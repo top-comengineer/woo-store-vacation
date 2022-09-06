@@ -14,7 +14,7 @@
 	"license": "GPL-3.0-or-later",
 	"author": "Mahdi Yazdani",
 	"scripts": {
-		"archive": "npm run prepare && rm -rf $npm_package_name && composer archive --file=$npm_package_name --format=zip",
+		"archive": "npm run pre-archive && rm -rf $npm_package_name && composer archive --file=$npm_package_name --format=zip",
 		"format": "prettier --ignore-path .eslintignore --write \"**/*.{js,jsx,json,ts,tsx}\"",
 		"lint:js": "eslint assets --ext=js,jsx,json,ts,tsx",
 		"lint:js-fix": "eslint assets --ext=js,jsx,json,ts,tsx --fix",
@@ -22,7 +22,7 @@
 		"lint:wpcs": "composer lint:wpcs",
 		"lint:wpcs-fix": "composer lint:wpcbf",
 		"makepot": "composer make-pot",
-		"prepare": "npm run format && npm run lint:wpcs-fix"
+		"pre-archive": "npm run format && npm run lint:wpcs-fix"
 	},
 	"devDependencies": {
 		"@babel/core": "7.19.0",
