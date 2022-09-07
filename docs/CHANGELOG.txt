@@ -1,4 +1,10 @@
 === Woo Store Vacation (PRO) ===
+= 2022.09.08 - Version 1.3.0 =
+* Feature: Allow products to be excluded (individually) during site-wide vacation(s).
+* Feature: Vacation notice can be displayed using the "[wsvpro_notice]" shortcode or editor block.
+* Compatibility with WordPress 6.0
+* Compatibility with WooCommerce 6.8
+
 = 2022.02.15 - Version 1.2.8 =
 * Compatibility with WordPress 5.9
 * Compatibility with WooCommerce 6.2
