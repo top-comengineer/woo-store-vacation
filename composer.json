@@ -1,11 +1,8 @@
 {
 	"archive": {
 		"exclude": [
+			"!/assets",
 			"!/languages",
-			"/assets/**/*.css",
-			"/assets/**/*.js",
-			"!/assets/**/*.min.css",
-			"!/assets/**/*.min.js",
 			"CONTRIBUTING.md",
 			"CODE_OF_CONDUCT.md",
 			"composer.json",
@@ -15,6 +12,8 @@
 			"phpcs.xml.dist",
 			"phpstan.neon.dist",
 			"README.md",
+			"@mypreview",
+			"docs",
 			"node_modules",
 			"vendor",
 			".editorconfig",
