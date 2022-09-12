@@ -10,13 +10,15 @@
 # Header
 # Alignment
 # Columns
-# logos
-# card
-# review
+# Logos
+# Card
+# Review
 # Carouserl
 # Tabs
+# Features list
 # Fancybox
 # Footer
+# Cookiebanner
 --------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 
@@ -470,6 +472,10 @@ img {
     flex-wrap: wrap;
 }
 
+.cols--space-around {
+    justify-content: space-around;
+}
+
 .cols--pd-v-24 .col {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -481,7 +487,6 @@ img {
 }
 
 .cols--border {
-    justify-content: space-around;
     gap: 12px;
 }
 
@@ -553,7 +558,7 @@ img {
     }
 }
 /*--------------------------------------------------------------
-# logos
+# Logos
 --------------------------------------------------------------*/
 .logos {
     overflow-x: auto;
@@ -567,7 +572,7 @@ img {
     max-width: calc(25% - 48px);
 }
 /*--------------------------------------------------------------
-# card
+# Card
 --------------------------------------------------------------*/
 .card {
     border: 1px solid var(--border);
@@ -639,7 +644,7 @@ a.card:hover {
     }
 }
 /*--------------------------------------------------------------
-# review
+# Review
 --------------------------------------------------------------*/
 .review {
     margin-bottom: 48px;
@@ -767,6 +772,29 @@ a.card:hover {
     .tab-content img {
         margin: 0 auto 30px;
     }
+}
+/*--------------------------------------------------------------
+# Features list
+--------------------------------------------------------------*/
+.features-list {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+.features-list li {
+    display: grid;
+    gap: 10px;
+    padding: 24px;
+    grid-template-columns: 20px 1fr;
+}
+.features-list li:nth-child(n+2) {
+    border-top: 1px solid var(--border);
+}
+.features-list p {
+    grid-column: 2;
+    margin: 0;
+}
+.features-list img {
+    grid-row: 1/3;
 }
 /*--------------------------------------------------------------
 # Fancybox
