@@ -678,13 +678,14 @@ a.card:hover {
     -webkit-box-orient: vertical;
 }
 /*--------------------------------------------------------------
-# Carouserl
+# Carousel
 --------------------------------------------------------------*/
 .carousel-cell {
     padding-left: 12px;
     padding-right: 12px;
     width: 65%;
     transition: opacity .35s ease;
+    margin: 0;
 }
 
 .carousel-cell:not(.is-selected) {
