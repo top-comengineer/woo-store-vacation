@@ -150,6 +150,11 @@ p.bold + p {
     color: var(--light-text);
 }
 
+.tile-text a,
+.tile-text {
+    color: var(--tile);
+}
+
 .bold {
     font-weight: var(--bold);
 }
@@ -237,13 +242,12 @@ html {
     background-color: var(--dark);
 }
 
-.bg-dark,
-.bg-dark a {
-    color: var(--tile);
-}
-
 .bg-white {
     background-color: var(--tile);
+}
+
+.bg-primary {
+    background-color: var(--primary);
 }
 /*--------------------------------------------------------------
 # Form
@@ -358,6 +362,10 @@ img {
 
 .pd-t-30 {
     padding-top: 30px;
+}
+
+.pd-t-20 {
+    padding-top: 20px;
 }
 
 .pd-b-50 {
@@ -898,4 +906,19 @@ footer p {
     .cookiebanner > span {
         margin: 7px 12px;
     }
+}
+/*--------------------------------------------------------------
+# Topbar
+--------------------------------------------------------------*/
+.topbar {
+    background: radial-gradient(50% 50% at 50% 50%, #86383F 0%, #652A48 50%, #431C52 100%);
+}
+.topbar__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.topbar__content {
+    margin-right: 10px;
 }

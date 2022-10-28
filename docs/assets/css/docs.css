@@ -113,6 +113,11 @@ body {
     color: var(--light-text);
 }
 
+.tile-text a,
+.tile-text {
+    color: var(--tile);
+}
+
 @media (max-width: 72em) {
     h1 {
         font-size: 65px;
@@ -246,13 +251,6 @@ html {
 --------------------------------------------------------------*/
 .bg-dark {
     background-color: var(--dark);
-}
-
-.bg-primary a,
-.bg-primary,
-.bg-dark,
-.bg-dark a {
-    color: var(--tile);
 }
 
 .bg-primary {
