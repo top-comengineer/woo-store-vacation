@@ -5,7 +5,7 @@ Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 6.1
 Requires PHP: 7.2
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
