@@ -133,11 +133,6 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 
 [Go Premium, Be Happy! &#8594;](https://mypreview.github.io/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
-= I need help customizing this plugin? =
-Professional engineer and independent creative technologist in tech · over 6 years experience working from prototype to production · developing WordPress products, services, and eCommerce solutions.
-
-[Available for hire &#8594;](https://mahdiyazdani.com "Mahdi Yazdani’s personal website")
-
 == Screenshots ==
 1. Plugin’s settings page
 2. User-Friendly datepicker
