@@ -109,7 +109,7 @@
     USE THE PHPCompatibility RULESET
     #############################################################################
     -->
-    <config name="testVersion" value="7.2-" />
+    <config name="testVersion" value="7.4-" />
     <!-- Include sniffs for PHP cross-version compatibility. -->
     <rule ref="PHPCompatibilityWP" />
 </ruleset>

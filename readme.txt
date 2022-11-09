@@ -4,7 +4,7 @@ Tags: vacation mode,woocommerce plugin,woocommerce,ecommerce,calendar,alert mess
 Donate link: https://mypreview.github.io/woo-store-vacation
 Requires at least: 5.0
 Tested up to: 6.1
-Requires PHP: 7.2
+Requires PHP: 7.4
 Stable tag: 1.4.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -148,7 +148,7 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 == Changelog ==
 = 1.4.7 =
 * Compatibility with WordPress 6.1
-* Compatibility with WooCommerce 7.0
+* Compatibility with WooCommerce 7.1
 
 = 1.4.6 =
 * Compatibility with WooCommerce 6.8
