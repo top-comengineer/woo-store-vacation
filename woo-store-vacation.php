@@ -25,7 +25,7 @@
  * Version:                 1.4.7
  * Author:                  Mahdi Yazdani
  * Author URI:              https://www.mahdiyazdani.com
- * Requires at least:       5.0
+ * Requires at least:       5.3
  * Requires PHP:            7.4
  * License:                 GPL-3.0
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.txt
@@ -261,7 +261,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 													&#8505;
 													<?php esc_html_e( 'Current time:', 'woo-store-vacation' ); ?>
 												</strong>
-												<?php echo esc_html( current_time( 'Y-m-d H:i:s', true ) ); ?>
+												<?php echo esc_html( current_datetime()->format( 'Y-m-d H:i:s' ) ); ?>
 											</li>
 											<li>
 												<strong>
@@ -275,7 +275,10 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 													&#8505;
 													<?php echo esc_html_e( 'Timezone:', 'woo-store-vacation' ); ?>
 												</strong>
-												<?php esc_html_e( 'The plugin will save the date and time in UTC in database.', 'woo-store-vacation' ); ?>
+												<?php
+												/* translators: %s: WordPress timezone label/string. */
+												printf( esc_html__( 'Date and time will be saved in "%s" timezone.', 'woo-store-vacation' ), esc_html( get_option( 'timezone_string' ) ) );
+												?>
 											</li>
 											<li>
 												<strong>
@@ -532,12 +535,14 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function end_date_callback() {
-			$today              = strtotime( current_time( 'Y-m-d H:i:s', true ) );
+			$today              = current_datetime()->format( 'Y-m-d H:i:s' );
 			$value              = isset( $this->options['end_date'] ) ? $this->options['end_date'] : null;
+			$end_date           = new DateTimeImmutable( $value . ' 00:00:00', wp_timezone() );
+			$end_date_formatted = $end_date->format( 'Y-m-d H:i:s' );
 			$is_date_passed     = null;
 			$invalid_date_style = null;
 
-			if ( $today > strtotime( $value ) && isset( $value ) && ! empty( $value ) ) {
+			if ( $today > $end_date_formatted && isset( $value ) && ! empty( $value ) ) {
 				$invalid_date_style = 'style="border:1px solid red;"';
 				/* translators: 1: Open small tag, 2: Close small tag. */
 				$is_date_passed = sprintf( esc_html_x( '%1$sThe date has already passed.%2$s', 'error message', 'woo-store-vacation' ), '<small style="color:red;"><em>', '</em></small>' );
@@ -714,9 +719,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			}
 
 			// Get today’s date and timestamp.
-			$today_date       = current_time( 'Y-m-d H:i:s', true );
-			$today_timestamp  = (int) strtotime( $today_date );
-			$timezone         = new DateTimeZone( 'UTC' );
+			$today            = current_datetime()->format( 'Y-m-d H:i:s' );
+			$timezone         = wp_timezone();
 			$get_options      = (array) get_option( 'woo_store_vacation_options' );
 			$vacation_mode    = isset( $get_options['vacation_mode'] ) ? $get_options['vacation_mode'] : null;
 			$disable_purchase = isset( $get_options['disable_purchase'] ) ? $get_options['disable_purchase'] : null;
@@ -725,14 +729,12 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 			if ( isset( $vacation_mode, $start_date, $end_date ) && wc_string_to_bool( $vacation_mode ) && ! empty( $start_date ) && ! empty( $end_date ) ) {
 				// Parses a time string according to a specified format.
-				$start_date           = DateTime::createFromFormat( 'Y-m-d H:i:s', $start_date, $timezone );
-				$end_date             = DateTime::createFromFormat( 'Y-m-d H:i:s', $end_date, $timezone );
-				$start_date_formatted = ( is_object( $start_date ) && ! empty( $start_date ) ) ? $start_date->format( 'Y-m-d H:i:s' ) : null;
-				$end_date_formatted   = ( is_object( $end_date ) && ! empty( $end_date ) ) ? $end_date->format( 'Y-m-d H:i:s' ) : null;
-				$start_date_timestamp = ( ! empty( $start_date_formatted ) ) ? strtotime( $start_date_formatted ) : null;
-				$end_date_timestamp   = ( ! empty( $end_date_formatted ) ) ? strtotime( $end_date_formatted ) : null;
+				$start_date           = new DateTimeImmutable( $start_date, $timezone );
+				$start_date_formatted = $start_date->format( 'Y-m-d H:i:s' );
+				$end_date             = new DateTimeImmutable( $end_date, $timezone );
+				$end_date_formatted   = $end_date->format( 'Y-m-d H:i:s' );
 
-				if ( $today_timestamp >= $start_date_timestamp && $today_timestamp <= $end_date_timestamp ) {
+				if ( $today >= $start_date_formatted && $today <= $end_date_formatted ) {
 					if ( isset( $disable_purchase ) && wc_string_to_bool( $disable_purchase ) ) {
 						// Make all products unpurchasable.
 						add_filter( 'woocommerce_is_purchasable', '__return_false', PHP_INT_MAX );
