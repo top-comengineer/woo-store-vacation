@@ -144,6 +144,7 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 = 1.4.7 =
 * Compatibility with WordPress 6.1
 * Compatibility with WooCommerce 7.1
+* Account for time when comparing dates.
 
 = 1.4.6 =
 * Compatibility with WooCommerce 6.8
