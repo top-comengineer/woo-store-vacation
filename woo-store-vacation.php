@@ -31,7 +31,7 @@
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
- * WC requires at least:    3.4
+ * WC requires at least:    4.0
  * WC tested up to:         7.1
  */
 
