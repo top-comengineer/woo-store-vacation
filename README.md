@@ -16,8 +16,8 @@
 
 * PHP version 7.4 or greater.
 * MySQL version 5.6 or greater OR MariaDB version 10.0 or greater.
-* WordPress version 5.0 or greater.
-* WooCommerce version 3.4 or greater.
+* WordPress version 5.3 or greater.
+* WooCommerce version 4.0 or greater.
 
 ## Description
 

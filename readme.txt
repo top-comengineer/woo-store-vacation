@@ -2,7 +2,7 @@
 Contributors: mahdiyazdani, mypreview, gookaani
 Tags: vacation mode,woocommerce plugin,woocommerce,ecommerce,calendar,alert message
 Donate link: https://mypreview.github.io/woo-store-vacation
-Requires at least: 5.0
+Requires at least: 5.3
 Tested up to: 6.1
 Requires PHP: 7.4
 Stable tag: 1.4.7
@@ -41,7 +41,7 @@ If you want to start selling products again, then you can unpause your store at 
 
 * PHP version 7.4 or greater.
 * MySQL version 5.6 or greater or MariaDB version 10.0 or greater.
-* WordPress version 5.0 or greater.
+* WordPress version 5.3 or greater.
 * WooCommerce version 4.0 or greater.
 
 = Automatic installation =
