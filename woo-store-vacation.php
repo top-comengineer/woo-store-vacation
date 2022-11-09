@@ -13,7 +13,7 @@
  * any later version.
  *
  * @link                    https://www.mypreview.one
- * @since                   1.4.3
+ * @since                   1.4.7
  * @package                 woo-store-vacation
  * @author                  MyPreview (Github: @mahdiyazdani, @gooklani, @mypreview)
  * @copyright               © 2015 - 2022 MyPreview. All Rights Reserved.
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Render and display plugin options page.
 		 *
-		 * @since     1.4.0
+		 * @since     1.4.7
 		 * @return    void
 		 */
 		public function render_plugin_page() {
@@ -531,7 +531,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * End Date.
 		 *
-		 * @since     1.3.0
+		 * @since     1.4.7
 		 * @return    void
 		 */
 		public function end_date_callback() {
@@ -709,7 +709,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Determine whether the shop should be closed or not!
 		 *
-		 * @since     1.3.9
+		 * @since     1.4.7
 		 * @return    void
 		 */
 		public function close_the_shop() {
