@@ -736,7 +736,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 				if ( $today >= $start_date_formatted && $today <= $end_date_formatted ) {
 					if ( isset( $disable_purchase ) && wc_string_to_bool( $disable_purchase ) ) {
-						// Make all products unpurchasable.
+						// Make all products not purchasable.
 						add_filter( 'woocommerce_is_purchasable', '__return_false', PHP_INT_MAX );
 					}
 
