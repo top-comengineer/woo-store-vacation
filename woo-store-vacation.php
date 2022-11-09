@@ -277,7 +277,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 												</strong>
 												<?php
 												/* translators: %s: WordPress timezone label/string. */
-												printf( esc_html__( 'Date and time will be saved in "%s" timezone.', 'woo-store-vacation' ), esc_html( get_option( 'timezone_string' ) ) );
+												printf( esc_html__( 'Date and time will be saved in "%s" timezone.', 'woo-store-vacation' ), esc_html( wp_timezone_string() ) );
 												?>
 											</li>
 											<li>
