@@ -20,11 +20,11 @@
  *
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
- * Plugin URI:              https://mypreview.github.io/woo-store-vacation
+ * Plugin URI:              https://www.mypreview.one
  * Description:             Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.
  * Version:                 1.5.0
- * Author:                  Mahdi Yazdani
- * Author URI:              https://www.mahdiyazdani.com
+ * Author:                  MyPreview
+ * Author URI:              https://mypreview.github.io/woo-store-vacation
  * Requires at least:       5.3
  * Requires PHP:            7.4
  * License:                 GPL-3.0
