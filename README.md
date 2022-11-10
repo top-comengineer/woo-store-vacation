@@ -1,9 +1,9 @@
 # Woo Store Vacation
-[![Woo Store Vacation Downloads](https://img.shields.io/wordpress/plugin/dt/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Active Installs](https://img.shields.io/wordpress/plugin/installs/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Ratings](https://img.shields.io/wordpress/plugin/r/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Tested](https://img.shields.io/wordpress/plugin/tested/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Version](https://img.shields.io/wordpress/plugin/v/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation License](https://img.shields.io/github/license/mypreview/woo-store-vacation)](https://wordpress.org/plugins/woo-store-vacation) [![Hire Mahdi Yazdani at Upwork](https://img.shields.io/badge/Hire%20Me-Upwork-37A000)](https://www.upwork.com/o/profiles/users/_~016ad17ad3fc5cce94)
+[![Woo Store Vacation Downloads](https://img.shields.io/wordpress/plugin/dt/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Active Installs](https://img.shields.io/wordpress/plugin/installs/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Ratings](https://img.shields.io/wordpress/plugin/r/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Tested](https://img.shields.io/wordpress/plugin/tested/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Version](https://img.shields.io/wordpress/plugin/v/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation License](https://img.shields.io/github/license/mypreview/woo-store-vacation)](https://wordpress.org/plugins/woo-store-vacation) [![Donate to support this plugin](https://img.shields.io/badge/☕-Buy%20me%20a%20coffee-%23fedd04)](https://www.buymeacoffee.com/mahdiyazdani)
 
 ![Woo Store Vacation](https://ps.w.org/woo-store-vacation/assets/banner-1544x500.jpg?rev=1542924)
 
-> ⚠️ If you are not a developer, please use the offical [plugin post page](https://wordpress.org/plugins/woo-store-vacation "Download Woo Store Vacation plugin") on wordpress.org.
+> ⚠️ If you are not a developer, please use the official [plugin post page](https://wordpress.org/plugins/woo-store-vacation "Download Woo Store Vacation plugin") on wordpress.org.
 
 ## Installation
 
@@ -14,10 +14,10 @@
 
 ## Requirements
 
-* PHP version 7.2 or greater.
+* PHP version 7.4 or greater.
 * MySQL version 5.6 or greater OR MariaDB version 10.0 or greater.
-* WordPress version 5.0 or greater.
-* WooCommerce version 3.4 or greater.
+* WordPress version 5.3 or greater.
+* WooCommerce version 4.0 or greater.
 
 ## Description
 

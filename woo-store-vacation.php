@@ -13,26 +13,26 @@
  * any later version.
  *
  * @link                    https://www.mypreview.one
- * @since                   1.4.3
+ * @since                   1.5.0
  * @package                 woo-store-vacation
  * @author                  MyPreview (Github: @mahdiyazdani, @gooklani, @mypreview)
  * @copyright               © 2015 - 2022 MyPreview. All Rights Reserved.
  *
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
- * Plugin URI:              https://mypreview.github.io/woo-store-vacation
+ * Plugin URI:              https://www.mypreview.one
  * Description:             Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.
- * Version:                 1.4.6
- * Author:                  Mahdi Yazdani
- * Author URI:              https://www.mahdiyazdani.com
- * Requires at least:       5.0
- * Requires PHP:            7.2
+ * Version:                 1.5.0
+ * Author:                  MyPreview
+ * Author URI:              https://mypreview.github.io/woo-store-vacation
+ * Requires at least:       5.3
+ * Requires PHP:            7.4
  * License:                 GPL-3.0
  * License URI:             http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
- * WC requires at least:    3.4
- * WC tested up to:         6.8
+ * WC requires at least:    4.0
+ * WC tested up to:         7.1
  */
 
 // If this file is called directly, abort.
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Render and display plugin options page.
 		 *
-		 * @since     1.4.0
+		 * @since     1.5.0
 		 * @return    void
 		 */
 		public function render_plugin_page() {
@@ -248,6 +248,48 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 						</div>
 						<div id="postbox-container-1" class="postbox-container">
 							<div class="meta-box-sortables">
+								<div class="postbox">
+									<div class="postbox-header">
+										<h2 class="hndle">
+											<?php esc_html_e( 'Date time notes', 'woo-store-vacation' ); ?>
+										</h2>
+									</div>
+									<div class="inside">
+										<ul>
+											<li>
+												<strong>
+													&#8505;
+													<?php esc_html_e( 'Current time:', 'woo-store-vacation' ); ?>
+												</strong>
+												<?php echo esc_html( current_datetime()->format( 'Y-m-d H:i:s' ) ); ?>
+											</li>
+											<li>
+												<strong>
+													&#8505;
+													<?php echo esc_html_e( 'Time format:', 'woo-store-vacation' ); ?>
+												</strong>
+												<?php esc_html_e( 'The database will store a time of 00:00:00 by default.', 'woo-store-vacation' ); ?>
+											</li>
+											<li>
+												<strong>
+													&#8505;
+													<?php echo esc_html_e( 'Timezone:', 'woo-store-vacation' ); ?>
+												</strong>
+												<?php
+												/* translators: %s: WordPress timezone label/string. */
+												printf( esc_html__( 'Date and time will be saved in "%s" timezone.', 'woo-store-vacation' ), esc_html( wp_timezone_string() ) );
+												?>
+											</li>
+											<li>
+												<strong>
+													&#8505;
+													<?php echo esc_html_e( 'Date range:', 'woo-store-vacation' ); ?>
+												</strong>
+												<?php esc_html_e( 'The date range is valid from midnight of the "Start Date" until the beginning of the "End Date" day.', 'woo-store-vacation' ); ?>
+											</li>
+										</ul>
+									</div>
+								</div>
 								<div class="postbox">
 									<div class="postbox-header">
 										<h2 class="hndle">
@@ -292,6 +334,12 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 											<li>
 												<?php
 												/* translators: %s: HTML Symbol. */
+												printf( esc_html_x( '%s Localized calendar support', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
+												?>
+											</li>
+											<li>
+												<?php
+												/* translators: %s: HTML Symbol. */
 												printf( esc_html_x( '%s Allow Shop Managers to edit', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
 												?>
 											</li>
@@ -320,109 +368,6 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 											/* translators: 1: Open anchor tag, 2: Close anchor tag. */
 											printf( esc_html_x( '%1$sUpgrade to PRO &#8594;%2$s', 'upsell', 'woo-store-vacation' ), sprintf( '<a href="%s" class="button-primary button-link-delete" target="_blank" rel="noopener noreferrer nofollow" style="width:100%%">', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
 										?>
-										</p>
-									</div>
-								</div>
-								<div class="postbox">
-									<div class="postbox-header">
-										<h2 class="hndle">
-											<?php echo esc_html_x( 'Looking for help? Hire Me!', 'upsell', 'woo-store-vacation' ); ?>
-										</h2>
-									</div>
-									<div class="inside">
-										<p>
-											<?php echo esc_html_x( 'I am a full-stack developer with over five years of experience in WordPress theme and plugin development and customization.', 'upsell', 'woo-store-vacation' ); ?>
-										</p>
-										<p>
-											<?php echo esc_html_x( 'I would love to have the opportunity to discuss your project with you.', 'upsell', 'woo-store-vacation' ); ?>
-										</p>
-										<h4>
-											<?php echo esc_html_x( 'My services include:', 'upsell', 'woo-store-vacation' ); ?>
-										</h4>
-										<ul>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Theme creation from scratch', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Plugin development & customization', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Gutenberg custom block development', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s HTML/CSS to WordPress', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s PSD/Sketch/Figma to WordPress', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Troubleshooting/Error fix', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Transferring WordPress websites', 'upsell', 'woo-store-vacation' ), '&#x2714;' );
-												?>
-											</li>
-										</ul>
-										<h4>
-											<?php echo esc_html_x( 'Why clients choose me?', 'upsell', 'woo-store-vacation' ); ?>
-										</h4>
-										<ul>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Verified Top-Rated Plus freelancer', 'upsell', 'woo-store-vacation' ), '&#9733;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Rated 5.0 out of 5.0 for services', 'upsell', 'woo-store-vacation' ), '&#9733;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Guaranteeing 100%% satisfaction', 'upsell', 'woo-store-vacation' ), '&#9733;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Competitive pricing & support', 'upsell', 'woo-store-vacation' ), '&#9733;' );
-												?>
-											</li>
-											<li>
-												<?php
-												/* translators: %s: HTML Symbol. */
-												printf( esc_html_x( '%s Expert in WooCommerce', 'upsell', 'woo-store-vacation' ), '&#9733;' );
-												?>
-											</li>
-										</ul>
-										<br/>
-										<p align="center">
-											<a href="<?php echo esc_url( WOO_STORE_VACATION_AUTHOR_URI ); ?>" class="button-secondary" target="_blank" rel="noopener noreferrer nofollow" style="width:100%">
-												<?php echo esc_html_x( 'Hire me &#8594;', 'upsell', 'woo-store-vacation' ); ?>
-										</a>
 										</p>
 									</div>
 								</div>
@@ -586,16 +531,18 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * End Date.
 		 *
-		 * @since     1.3.0
+		 * @since     1.5.0
 		 * @return    void
 		 */
 		public function end_date_callback() {
-			$today              = strtotime( current_time( 'Y-m-d', $gmt = 0 ) );
+			$today              = current_datetime()->format( 'Y-m-d H:i:s' );
 			$value              = isset( $this->options['end_date'] ) ? $this->options['end_date'] : null;
+			$end_date           = new DateTimeImmutable( $value . ' 00:00:00', wp_timezone() );
+			$end_date_formatted = $end_date->format( 'Y-m-d H:i:s' );
 			$is_date_passed     = null;
 			$invalid_date_style = null;
 
-			if ( $today > strtotime( $value ) && isset( $value ) && ! empty( $value ) ) {
+			if ( $today > $end_date_formatted && isset( $value ) && ! empty( $value ) ) {
 				$invalid_date_style = 'style="border:1px solid red;"';
 				/* translators: 1: Open small tag, 2: Close small tag. */
 				$is_date_passed = sprintf( esc_html_x( '%1$sThe date has already passed.%2$s', 'error message', 'woo-store-vacation' ), '<small style="color:red;"><em>', '</em></small>' );
@@ -762,7 +709,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Determine whether the shop should be closed or not!
 		 *
-		 * @since     1.3.9
+		 * @since     1.5.0
 		 * @return    void
 		 */
 		public function close_the_shop() {
@@ -772,28 +719,24 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			}
 
 			// Get today’s date and timestamp.
-			$today_date      = gmdate( 'Y-m-d' );
-			$today_timestamp = (int) strtotime( $today_date );
-			$timezone        = new DateTimeZone( 'UTC' );
-
+			$today            = current_datetime()->format( 'Y-m-d H:i:s' );
+			$timezone         = wp_timezone();
 			$get_options      = (array) get_option( 'woo_store_vacation_options' );
 			$vacation_mode    = isset( $get_options['vacation_mode'] ) ? $get_options['vacation_mode'] : null;
 			$disable_purchase = isset( $get_options['disable_purchase'] ) ? $get_options['disable_purchase'] : null;
-			$start_date       = isset( $get_options['start_date'] ) ? $get_options['start_date'] : null;
-			$end_date         = isset( $get_options['end_date'] ) ? $get_options['end_date'] : null;
+			$start_date       = isset( $get_options['start_date'] ) ? $get_options['start_date'] . ' 00:00:00' : null;
+			$end_date         = isset( $get_options['end_date'] ) ? $get_options['end_date'] . ' 00:00:00' : null;
 
 			if ( isset( $vacation_mode, $start_date, $end_date ) && wc_string_to_bool( $vacation_mode ) && ! empty( $start_date ) && ! empty( $end_date ) ) {
 				// Parses a time string according to a specified format.
-				$start_date           = DateTime::createFromFormat( 'Y-m-d', $start_date, $timezone );
-				$end_date             = DateTime::createFromFormat( 'Y-m-d', $end_date, $timezone );
-				$start_date_formatted = ( is_object( $start_date ) && ! empty( $start_date ) ) ? $start_date->format( 'Y-m-d' ) : null;
-				$end_date_formatted   = ( is_object( $end_date ) && ! empty( $end_date ) ) ? $end_date->format( 'Y-m-d' ) : null;
-				$start_date_timestamp = ( ! empty( $start_date_formatted ) ) ? strtotime( $start_date_formatted ) : null;
-				$end_date_timestamp   = ( ! empty( $end_date_formatted ) ) ? strtotime( $end_date_formatted ) : null;
+				$start_date           = new DateTimeImmutable( $start_date, $timezone );
+				$start_date_formatted = $start_date->format( 'Y-m-d H:i:s' );
+				$end_date             = new DateTimeImmutable( $end_date, $timezone );
+				$end_date_formatted   = $end_date->format( 'Y-m-d H:i:s' );
 
-				if ( $today_timestamp >= $start_date_timestamp && $today_timestamp <= $end_date_timestamp ) {
+				if ( $today >= $start_date_formatted && $today <= $end_date_formatted ) {
 					if ( isset( $disable_purchase ) && wc_string_to_bool( $disable_purchase ) ) {
-						// Make all products unpurchasable.
+						// Make all products not purchasable.
 						add_filter( 'woocommerce_is_purchasable', '__return_false', PHP_INT_MAX );
 					}
 
@@ -853,7 +796,6 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					background-color:%2$s !important;
 					color:%3$s !important;
 					z-index:2;
-					height:100%%;
 					text-align:left;
 					list-style:none;
 					border-top:0;
@@ -929,8 +871,6 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function action_links( $links ) {
 			$plugin_links = array();
-			/* translators: 1: Open anchor tag, 2: Close anchor tag. */
-			$plugin_links[] = sprintf( _x( '%1$sHire Me!%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="%s" class="button-link-delete" target="_blank" rel="noopener noreferrer nofollow" title="%s">', esc_attr( WOO_STORE_VACATION_AUTHOR_URI ), esc_attr_x( 'Looking for help? Hire Me!', 'upsell', 'woo-store-vacation' ) ), '</a>' );
 			/* translators: 1: Open anchor tag, 2: Close anchor tag. */
 			$plugin_links[] = sprintf( _x( '%1$sSupport%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="https://wordpress.org/support/plugin/%s" target="_blank" rel="noopener noreferrer nofollow">', esc_attr( WOO_STORE_VACATION_SLUG ) ), '</a>' );
 

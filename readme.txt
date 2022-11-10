@@ -2,10 +2,10 @@
 Contributors: mahdiyazdani, mypreview, gookaani
 Tags: vacation mode,woocommerce plugin,woocommerce,ecommerce,calendar,alert message
 Donate link: https://mypreview.github.io/woo-store-vacation
-Requires at least: 5.0
-Tested up to: 6.0
-Requires PHP: 7.2
-Stable tag: 1.4.6
+Requires at least: 5.3
+Tested up to: 6.1
+Requires PHP: 7.4
+Stable tag: 1.5.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,10 +39,10 @@ If you want to start selling products again, then you can unpause your store at 
 == Installation ==
 = Minimum Requirements =
 
-* PHP version 7.2 or greater.
+* PHP version 7.4 or greater.
 * MySQL version 5.6 or greater or MariaDB version 10.0 or greater.
-* WordPress version 5.0 or greater.
-* WooCommerce version 3.4 or greater.
+* WordPress version 5.3 or greater.
+* WooCommerce version 4.0 or greater.
 
 = Automatic installation =
 
@@ -133,11 +133,6 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 
 [Go Premium, Be Happy! &#8594;](https://mypreview.github.io/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
-= I need help customizing this plugin? =
-Professional engineer and independent creative technologist in tech · over 6 years experience working from prototype to production · developing WordPress products, services, and eCommerce solutions.
-
-[Available for hire &#8594;](https://mahdiyazdani.com "Mahdi Yazdani’s personal website")
-
 == Screenshots ==
 1. Plugin’s settings page
 2. User-Friendly datepicker
@@ -146,6 +141,12 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.5.0 =
+* Compatibility with WordPress 6.1
+* Compatibility with WooCommerce 7.1
+* Account for time when comparing dates.
+* Support local timezone.
+
 = 1.4.6 =
 * Compatibility with WooCommerce 6.8
 
