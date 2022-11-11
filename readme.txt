@@ -78,8 +78,8 @@ Similar tricks such as increasing your delivery time with respect to the number 
 = How do I set up my vacation dates? =
 1. Navigate to “WooCommerce” » “Store Vacation”.
 2. Check the checkbox “Set Vacation Mode” to enable vacation mode in your shop.
-2. Enter the “Start Date” (first day) of your vacation.
-3. Enter the “End Date” (last day) of your vacation.
+2. Enter the “Start Date” — first day where the shop will be closed.
+3. Enter the “End Date” — first day where the shop will be re-opened.
 4. Optionally, fill in a temporary shop announcement or vacation message.
 5. Click “Save Changes”.
 
