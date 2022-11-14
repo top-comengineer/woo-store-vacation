@@ -46,7 +46,7 @@
          		"@type": "Offer",
          		"url": "https://mypreview.github.io/woo-store-vacation/#pricing",
          		"priceCurrency": "USD",
-         		"price": "49",
+         		"price": "59",
          		"availability": "https://schema.org/InStock",
          		"itemCondition": "https://schema.org/NewCondition",
          		"seller": {
@@ -234,7 +234,10 @@
          <div class="cols align-center max-w-590 pd-t-30">
             <div class="col col--50 card card--lg bg-dark tile-text m-mb-b-30">
                <p class="lead bold">Pro</p>
-               <span id="item-price"></span>
+               <span id="item-price">
+               	US
+               	<span>$59</span>
+               </span>
                <span class="small">3x websites, per year</span>
                <span class="bold">Includes:</span>
                <ul class="none-list">
@@ -408,6 +411,6 @@
       <script src="https://cdn.jsdelivr.net/npm/tabslet@1.7.3/jquery.tabslet.min.js"></script>
       <script src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js" id="cookiebanner" data-position="bottom" data-message="We serve cookies on this site to analyze traffic, remember your preferences, and optimize your experience." data-bg="#ffffff" data-font-family="inherit" data-text-align="left" data-height="auto" data-link="#96588a" data-linkmsg="Learn more &#8618;" data-fg="#3c3c3c" data-effect="fade" data-expires="604800" data-cookie-secure="true" data-close-text="Accept" data-close-style="font-weight: 500; border-radius: 4px; padding: 5px 16px; display: inline-flex; border: 1px solid #e6e6e6; order: 2; color: #96588a; background-color: #fff; margin: 7px 8px;"></script>
       <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
-      <script>Paddle.Setup({ vendor: 15981, completeDetails: !0 }), Paddle.Product.Prices(580975, function ({ price: e }) { var s = jQuery("#item-price"), a = e.net; a.length > 8 && s.closest(".cols").addClass("max-w-845").removeClass("max-w-590"), jQuery("#item-price").html(a.replace(/(\d+(,|)\d+.\d{1,2})/gi, "<span>$1</span>").replace(/(\.(.*?[0]*))/g, "")) });</script>
+      <script>Paddle.Setup({ vendor: 15981, completeDetails: !0 });</script>
    </body>
 </html>
