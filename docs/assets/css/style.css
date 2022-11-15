@@ -184,10 +184,6 @@ p.bold + p {
     .lg-txt {
         margin-bottom: 30px;
     }
-
-    #item-price span {
-        font-size: 56px;
-    }
 }
 
 @media (max-width: 42em) {
@@ -203,14 +199,6 @@ p.bold + p {
 
     .title {
         font-size: 32px;
-    }
-
-    #item-price {
-        font-size: 20px;
-    }
-
-    #item-price span {
-        font-size: 40px;
     }
 }
 /*--------------------------------------------------------------
