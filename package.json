@@ -1,6 +1,6 @@
 {
 	"name": "@mypreview/woo-store-vacation",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"private": true,
 	"description": "Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.",
 	"homepage": "https://github.com/mypreview/woo-store-vacation#readme",
@@ -26,8 +26,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.20.2",
-		"@wordpress/eslint-plugin": "13.5.0",
-		"@wordpress/prettier-config": "2.4.0",
+		"@wordpress/eslint-plugin": "13.6.0",
+		"@wordpress/prettier-config": "2.5.0",
 		"lint-staged": "13.0.3",
 		"prettier": "npm:wp-prettier@^2.6.2",
 		"wp-prettier": "2.6.2"
