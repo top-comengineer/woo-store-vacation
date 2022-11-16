@@ -13,7 +13,7 @@
  * any later version.
  *
  * @link                    https://www.mypreview.one
- * @since                   1.5.0
+ * @since                   1.5.1
  * @package                 woo-store-vacation
  * @author                  MyPreview (Github: @mahdiyazdani, @gooklani, @mypreview)
  * @copyright               © 2015 - 2022 MyPreview. All Rights Reserved.
@@ -22,7 +22,7 @@
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.github.io/woo-store-vacation
  * Description:             Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.
- * Version:                 1.5.0
+ * Version:                 1.5.1
  * Author:                  MyPreview
  * Author URI:              https://mypreview.github.io/woo-store-vacation
  * Requires at least:       5.3
