@@ -1001,7 +1001,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'woo_additional_terms_init' ) ) :
+if ( ! function_exists( 'woo_store_vacation_init' ) ) :
 	/**
 	 * Begins execution of the plugin.
 	 * The main function responsible for returning the one true Woo_Store_Vacation
