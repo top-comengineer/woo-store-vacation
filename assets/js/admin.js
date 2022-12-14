@@ -1,4 +1,4 @@
-/* global jQuery, ajaxurl, wsvVars */
+/* global jQuery */
 
 ( function ( wp, $ ) {
 	'use strict';
@@ -12,7 +12,6 @@
 		cache() {
 			this.vars = {};
 			this.els = {};
-			this.vars.upsell = '.notice-info.woocommerce-message.is-dismissible .notice-dismiss';
 			this.els.$startDate = $( '.woo-store-vacation-start-datepicker' );
 			this.els.$endDate = $( '.woo-store-vacation-end-datepicker' );
 			this.els.$txtColor = $( '.woo-store-vacation-text-color-field' );
@@ -85,18 +84,6 @@
 						$.datepicker._clearDate( inst.input );
 					} );
 			};
-		},
-
-		handleOnDismiss() {
-			$.ajax( {
-				type: 'POST',
-				url: ajaxurl,
-				data: {
-					_ajax_nonce: wsvVars.dismiss_nonce,
-					action: 'woo_store_vacation_dismiss_upsell',
-				},
-				dataType: 'json',
-			} );
 		},
 	};
 
