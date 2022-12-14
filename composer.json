@@ -1,11 +1,8 @@
 {
 	"archive": {
 		"exclude": [
-			"!/assets",
 			"!/languages",
-			"/docs",
-			"/@mypreview",
-			"/vendor",
+			"vendor",
 			"node_modules",
 			"CONTRIBUTING.md",
 			"CODE_OF_CONDUCT.md",
@@ -16,13 +13,13 @@
 			"package-lock.json",
 			"phpcs.xml.dist",
 			"README.md",
-			"/.*"
+			".*"
 		]
 	},
 	"authors": [
 		{
-			"homepage": "https://www.mahdiyazdani.com",
-			"name": "Mahdi Yazdani"
+			"homepage": "https://mypreview.one",
+			"name": "MyPreview"
 		}
 	],
 	"config": {
@@ -30,7 +27,7 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
-	"description": "Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.",
+	"description": "Pause your store with scheduling your vacation dates.",
 	"extra": {
 		"scripts-description": {
 			"lint:wpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier",
@@ -60,6 +57,13 @@
 		"wp-coding-standards/wpcs": "2.3.0"
 	},
 	"scripts": {
+		"bundle": [
+			"composer lint:wpcbf",
+			"rm -rf woo-store-vacation.zip",
+			"composer install --no-dev",
+			"composer archive --file=woo-store-vacation --format=zip",
+			"composer install -vvv"
+		],
 		"lint:wpcbf": "phpcbf --extensions=php -p --runtime-set testVersion 7.4-",
 		"lint:wpcs": "phpcs --extensions=php -s -p --runtime-set testVersion 7.4-",
 		"make-pot": "wp i18n make-pot . languages/woo-store-vacation.pot"
