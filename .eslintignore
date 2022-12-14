@@ -1,4 +1,2 @@
-node_modules
-vendor
 docs
-*.min.js
+assets/js/minified
