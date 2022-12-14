@@ -1,6 +1,6 @@
 === Woo Store Vacation ===
 Contributors: mahdiyazdani, mypreview, gookaani
-Tags: vacation mode,woocommerce plugin,woocommerce,ecommerce,calendar,alert message
+Tags: vacation mode,vacation notice,temporarily closing,pause your store,close shop,catalog mode,close for holiday,woocommerce plugin
 Donate link: https://mypreview.one/woo-store-vacation
 Requires at least: 5.3
 Tested up to: 6.1
