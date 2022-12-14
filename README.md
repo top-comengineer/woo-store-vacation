@@ -1,9 +1,10 @@
 # Woo Store Vacation
 [![Woo Store Vacation Downloads](https://img.shields.io/wordpress/plugin/dt/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Active Installs](https://img.shields.io/wordpress/plugin/installs/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Ratings](https://img.shields.io/wordpress/plugin/r/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Tested](https://img.shields.io/wordpress/plugin/tested/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation Version](https://img.shields.io/wordpress/plugin/v/woo-store-vacation.svg)](https://wordpress.org/plugins/woo-store-vacation) [![Woo Store Vacation License](https://img.shields.io/github/license/mypreview/woo-store-vacation)](https://wordpress.org/plugins/woo-store-vacation) [![Donate to support this plugin](https://img.shields.io/badge/☕-Buy%20me%20a%20coffee-%23fedd04)](https://www.buymeacoffee.com/mahdiyazdani)
 
-![Woo Store Vacation](https://ps.w.org/woo-store-vacation/assets/banner-1544x500.jpg?rev=1542924)
+[![Woo Store Vacation](https://ps.w.org/woo-store-vacation/assets/banner-1544x500.jpg?rev=1542924)](https://mypreview.one/woo-store-vacation)
 
 > ⚠️ If you are not a developer, please use the official [plugin post page](https://wordpress.org/plugins/woo-store-vacation "Download Woo Store Vacation plugin") on wordpress.org.
+
 
 ## Installation
 
@@ -53,4 +54,4 @@ Don't forget to rate this plugin [5 shining stars](https://wordpress.org/support
 
 ## Go premium 💰
 
-The premium (paid) version of the plugin is available to purchase! &#8594; [Upgrade to PRO](https://mypreview.github.io/woo-store-vacation)
+The premium (paid) version of the plugin is available to purchase! &#8594; [Upgrade to PRO](https://mypreview.one/woo-store-vacation)
