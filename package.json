@@ -1,8 +1,8 @@
 {
 	"name": "@mypreview/woo-store-vacation",
-	"version": "1.5.1",
+	"version": "1.6.0",
 	"private": true,
-	"description": "Pause your store temporarily with scheduling your vacation dates and displaying a user-friendly notice at the top of your shop page.",
+	"description": "Pause your store with scheduling your vacation dates.",
 	"homepage": "https://github.com/mypreview/woo-store-vacation#readme",
 	"bugs": {
 		"url": "https://github.com/mypreview/woo-store-vacation/issues"
@@ -12,24 +12,30 @@
 		"url": "git+https://github.com/mypreview/woo-store-vacation.git"
 	},
 	"license": "GPL-3.0-or-later",
-	"author": "Mahdi Yazdani",
+	"author": "MyPreview",
 	"scripts": {
-		"archive": "npm run pre-archive && rm -rf $npm_package_name && composer archive --file=$npm_package_name --format=zip",
-		"format": "prettier --ignore-path .eslintignore --write \"**/*.{js,jsx,json,ts,tsx}\"",
-		"lint:js": "eslint assets --ext=js,jsx,json,ts,tsx",
-		"lint:js-fix": "eslint assets --ext=js,jsx,json,ts,tsx --fix",
-		"lint:php": "composer lint:php",
+		"archive": "npm run minify && composer bundle",
+		"format": "prettier --write \"**/*.{js,json}\"",
+		"lint:js": "eslint assets/js/*.js",
+		"lint:js:fix": "eslint assets/js/*.js --fix",
 		"lint:wpcs": "composer lint:wpcs",
 		"lint:wpcs-fix": "composer lint:wpcbf",
 		"makepot": "composer make-pot",
-		"pre-archive": "npm run format && npm run lint:wpcs-fix"
+		"minify": "cross-env BABEL_ENV=default NODE_ENV=production npm run minify:js",
+		"minify:js": "rimraf assets/js/minified && npm run format && babel assets/js/*.js --out-dir assets/js/minified --no-comments --minified --presets=@babel/preset-env"
 	},
 	"devDependencies": {
+		"@babel/cli": "7.19.3",
 		"@babel/core": "7.20.2",
+		"@babel/preset-env": "7.20.2",
+		"@wordpress/browserslist-config": "5.5.0",
 		"@wordpress/eslint-plugin": "13.6.0",
 		"@wordpress/prettier-config": "2.5.0",
-		"lint-staged": "13.0.3",
-		"prettier": "npm:wp-prettier@^2.6.2",
-		"wp-prettier": "2.6.2"
+		"@wordpress/stylelint-config": "21.5.0",
+		"clean-css-cli": "5.6.1",
+		"cross-env": "7.0.3",
+		"eslint": "8.27.0",
+		"prettier": "npm:wp-prettier@2.6.2",
+		"rimraf": "3.0.2"
 	}
 }

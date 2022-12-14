@@ -1,11 +1,11 @@
 === Woo Store Vacation ===
 Contributors: mahdiyazdani, mypreview, gookaani
 Tags: vacation mode,woocommerce plugin,woocommerce,ecommerce,calendar,alert message
-Donate link: https://mypreview.github.io/woo-store-vacation
+Donate link: https://mypreview.one/woo-store-vacation
 Requires at least: 5.3
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,7 +34,7 @@ If you want to start selling products again, then you can unpause your store at 
 > * Unlimited weekday hours.
 > * Unlimited notifications.
 >
-> [Upgrade to premium! &#8594;](https://mypreview.github.io/woo-store-vacation/ "Woo Store Vacation (PRO)")
+> [Upgrade to premium! &#8594;](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
 == Installation ==
 = Minimum Requirements =
@@ -131,7 +131,7 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 * Unlimited weekday hours.
 * Unlimited notifications.
 
-[Go Premium, Be Happy! &#8594;](https://mypreview.github.io/woo-store-vacation/ "Woo Store Vacation (PRO)")
+[Go Premium, Be Happy! &#8594;](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
 == Screenshots ==
 1. Plugin’s settings page
@@ -141,6 +141,9 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.6.0 =
+* Compatibility with WooCommerce 7.2
+
 = 1.5.1 =
 * Update author URI.
 
