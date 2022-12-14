@@ -2,6 +2,7 @@
 	"archive": {
 		"exclude": [
 			"!/languages",
+			"docs",
 			"vendor",
 			"node_modules",
 			"CONTRIBUTING.md",
