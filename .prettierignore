@@ -1,0 +1,5 @@
+node_modules
+vendor
+docs
+package-lock.json
+assets/js/minified
