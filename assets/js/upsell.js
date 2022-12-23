@@ -11,6 +11,7 @@
 		cache() {
 			this.vars = {};
 			this.els = {};
+			this.vars.rate = '#woo-store-vacation-dismiss-rate .notice-dismiss';
 			this.vars.upsell = '#woo-store-vacation-dismiss-upsell .notice-dismiss';
 		},
 
@@ -20,16 +21,19 @@
 		},
 
 		events() {
-			$( document.body ).on( 'click', this.vars.upsell, this.handleOnDismiss );
+			$( document.body ).on( 'click', this.vars.rate, ( event ) => this.handleOnDismiss( event, 'rate' ) );
+			$( document.body ).on( 'click', this.vars.upsell, ( event ) => this.handleOnDismiss( event, 'upsell' ) );
 		},
 
-		handleOnDismiss() {
+		handleOnDismiss( event, action ) {
+			event.preventDefault();
+
 			$.ajax( {
 				type: 'POST',
 				url: ajaxurl,
 				data: {
 					_ajax_nonce: wsvVars.dismiss_nonce,
-					action: 'woo_store_vacation_dismiss_upsell',
+					action: `woo_store_vacation_dismiss_${ action }`,
 				},
 				dataType: 'json',
 			} );
