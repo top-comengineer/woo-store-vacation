@@ -735,7 +735,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			// Enqueue a script.
 			wp_register_script( WOO_STORE_VACATION_SLUG, trailingslashit( WOO_STORE_VACATION_DIR_URL ) . 'assets/js/' . $min . 'admin.js', array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'wp-i18n' ), WOO_STORE_VACATION_VERSION, true );
 			wp_register_script( WOO_STORE_VACATION_SLUG . '-upsell', trailingslashit( WOO_STORE_VACATION_DIR_URL ) . 'assets/js/' . $min . 'upsell.js', array( 'jquery' ), WOO_STORE_VACATION_VERSION, true );
-			wp_localize_script( WOO_STORE_VACATION_SLUG . '-upsell', 'wsvVars', array( 'dismiss_nonce' => wp_create_nonce( WOO_STORE_VACATION_SLUG . '-upsell' ) ) );
+			wp_localize_script( WOO_STORE_VACATION_SLUG . '-upsell', 'wsvVars', array( 'dismiss_nonce' => wp_create_nonce( WOO_STORE_VACATION_SLUG . '-dismiss' ) ) );
 
 			if ( 'admin.php' === $pagenow && isset( $_GET['page'] ) && WOO_STORE_VACATION_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				wp_enqueue_style( 'jquery-ui-style' );
