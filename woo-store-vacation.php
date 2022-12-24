@@ -21,7 +21,7 @@
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.one/woo-store-vacation
- * Description:             Pause your store operations for a set of fixed dates during your vacation and display a user-friendly notice on your shop page.
+ * Description:             Pause your store operations for a set of fixed dates during your vacation and display a user-friendly notice on your shop.
  * Version:                 1.6.1
  * Author:                  MyPreview
  * Author URI:              https://mypreview.one/woo-store-vacation
