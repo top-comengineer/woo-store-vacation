@@ -48,8 +48,6 @@
     <!-- Include the WordPress ruleset, with select exclusions. -->
     <rule ref="WordPress">
         <exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
-        <exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
-        <exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
         <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
         <exclude name="Core.Commenting.CommentTags.AccessTag" />
         <exclude name="Core.Commenting.CommentTags.AuthorTag" />

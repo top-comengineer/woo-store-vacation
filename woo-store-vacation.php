@@ -21,8 +21,8 @@
  * @wordpress-plugin
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.one/woo-store-vacation
- * Description:             Pause your store operations for a set of fixed dates during your vacation and display a user-friendly notice on your shop page.
- * Version:                 1.6.0
+ * Description:             Pause your store operations for a set of fixed dates during your vacation and display a user-friendly notice on your shop.
+ * Version:                 1.6.1
  * Author:                  MyPreview
  * Author URI:              https://mypreview.one/woo-store-vacation
  * Requires at least:       5.3
@@ -78,9 +78,9 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * Instance of the class.
 		 *
 		 * @since    1.0.0
-		 * @var      object    $_instance
+		 * @var      object    $instance
 		 */
-		private static $_instance = null;
+		private static $instance = null;
 
 		/**
 		 * Main `Woo_Store_Vacation` instance.
@@ -92,12 +92,12 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    object|Woo_Store_Vacation    The one true Woo_Store_Vacation
 		 */
 		public static function instance() {
-			if ( ! isset( self::$_instance ) && ! ( self::$_instance instanceof Woo_Store_Vacation ) ) {
-				self::$_instance = new Woo_Store_Vacation();
-				self::$_instance->init();
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Woo_Store_Vacation ) ) {
+				self::$instance = new Woo_Store_Vacation();
+				self::$instance->init();
 			}
 
-			return self::$_instance;
+			return self::$instance;
 		}
 
 
@@ -109,8 +109,10 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		private function init() {
 			add_action( 'init', array( self::instance(), 'textdomain' ) );
+			add_action( 'admin_init', array( self::instance(), 'check_activation_timestamp' ) );
 			add_action( 'admin_notices', array( self::instance(), 'admin_notices' ) );
 			add_action( 'wp_ajax_woo_store_vacation_dismiss_upsell', array( self::instance(), 'dismiss_upsell' ) );
+			add_action( 'wp_ajax_woo_store_vacation_dismiss_rate', array( self::instance(), 'dismiss_rate' ) );
 			add_action( 'admin_menu', array( self::instance(), 'add_submenu_page' ), 999 );
 			add_action( 'admin_init', array( self::instance(), 'register_settings' ) );
 			add_action( 'admin_enqueue_scripts', array( self::instance(), 'admin_enqueue' ) );
@@ -149,7 +151,28 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function textdomain() {
-			load_plugin_textdomain( 'woo-store-vacation', false, dirname( dirname( WOO_STORE_VACATION_PLUGIN_BASENAME ) ) . '/languages/' );
+			load_plugin_textdomain( 'woo-store-vacation', false, dirname( WOO_STORE_VACATION_PLUGIN_BASENAME ) . '/languages/' );
+		}
+
+		/**
+		 * Check date on admin initiation and add to admin notice if it was more than the time limit.
+		 *
+		 * @since     1.6.1
+		 * @return    void
+		 */
+		public function check_activation_timestamp() {
+			if ( get_transient( 'woo_store_vacation_rate' ) ) {
+				return;
+			}
+
+			// If not installation date set, then add it.
+			$option_name          = 'woo_store_vacation_activation_timestamp';
+			$activation_timestamp = get_site_option( $option_name );
+
+			if ( ! $activation_timestamp ) {
+				add_site_option( $option_name, time() );
+				$activation_timestamp = get_site_option( $option_name );
+			}
 		}
 
 		/**
@@ -160,7 +183,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function admin_notices() {
 			// Query WooCommerce activation.
-			if ( ! $this->_is_woocommerce() ) {
+			if ( ! $this->is_woocommerce() ) {
 				/* translators: 1: Dashicon, 2: Open anchor tag, 3: Close anchor tag. */
 				$message = sprintf( esc_html_x( '%1$s requires the following plugin: %2$sWooCommerce%3$s', 'admin notice', 'woo-store-vacation' ), sprintf( '<i class="dashicons dashicons-admin-plugins" style="vertical-align:sub"></i> <strong>%s</strong>', WOO_STORE_VACATION_NAME ), '<a href="https://wordpress.org/plugins/woocommerce" target="_blank" rel="noopener noreferrer nofollow"><em>', '</em></a>' );
 				printf( '<div class="notice notice-error notice-alt"><p>%s</p></div>', wp_kses_post( $message ) );
@@ -173,10 +196,14 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					printf( '<div class="notice notice-info"><p>%s</p></div>', wp_kses_post( $welcome_notice ) );
 					delete_transient( $welcome_notice_transient );
 				} else {
-					if ( ! get_transient( 'woo_store_vacation_upsell' ) ) {
+					if ( ! get_transient( 'woo_store_vacation_upsell' ) && ( time() - (int) get_site_option( 'woo_store_vacation_activation_timestamp' ) ) > DAY_IN_SECONDS ) {
 						/* translators: 1: Dashicon, 2: HTML symbol, 3: Open anchor tag, 4: Close anchor tag. */
 						$message = sprintf( esc_html_x( '%1$s Automate your closings by defining unlimited number of vacation dates, times (hours), and weekdays without any manual effort needed. %2$s %3$sUpgrade to PRO%4$s', 'admin notice', 'woo-store-vacation' ), '<i class="dashicons dashicons-calendar-alt" style="vertical-align:sub"></i>', '&#8594;', sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow"><button class="button-primary">', esc_url( WOO_STORE_VACATION_URI ) ), '</button></a>' );
 						printf( '<div id="%s-dismiss-upsell" class="notice notice-info woocommerce-message notice-alt is-dismissible"><p>%s</p></div>', esc_attr( WOO_STORE_VACATION_SLUG ), wp_kses_post( $message ) );
+					} elseif ( ! get_transient( 'woo_store_vacation_rate' ) && ( time() - (int) get_site_option( 'woo_store_vacation_activation_timestamp' ) ) > WEEK_IN_SECONDS ) {
+						/* translators: 1: HTML symbol, 2: Plugin name, 3: Activation duration, 4: HTML symbol, 5: Open anchor tag, 6: Close anchor tag. */
+						$message = sprintf( esc_html_x( '%1$s You have been using the %2$s plugin for %3$s now, do you like it as much as we like you? %4$s %5$sRate 5-Stars%6$s', 'admin notice', 'woo-store-vacation' ), '&#9733;', esc_html( WOO_STORE_VACATION_NAME ), human_time_diff( (int) get_site_option( 'woo_store_vacation_activation_timestamp' ), time() ), '&#8594;', sprintf( '<a href="https://wordpress.org/support/plugin/%s/reviews?rate=5#new-post" class="button-primary" target="_blank" rel="noopener noreferrer nofollow">&#9733; ', esc_attr( WOO_STORE_VACATION_SLUG ) ), '</a>' );
+						printf( '<div id="%s-dismiss-rate" class="notice notice-info is-dismissible"><p>%s</p></div>', esc_attr( WOO_STORE_VACATION_SLUG ), wp_kses_post( $message ) );
 					}
 				}
 			}
@@ -189,8 +216,20 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function dismiss_upsell() {
-			check_ajax_referer( WOO_STORE_VACATION_SLUG . '-upsell' );
+			check_ajax_referer( WOO_STORE_VACATION_SLUG . '-dismiss' );
 			set_transient( 'woo_store_vacation_upsell', true, WEEK_IN_SECONDS );
+			wp_die();
+		}
+
+		/**
+		 * AJAX dismiss ask-to-rate admin notice.
+		 *
+		 * @since     1.6.1
+		 * @return    void
+		 */
+		public function dismiss_rate() {
+			check_ajax_referer( WOO_STORE_VACATION_SLUG . '-dismiss' );
+			set_transient( 'woo_store_vacation_rate', true, 3 * MONTH_IN_SECONDS );
 			wp_die();
 		}
 
@@ -687,7 +726,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : trailingslashit( 'minified' );
 
 			// Make sure that the WooCommerce plugin is active.
-			if ( $this->_is_woocommerce() ) {
+			if ( $this->is_woocommerce() ) {
 				$wc_plugin_url = WC()->plugin_url();
 				wp_register_style( 'jquery-ui-style', trailingslashit( $wc_plugin_url ) . 'assets/css/jquery-ui/jquery-ui.min.css', array(), WC_VERSION, 'screen' );
 				wp_register_style( 'woocommerce-activation', trailingslashit( $wc_plugin_url ) . 'assets/css/activation.css', array(), WC_VERSION, 'screen' );
@@ -696,7 +735,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			// Enqueue a script.
 			wp_register_script( WOO_STORE_VACATION_SLUG, trailingslashit( WOO_STORE_VACATION_DIR_URL ) . 'assets/js/' . $min . 'admin.js', array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'wp-i18n' ), WOO_STORE_VACATION_VERSION, true );
 			wp_register_script( WOO_STORE_VACATION_SLUG . '-upsell', trailingslashit( WOO_STORE_VACATION_DIR_URL ) . 'assets/js/' . $min . 'upsell.js', array( 'jquery' ), WOO_STORE_VACATION_VERSION, true );
-			wp_localize_script( WOO_STORE_VACATION_SLUG . '-upsell', 'wsvVars', array( 'dismiss_nonce' => wp_create_nonce( WOO_STORE_VACATION_SLUG . '-upsell' ) ) );
+			wp_localize_script( WOO_STORE_VACATION_SLUG . '-upsell', 'wsvVars', array( 'dismiss_nonce' => wp_create_nonce( WOO_STORE_VACATION_SLUG . '-dismiss' ) ) );
 
 			if ( 'admin.php' === $pagenow && isset( $_GET['page'] ) && WOO_STORE_VACATION_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				wp_enqueue_style( 'jquery-ui-style' );
@@ -704,7 +743,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 				wp_enqueue_script( WOO_STORE_VACATION_SLUG );
 			}
 
-			if ( ! get_transient( 'woo_store_vacation_upsell' ) ) {
+			if ( ! get_transient( 'woo_store_vacation_rate' ) || ! get_transient( 'woo_store_vacation_upsell' ) ) {
 				wp_enqueue_script( WOO_STORE_VACATION_SLUG . '-upsell' );
 			}
 		}
@@ -841,7 +880,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			);
 
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			printf( '<style id="%s" type="text/css">%s</style>%s', esc_attr( WOO_STORE_VACATION_SLUG ), $this->_minify_css( $css ), PHP_EOL );
+			printf( '<style id="%s" type="text/css">%s</style>%s', esc_attr( WOO_STORE_VACATION_SLUG ), $this->minify_css( $css ), PHP_EOL );
 		}
 
 		/**
@@ -855,7 +894,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		public function add_action_links( $links ) {
 			$plugin_links = array();
 
-			if ( $this->_is_woocommerce() ) {
+			if ( $this->is_woocommerce() ) {
 				$settings_url = add_query_arg( 'page', WOO_STORE_VACATION_SLUG, admin_url( 'admin.php' ) );
 				/* translators: 1: Open anchor tag, 2: Close anchor tag. */
 				$plugin_links[] = sprintf( esc_html_x( '%1$sSettings%2$s', 'plugin settings page', 'woo-store-vacation' ), sprintf( '<a href="%s">', esc_url( $settings_url ) ), '</a>' );
@@ -909,6 +948,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function deactivation() {
+			delete_transient( 'woo_store_vacation_rate' );
 			delete_transient( 'woo_store_vacation_upsell' );
 			delete_transient( 'woo_store_vacation_welcome_notice' );
 		}
@@ -920,7 +960,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @param      string $css    CSS styles.
 		 * @return     void|string
 		 */
-		private function _minify_css( $css ) {
+		private function minify_css( $css ) {
 			// Bail early if we have no $css properties to trim and minify.
 			if ( ! isset( $css ) || empty( $css ) ) {
 				return;
@@ -977,10 +1017,10 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		/**
 		 * Query WooCommerce activation
 		 *
-		 * @since      1.3.8
-		 * @return     bool
+		 * @since     1.3.8
+		 * @return    bool
 		 */
-		private function _is_woocommerce() {
+		private function is_woocommerce() {
 			// This statement prevents from producing fatal errors,
 			// in case the WooCommerce plugin is not activated on the site.
 			$woocommerce_plugin = apply_filters( 'woo_store_vacation_woocommerce_path', 'woocommerce/woocommerce.php' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
