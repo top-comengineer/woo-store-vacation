@@ -5,7 +5,7 @@ Donate link: https://mypreview.one/woo-store-vacation
 Requires at least: 5.3
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,15 +24,16 @@ If you want to start selling products again, then you can unpause your store at 
 >
 > Store Vacation plugin has a premium version which comes with several additional benefits:
 >
-> * One-click store close.
-> * Exclude list of user roles.
-> * Exclude list of product types.
-> * Exclude products individually.
-> * Display notice via shortcode or block.
-> * Allow **Shop Managers** to edit.
-> * Unlimited date-time ranges.
-> * Unlimited weekday hours.
-> * Unlimited notifications.
+> * One-click store close
+> * Exclude list of user roles
+> * Exclude list of product types
+> * Exclude products individually
+> * Display notice via shortcode or block
+> * Allow **Shop Managers** to edit
+> * Unlimited date-time ranges
+> * Unlimited weekday hours
+> * Unlimited notifications
+> * Import and export plugin settings
 >
 > [Upgrade to premium! &#8594;](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
@@ -117,15 +118,16 @@ Yes, there is!
 
 Currently, the key features offered by the premium (paid) version of the plugin are:
 
-* One-click store close.
-* Exclude list of user roles.
-* Exclude list of product types.
-* Exclude products individually.
-* Allow **Shop Managers** to edit.
-* Display notice via shortcode or block.
-* Unlimited date-time ranges.
-* Unlimited weekday hours.
-* Unlimited notifications.
+* One-click store close
+* Exclude list of user roles
+* Exclude list of product types
+* Exclude products individually
+* Allow **Shop Managers** to edit
+* Display notice via shortcode or block
+* Unlimited date-time ranges
+* Unlimited weekday hours
+* Unlimited notifications
+* Import and export plugin settings
 
 [Go Premium, Be Happy! &#8594;](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
@@ -137,6 +139,10 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.6.2 =
+* Add support for HPOS (High-Performance Order Storage)
+* Compatibility with WooCommerce 7.3
+
 = 1.6.1 =
 * Improved logic in displaying admin-notices.
 

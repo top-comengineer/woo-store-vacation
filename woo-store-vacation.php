@@ -22,7 +22,7 @@
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.one/woo-store-vacation
  * Description:             Pause your store operations for a set of fixed dates during your vacation and display a user-friendly notice on your shop.
- * Version:                 1.6.1
+ * Version:                 1.6.2
  * Author:                  MyPreview
  * Author URI:              https://mypreview.one/woo-store-vacation
  * Requires at least:       5.3
@@ -32,7 +32,7 @@
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
  * WC requires at least:    4.0
- * WC tested up to:         7.2
+ * WC tested up to:         7.3
  */
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
@@ -59,6 +59,7 @@ define( 'WOO_STORE_VACATION_SLUG', 'woo-store-vacation' );
 define( 'WOO_STORE_VACATION_FILE', __FILE__ );
 define( 'WOO_STORE_VACATION_PLUGIN_BASENAME', plugin_basename( WOO_STORE_VACATION_FILE ) );
 define( 'WOO_STORE_VACATION_DIR_URL', plugin_dir_url( WOO_STORE_VACATION_FILE ) );
+define( 'WOO_STORE_VACATION_DIR_PATH', plugin_dir_path( WOO_STORE_VACATION_FILE ) );
 
 if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
@@ -89,7 +90,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * time. Also prevents needing to define globals all over the place.
 		 *
 		 * @since     1.0.0
-		 * @return    object|Woo_Store_Vacation    The one true Woo_Store_Vacation
+		 * @return    null|Woo_Store_Vacation    The one true Woo_Store_Vacation
 		 */
 		public static function instance() {
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Woo_Store_Vacation ) ) {
@@ -113,6 +114,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			add_action( 'admin_notices', array( self::instance(), 'admin_notices' ) );
 			add_action( 'wp_ajax_woo_store_vacation_dismiss_upsell', array( self::instance(), 'dismiss_upsell' ) );
 			add_action( 'wp_ajax_woo_store_vacation_dismiss_rate', array( self::instance(), 'dismiss_rate' ) );
+			add_action( 'before_woocommerce_init', array( self::instance(), 'add_compatibility' ) );
 			add_action( 'admin_menu', array( self::instance(), 'add_submenu_page' ), 999 );
 			add_action( 'admin_init', array( self::instance(), 'register_settings' ) );
 			add_action( 'admin_enqueue_scripts', array( self::instance(), 'admin_enqueue' ) );
@@ -151,7 +153,11 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function textdomain() {
-			load_plugin_textdomain( 'woo-store-vacation', false, dirname( WOO_STORE_VACATION_PLUGIN_BASENAME ) . '/languages/' );
+			$domain = 'woo-store-vacation';
+			$locale = apply_filters( 'plugin_locale', get_locale(), $domain ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+
+			load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . "{$domain}/{$domain}-{$locale}.mo" );
+			load_plugin_textdomain( $domain, false, dirname( WOO_STORE_VACATION_PLUGIN_BASENAME ) . '/languages/' );
 		}
 
 		/**
@@ -217,7 +223,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function dismiss_upsell() {
 			check_ajax_referer( WOO_STORE_VACATION_SLUG . '-dismiss' );
-			set_transient( 'woo_store_vacation_upsell', true, WEEK_IN_SECONDS );
+			set_transient( 'woo_store_vacation_upsell', true, MONTH_IN_SECONDS );
 			wp_die();
 		}
 
@@ -231,6 +237,21 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			check_ajax_referer( WOO_STORE_VACATION_SLUG . '-dismiss' );
 			set_transient( 'woo_store_vacation_rate', true, 3 * MONTH_IN_SECONDS );
 			wp_die();
+		}
+
+		/**
+		 * Declaring compatibility with HPOS.
+		 *
+		 * This plugin has nothing to do with "High-Performance Order Storage".
+		 * However, the compatibility flag has been added to avoid WooCommerce declaring the plugin as "uncertain".
+		 *
+		 * @since     1.6.2
+		 * @return    void
+		 */
+		public function add_compatibility() {
+			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', WOO_STORE_VACATION_DIR_PATH, true );
+			}
 		}
 
 		/**
@@ -727,9 +748,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 			// Make sure that the WooCommerce plugin is active.
 			if ( $this->is_woocommerce() ) {
-				$wc_plugin_url = WC()->plugin_url();
-				wp_register_style( 'jquery-ui-style', trailingslashit( $wc_plugin_url ) . 'assets/css/jquery-ui/jquery-ui.min.css', array(), WC_VERSION, 'screen' );
-				wp_register_style( 'woocommerce-activation', trailingslashit( $wc_plugin_url ) . 'assets/css/activation.css', array(), WC_VERSION, 'screen' );
+				wp_register_style( 'jquery-ui-style', trailingslashit( WC()->plugin_url() ) . 'assets/css/jquery-ui/jquery-ui.min.css', array(), WC_VERSION, 'screen' );
 			}
 
 			// Enqueue a script.
@@ -739,7 +758,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 			if ( 'admin.php' === $pagenow && isset( $_GET['page'] ) && WOO_STORE_VACATION_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				wp_enqueue_style( 'jquery-ui-style' );
-				wp_enqueue_style( 'woocommerce-activation' );
+				wp_enqueue_style( 'wp-color-picker' );
 				wp_enqueue_script( WOO_STORE_VACATION_SLUG );
 			}
 
@@ -780,6 +799,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					if ( isset( $disable_purchase ) && wc_string_to_bool( $disable_purchase ) ) {
 						// Make all products not purchasable.
 						add_filter( 'woocommerce_is_purchasable', '__return_false', PHP_INT_MAX );
+
+						/**
+						 * Allow third-party plugin(s) to hook into this place and add their own functionality if needed.
+						 *
+						 * @since    1.6.2
+						 */
+						do_action( 'woo_store_vacation_shop_closed' );
 					}
 
 					add_action( 'woocommerce_before_shop_loop', array( $this, 'vacation_notice' ), 5 );

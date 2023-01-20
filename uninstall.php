@@ -3,8 +3,11 @@
  * Unistall Woo Store Vacation.
  * Fired when the plugin is uninstalled.
  *
- * @package     Woo Store Vacation
- * @since       1.0.0
+ * @link       https://mypreview.one/woo-store-vacation
+ * @author     MyPreview (Github: @mahdiyazdani, @gooklani, @mypreview)
+ * @since      1.0.0
+ *
+ * @package    woo-store-vacation
  */
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
