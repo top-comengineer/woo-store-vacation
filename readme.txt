@@ -5,7 +5,7 @@ Donate link: https://mypreview.one/woo-store-vacation
 Requires at least: 5.3
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,6 +139,9 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.6.3 =
+* Ensure compatibility of HPOS support with PHP 7.4
+
 = 1.6.2 =
 * Add support for HPOS (High-Performance Order Storage)
 * Compatibility with WooCommerce 7.3

@@ -22,7 +22,7 @@
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.one/woo-store-vacation
  * Description:             Pause your store operations for a set of fixed dates during your vacation and display a user-friendly notice on your shop.
- * Version:                 1.6.2
+ * Version:                 1.6.3
  * Author:                  MyPreview
  * Author URI:              https://mypreview.one/woo-store-vacation
  * Requires at least:       5.3
@@ -59,7 +59,6 @@ define( 'WOO_STORE_VACATION_SLUG', 'woo-store-vacation' );
 define( 'WOO_STORE_VACATION_FILE', __FILE__ );
 define( 'WOO_STORE_VACATION_PLUGIN_BASENAME', plugin_basename( WOO_STORE_VACATION_FILE ) );
 define( 'WOO_STORE_VACATION_DIR_URL', plugin_dir_url( WOO_STORE_VACATION_FILE ) );
-define( 'WOO_STORE_VACATION_DIR_PATH', plugin_dir_path( WOO_STORE_VACATION_FILE ) );
 
 if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
@@ -114,7 +113,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			add_action( 'admin_notices', array( self::instance(), 'admin_notices' ) );
 			add_action( 'wp_ajax_woo_store_vacation_dismiss_upsell', array( self::instance(), 'dismiss_upsell' ) );
 			add_action( 'wp_ajax_woo_store_vacation_dismiss_rate', array( self::instance(), 'dismiss_rate' ) );
-			add_action( 'before_woocommerce_init', array( self::instance(), 'add_compatibility' ) );
+			add_action( 'before_woocommerce_init', array( self::instance(), 'add_compatibility' ), 99 );
 			add_action( 'admin_menu', array( self::instance(), 'add_submenu_page' ), 999 );
 			add_action( 'admin_init', array( self::instance(), 'register_settings' ) );
 			add_action( 'admin_enqueue_scripts', array( self::instance(), 'admin_enqueue' ) );
@@ -250,7 +249,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function add_compatibility() {
 			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', WOO_STORE_VACATION_DIR_PATH, true );
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', WOO_STORE_VACATION_FILE, true );
 			}
 		}
 
