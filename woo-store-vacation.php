@@ -22,7 +22,7 @@
  * Plugin Name:             Woo Store Vacation
  * Plugin URI:              https://mypreview.one/woo-store-vacation
  * Description:             Pause your store operations for a set of fixed dates during your vacation and display a user-friendly notice on your shop.
- * Version:                 1.6.3
+ * Version:                 1.6.4
  * Author:                  MyPreview
  * Author URI:              https://mypreview.one/woo-store-vacation
  * Requires at least:       5.3
@@ -32,7 +32,7 @@
  * Text Domain:             woo-store-vacation
  * Domain Path:             /languages
  * WC requires at least:    4.0
- * WC tested up to:         7.3
+ * WC tested up to:         7.4
  */
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
@@ -81,6 +81,13 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @var      object    $instance
 		 */
 		private static $instance = null;
+
+		/**
+		 * Date time format constant.
+		 *
+		 * @since    1.6.4
+		 */
+		const DATE_TIME_FORMAT = 'Y-m-d H:i:s';
 
 		/**
 		 * Main `Woo_Store_Vacation` instance.
@@ -190,7 +197,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			// Query WooCommerce activation.
 			if ( ! $this->is_woocommerce() ) {
 				/* translators: 1: Dashicon, 2: Open anchor tag, 3: Close anchor tag. */
-				$message = sprintf( esc_html_x( '%1$s requires the following plugin: %2$sWooCommerce%3$s', 'admin notice', 'woo-store-vacation' ), sprintf( '<i class="dashicons dashicons-admin-plugins" style="vertical-align:sub"></i> <strong>%s</strong>', WOO_STORE_VACATION_NAME ), '<a href="https://wordpress.org/plugins/woocommerce" target="_blank" rel="noopener noreferrer nofollow"><em>', '</em></a>' );
+				$message = sprintf( esc_html_x( '%1$s requires the following plugin: %2$sWooCommerce%3$s', 'admin notice', 'woo-store-vacation' ), sprintf( '<i class="dashicons dashicons-admin-plugins"></i> <strong>%s</strong>', WOO_STORE_VACATION_NAME ), '<a href="https://wordpress.org/plugins/woocommerce" target="_blank" rel="noopener noreferrer nofollow"><em>', '</em></a>' );
 				printf( '<div class="notice notice-error notice-alt"><p>%s</p></div>', wp_kses_post( $message ) );
 				return;
 			} else {
@@ -319,7 +326,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 													&#8505;
 													<?php esc_html_e( 'Current time:', 'woo-store-vacation' ); ?>
 												</strong>
-												<?php echo esc_html( current_datetime()->format( 'Y-m-d H:i:s' ) ); ?>
+												<?php echo esc_html( current_datetime()->format( self::DATE_TIME_FORMAT ) ); ?>
 											</li>
 											<li>
 												<strong>
@@ -528,7 +535,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function vacation_mode_callback() {
-			$value = ( isset( $this->options['vacation_mode'] ) ) ? $this->options['vacation_mode'] : null;
+			$value = $this->options['vacation_mode'] ?? null;
 			printf(
 				'<input
 					type="checkbox"
@@ -550,7 +557,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function disable_purchase_callback() {
-			$value = ( isset( $this->options['disable_purchase'] ) ) ? $this->options['disable_purchase'] : null;
+			$value = $this->options['disable_purchase'] ?? null;
 			printf(
 				'<input
 					type="checkbox"
@@ -572,7 +579,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function start_date_callback() {
-			$value = isset( $this->options['start_date'] ) ? $this->options['start_date'] : null;
+			$value = $this->options['start_date'] ?? null;
 			printf(
 				'<input
 					type="text"
@@ -593,10 +600,11 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function end_date_callback() {
-			$today              = current_datetime()->format( 'Y-m-d H:i:s' );
-			$value              = isset( $this->options['end_date'] ) ? $this->options['end_date'] : null;
-			$end_date           = new DateTimeImmutable( $value . ' 00:00:00', wp_timezone() );
-			$end_date_formatted = $end_date->format( 'Y-m-d H:i:s' );
+			$today              = current_datetime()->format( self::DATE_TIME_FORMAT );
+			$value              = $this->options['end_date'] ?? null;
+			$end_date           = new DateTimeImmutable( $value, wp_timezone() );
+			$end_date           = $end_date->setTime( 0, 0, 0 );
+			$end_date_formatted = $end_date->format( self::DATE_TIME_FORMAT );
 			$is_date_passed     = null;
 			$invalid_date_style = null;
 
@@ -630,7 +638,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function text_color_callback() {
-			$value = isset( $this->options['text_color'] ) ? $this->options['text_color'] : '#FFFFFF';
+			$value = $this->options['text_color'] ?? '#FFFFFF';
 			printf(
 				'<input
 					type="text"
@@ -652,7 +660,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 * @return    void
 		 */
 		public function background_color_callback() {
-			$value = isset( $this->options['background_color'] ) ? $this->options['background_color'] : '#E2401C';
+			$value = $this->options['background_color'] ?? '#E2401C';
 			printf(
 				'<input
 					type="text"
@@ -675,7 +683,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function btn_txt_callback() {
 			$placeholder = _x( 'Contact me &#8594;', 'settings field placeholder', 'woo-store-vacation' );
-			$value       = isset( $this->options['btn_txt'] ) ? $this->options['btn_txt'] : null;
+			$value       = $this->options['btn_txt'] ?? null;
 			printf(
 				'<input
 					type="text"
@@ -698,7 +706,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function btn_url_callback() {
 			$placeholder = _x( 'https://www.example.com', 'settings field placeholder', 'woo-store-vacation' );
-			$value       = isset( $this->options['btn_url'] ) ? $this->options['btn_url'] : null;
+			$value       = $this->options['btn_url'] ?? null;
 			printf(
 				'<input
 					type="url"
@@ -721,7 +729,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function vacation_notice_callback() {
 			$placeholder = _x( 'I am currently on vacation and products from my shop will be unavailable for next few days. Thank you for your patience and apologize for any inconvenience.', 'settings field placeholder', 'woo-store-vacation' );
-			$value       = isset( $this->options['vacation_notice'] ) ? esc_attr( $this->options['vacation_notice'] ) : null;
+			$value       = $this->options['vacation_notice'] ?? null;
 			printf(
 				'<textarea
 					class="large-text"
@@ -779,25 +787,28 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			}
 
 			// Get today’s date and timestamp.
-			$today            = current_datetime()->format( 'Y-m-d H:i:s' );
+			$today            = current_datetime()->format( self::DATE_TIME_FORMAT );
 			$timezone         = wp_timezone();
 			$get_options      = (array) get_option( 'woo_store_vacation_options' );
-			$vacation_mode    = isset( $get_options['vacation_mode'] ) ? $get_options['vacation_mode'] : null;
-			$disable_purchase = isset( $get_options['disable_purchase'] ) ? $get_options['disable_purchase'] : null;
-			$start_date       = isset( $get_options['start_date'] ) ? $get_options['start_date'] . ' 00:00:00' : null;
-			$end_date         = isset( $get_options['end_date'] ) ? $get_options['end_date'] . ' 00:00:00' : null;
+			$vacation_mode    = $get_options['vacation_mode'] ?? null;
+			$disable_purchase = $get_options['disable_purchase'] ?? null;
+			$start_date       = $get_options['start_date'] ?? null;
+			$end_date         = $get_options['end_date'] ?? null;
 
 			if ( isset( $vacation_mode, $start_date, $end_date ) && wc_string_to_bool( $vacation_mode ) && ! empty( $start_date ) && ! empty( $end_date ) ) {
 				// Parses a time string according to a specified format.
 				$start_date           = new DateTimeImmutable( $start_date, $timezone );
-				$start_date_formatted = $start_date->format( 'Y-m-d H:i:s' );
+				$start_date           = $start_date->setTime( 0, 0, 0 );
+				$start_date_formatted = $start_date->format( self::DATE_TIME_FORMAT );
 				$end_date             = new DateTimeImmutable( $end_date, $timezone );
-				$end_date_formatted   = $end_date->format( 'Y-m-d H:i:s' );
+				$end_date             = $end_date->setTime( 0, 0, 0 );
+				$end_date_formatted   = $end_date->format( self::DATE_TIME_FORMAT );
 
 				if ( $today >= $start_date_formatted && $today <= $end_date_formatted ) {
 					if ( isset( $disable_purchase ) && wc_string_to_bool( $disable_purchase ) ) {
 						// Make all products not purchasable.
 						add_filter( 'woocommerce_is_purchasable', '__return_false', PHP_INT_MAX );
+						add_filter( 'body_class', array( $this, 'body_classes' ) );
 
 						/**
 						 * Allow third-party plugin(s) to hook into this place and add their own functionality if needed.
@@ -824,21 +835,25 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function vacation_notice() {
 			$get_options = (array) get_option( 'woo_store_vacation_options' );
-			$btn_txt     = isset( $get_options['btn_txt'] ) ? $get_options['btn_txt'] : null;
-			$btn_url     = isset( $get_options['btn_url'] ) ? $get_options['btn_url'] : null;
-			$notice      = isset( $get_options['vacation_notice'] ) ? $get_options['vacation_notice'] : null;
+			$btn_txt     = $get_options['btn_txt'] ?? null;
+			$btn_url     = $get_options['btn_url'] ?? null;
+			$notice      = $get_options['vacation_notice'] ?? null;
 
-			if ( isset( $notice ) && ! empty( $notice ) ) :
-				printf( '<div id="%s">', esc_attr( WOO_STORE_VACATION_SLUG ) );
-				if ( empty( $btn_txt ) || empty( $btn_url ) || '#' === $btn_url ) {
-					$message = wp_kses_post( nl2br( $notice ) );
-				} else {
-					$message = sprintf( '<a href="%1$s" class="%2$s__btn" target="_self">%3$s</a> <span class="%2$s__msg">%4$s</span>', esc_url( $btn_url ), sanitize_html_class( WOO_STORE_VACATION_SLUG ), esc_html( $btn_txt ), wp_kses_post( nl2br( $notice ) ) );
-				}
+			if ( ! isset( $notice ) || empty( $notice ) || ! function_exists( 'wc_print_notice' ) ) {
+				return;
+			}
 
-				wc_print_notice( $message, apply_filters( 'woo_store_vacation_notice_type', 'notice' ) );
-				echo '</div>';
-			endif;
+			printf( '<div id="%s">', esc_attr( WOO_STORE_VACATION_SLUG ) );
+
+			if ( empty( $btn_txt ) || empty( $btn_url ) || '#' === $btn_url ) {
+				$message = wp_kses_post( nl2br( $notice ) );
+			} else {
+				$message = sprintf( '<a href="%1$s" class="%2$s__btn" target="_self">%3$s</a> <span class="%2$s__msg">%4$s</span>', esc_url( $btn_url ), sanitize_html_class( WOO_STORE_VACATION_SLUG ), esc_html( $btn_txt ), wp_kses_post( nl2br( $notice ) ) );
+			}
+
+			wc_print_notice( $message, apply_filters( 'woo_store_vacation_notice_type', 'notice' ) );
+
+			echo '</div>';
 		}
 
 		/**
@@ -865,9 +880,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					z-index:2;
 					text-align:left;
 					list-style:none;
-					border-top:0;
-					border-right:0;
-					border-bottom:0;
+					border:none;
 					border-left:.6180469716em solid rgba(0,0,0,.15);
 					border-radius:2px;
 					padding:1em 1.618em;
@@ -888,13 +901,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 					background:0 0;
 					line-height:1.618;
 					margin-left:2em;
-					border-width:0;
-					border-top:0;
-					border-right:0;
-					border-bottom:0;
-					border-left-width:1px;
-					border-left-style:solid;
-					border-left-color:rgba(255,255,255,.25)!important;
+					border:none;
+					border-left:1px solid rgba(255,255,255,.25)!important;
 					border-radius:0;
 					box-shadow:none!important;
 					text-decoration:none;
@@ -906,6 +914,23 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			printf( '<style id="%s" type="text/css">%s</style>%s', esc_attr( WOO_STORE_VACATION_SLUG ), $this->minify_css( $css ), PHP_EOL );
+		}
+
+		/**
+		 * Adds custom classes to the array of body classes.
+		 *
+		 * @since   1.6.4
+		 * @param   array $classes   Classes for the body element.
+		 * @return  array
+		 */
+		public function body_classes( $classes ) {
+
+			/**
+			 * Append a class to the body element when shop is closed.
+			 */
+			$classes[] = 'woo-store-vacation-shop-closed';
+
+			return $classes;
 		}
 
 		/**
@@ -921,6 +946,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 
 			if ( $this->is_woocommerce() ) {
 				$settings_url = add_query_arg( 'page', WOO_STORE_VACATION_SLUG, admin_url( 'admin.php' ) );
+				/* translators: 1: Open anchor tag, 2: Close anchor tag. */
+				$plugin_links[] = sprintf( esc_html_x( '%1$sGet PRO%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow" style="color:green;font-weight:bold;">&#127796; ', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
 				/* translators: 1: Open anchor tag, 2: Close anchor tag. */
 				$plugin_links[] = sprintf( esc_html_x( '%1$sSettings%2$s', 'plugin settings page', 'woo-store-vacation' ), sprintf( '<a href="%s">', esc_url( $settings_url ) ), '</a>' );
 			}
@@ -944,10 +971,6 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			$plugin_links = array();
 			/* translators: 1: Open anchor tag, 2: Close anchor tag. */
 			$plugin_links[] = sprintf( esc_html_x( '%1$sCommunity support%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="https://wordpress.org/support/plugin/%s" target="_blank" rel="noopener noreferrer nofollow">', esc_html( WOO_STORE_VACATION_SLUG ) ), '</a>' );
-			/* translators: 1: Open anchor tag, 2: Close anchor tag. */
-			$plugin_links[] = sprintf( esc_html_x( '%1$sDonate%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="https://www.buymeacoffee.com/mahdiyazdani" target="_blank" rel="noopener noreferrer nofollow" title="%s">☕ ', esc_attr__( 'Donate to support this plugin', 'woo-store-vacation' ) ), '</a>' );
-			/* translators: 1: Open anchor tag, 2: Close anchor tag. */
-			$plugin_links[] = sprintf( esc_html_x( '%1$sUpgrade to PRO%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow" class="button-link-delete"><span class="dashicons dashicons-cart" style="font-size:16px;vertical-align:middle;"></span> ', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
 
 			return array_merge( $links, $plugin_links );
 		}
@@ -962,7 +985,7 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			// Set up the admin notice to be displayed on activation.
 			$settings_url = add_query_arg( 'page', WOO_STORE_VACATION_SLUG, admin_url( 'admin.php' ) );
 			/* translators: 1: Dashicon, 2: Plugin name, 3: Open anchor tag, 4: Close anchor tag. */
-			$welcome_notice = sprintf( esc_html_x( '%1$s Thanks for installing %2$s plugin! To get started, visit the %3$splugin’s settings page%4$s.', 'admin notice', 'woo-store-vacation' ), '<i class="dashicons dashicons-admin-settings" style="vertical-align:sub"></i>', sprintf( '<strong>%s</strong>', WOO_STORE_VACATION_NAME ), sprintf( '<a href="%s" target="_self">', esc_url( $settings_url ) ), '</a>' );
+			$welcome_notice = sprintf( esc_html_x( '%1$s Thanks for installing %2$s plugin! To get started, visit the %3$splugin’s settings page%4$s.', 'admin notice', 'woo-store-vacation' ), '<i class="dashicons dashicons-admin-settings"></i>', sprintf( '<strong>%s</strong>', WOO_STORE_VACATION_NAME ), sprintf( '<a href="%s" target="_self">', esc_url( $settings_url ) ), '</a>' );
 			set_transient( 'woo_store_vacation_welcome_notice', $welcome_notice, MINUTE_IN_SECONDS );
 		}
 

@@ -5,7 +5,7 @@ Donate link: https://mypreview.one/woo-store-vacation
 Requires at least: 5.3
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,6 +139,9 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.6.4 =
+* Add "woo-store-vacation-shop-closed" class to the body element when shop is closed.
+
 = 1.6.3 =
 * Ensure compatibility of HPOS support with PHP 7.4
 
