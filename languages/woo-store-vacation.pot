@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-04T11:40:23+00:00\n"
+"POT-Creation-Date: 2023-02-04T12:18:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: woo-store-vacation\n"
@@ -265,25 +265,25 @@ msgid "I am currently on vacation and products from my shop will be unavailable 
 msgstr ""
 
 #. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: woo-store-vacation.php:953
+#: woo-store-vacation.php:947
 msgctxt "plugin link"
 msgid "%1$sGet PRO%2$s"
 msgstr ""
 
 #. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: woo-store-vacation.php:955
-msgctxt "plugin settings page"
-msgid "%1$sSettings%2$s"
-msgstr ""
-
-#. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: woo-store-vacation.php:976
+#: woo-store-vacation.php:967
 msgctxt "plugin link"
 msgid "%1$sCommunity support%2$s"
 msgstr ""
 
+#. translators: 1: Open anchor tag, 2: Close anchor tag.
+#: woo-store-vacation.php:972
+msgctxt "plugin settings page"
+msgid "%1$sSettings%2$s"
+msgstr ""
+
 #. translators: 1: Dashicon, 2: Plugin name, 3: Open anchor tag, 4: Close anchor tag.
-#: woo-store-vacation.php:991
+#: woo-store-vacation.php:988
 msgctxt "admin notice"
 msgid "%1$s Thanks for installing %2$s plugin! To get started, visit the %3$splugin’s settings page%4$s."
 msgstr ""
