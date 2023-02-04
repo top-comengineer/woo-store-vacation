@@ -943,14 +943,8 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 		 */
 		public function add_action_links( $links ) {
 			$plugin_links = array();
-
-			if ( $this->is_woocommerce() ) {
-				$settings_url = add_query_arg( 'page', WOO_STORE_VACATION_SLUG, admin_url( 'admin.php' ) );
-				/* translators: 1: Open anchor tag, 2: Close anchor tag. */
-				$plugin_links[] = sprintf( esc_html_x( '%1$sGet PRO%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow" style="color:green;font-weight:bold;">&#127796; ', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
-				/* translators: 1: Open anchor tag, 2: Close anchor tag. */
-				$plugin_links[] = sprintf( esc_html_x( '%1$sSettings%2$s', 'plugin settings page', 'woo-store-vacation' ), sprintf( '<a href="%s">', esc_url( $settings_url ) ), '</a>' );
-			}
+			/* translators: 1: Open anchor tag, 2: Close anchor tag. */
+			$plugin_links[] = sprintf( esc_html_x( '%1$sGet PRO%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="%s" target="_blank" rel="noopener noreferrer nofollow" style="color:green;font-weight:bold;">&#127796; ', esc_url( WOO_STORE_VACATION_URI ) ), '</a>' );
 
 			return array_merge( $plugin_links, $links );
 		}
@@ -971,6 +965,12 @@ if ( ! class_exists( 'Woo_Store_Vacation' ) ) :
 			$plugin_links = array();
 			/* translators: 1: Open anchor tag, 2: Close anchor tag. */
 			$plugin_links[] = sprintf( esc_html_x( '%1$sCommunity support%2$s', 'plugin link', 'woo-store-vacation' ), sprintf( '<a href="https://wordpress.org/support/plugin/%s" target="_blank" rel="noopener noreferrer nofollow">', esc_html( WOO_STORE_VACATION_SLUG ) ), '</a>' );
+
+			if ( $this->is_woocommerce() ) {
+				$settings_url = add_query_arg( 'page', WOO_STORE_VACATION_SLUG, admin_url( 'admin.php' ) );
+				/* translators: 1: Open anchor tag, 2: Close anchor tag. */
+				$plugin_links[] = sprintf( esc_html_x( '%1$sSettings%2$s', 'plugin settings page', 'woo-store-vacation' ), sprintf( '<a href="%s" style="font-weight:bold;">&#9881; ', esc_url( $settings_url ) ), '</a>' );
+			}
 
 			return array_merge( $links, $plugin_links );
 		}
