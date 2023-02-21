@@ -5,7 +5,7 @@ Donate link: https://mypreview.one/woo-store-vacation
 Requires at least: 5.3
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 1.6.4
+Stable tag: 1.7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,9 +20,12 @@ Pausing your store disables the checkout but keeps your store online and accessi
 
 If you want to start selling products again, then you can unpause your store at any time by deactivating the Vacation Mode or schedule the plugin which does this behind the scenes for you automatically!
 
-> **BECOME A PREMIUM USER**
+
+> &#128293; **BECOME A PREMIUM USER**
 >
-> Store Vacation plugin has a premium version which comes with several additional benefits:
+> Take Store Vacation to the next level with [Woo Store Vacation Pro](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)"). The Pro plugin enhances your marketing capabilities and comes with the ability to schedule unlimited vacation dates/days.
+>
+> Here’s a look at what’s currently included with Pro:
 >
 > * One-click store close
 > * Exclude list of user roles
@@ -35,7 +38,7 @@ If you want to start selling products again, then you can unpause your store at 
 > * Unlimited notifications
 > * Import and export plugin settings
 >
-> [Upgrade to premium! &#8594;](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)")
+> [Upgrade to PRO! &#8594;](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)")
 
 == Installation ==
 = Minimum Requirements =
@@ -61,16 +64,15 @@ Automatic updates should work smoothly, but we still recommend you back up your 
 
 == Frequently Asked Questions ==
 = Why you might want to put your store on vacation? =
-This feature would be helpful in case:
+You might want to temporarily close your shop, if:
 
-* You are traveling or ill.
-* You are temporarily unable to run your shop.
-* You need a quick break to catch up on current orders.
+* You run a solo business, and sometimes life interferes, whether it be an illness, a personal trip, or a family emergency.
+* You want to give your employees a few days off over a holiday weekend to improve their productivity.
+* Your store has been very busy, so you need some time to catch up on unfulfilled orders.
+* For a day or two, you need everything to remain static while you update and compare the inventory in both your offline and online stores.
 
 = Does vacation mode hurt SEO ranking? =
-Not at all! Unlike similar eCommerce platforms, the plugin is intended to keep your search engine rank intact and enabling this feature will not impact your place on SERP (Search engine results page).
-
-Similar tricks such as increasing your delivery time with respect to the number of days you are taking a vacation are not necessary, and you may schedule your shop to be closed at any time.
+Not at all! The plugin keeps your entire store visible, so your search engine rankings are unaffected and your customers can still browse products and make plans for purchases. However, it disables the actual shopping cart and checkout procedure, so no sales or transactions can be made while the extension is in use.
 
 = Where do I find the plugin’s settings page? =
 1. Log into your WordPress website dashboard.
@@ -88,14 +90,14 @@ Similar tricks such as increasing your delivery time with respect to the number 
 Enabling this option will disable eCommerce functionality and takes out the cart, checkout process and add to cart buttons with disabling purchases for all users whether they’re logged in or not.
 
 = Why there is no message displaying on my theme!? =
-This is mainly because the theme author of yours has been overridden WooCommerce template files and modified the default order of the hooks in the shop and product view page — Consider switching to the “Storefront” theme.
+Your store notification will display on your shop and single product page(s), letting your customers know the details of the closure.
+
+However, you can add the vacation notice on any specific page by adding the **Store Vacation Notice**  block to the page content or using the `[woo_store_vacation]` shortcode instead.
 
 = How do I get help with the plugin? =
 The easiest way to receive support is to “Create a new topic” by visiting Community Forums page [here](https://wordpress.org/support/plugin/woo-store-vacation "Woo Store Vacation Support Forum").
 
 Make sure to check the “Notify me of follow-up replies via email” checkbox to receive notifications, as soon as a reply posted to your question or inquiry.
-
-*Please note that this is an opensource 100% volunteer project, and it’s not unusual to get reply days or even weeks later.*
 
 = Does this plugin supports WPML? =
 Yes. The plugin is translation-ready and has a config file to support both WPML and Polylang plugins fully.
@@ -113,23 +115,8 @@ Here’s the [GitHub development repository &#8594;](https://github.com/myprevie
 = Did you like the idea behind this plugin? =
 Please share your experience by leaving this plugin [5 shining stars](https://wordpress.org/support/plugin/woo-store-vacation/reviews/ "Rate Woo Store Vacation 5 stars") if you like it, thanks!
 
-= Is there a premium version to upgrade? =
-Yes, there is!
-
-Currently, the key features offered by the premium (paid) version of the plugin are:
-
-* One-click store close
-* Exclude list of user roles
-* Exclude list of product types
-* Exclude products individually
-* Allow **Shop Managers** to edit
-* Display notice via shortcode or block
-* Unlimited date-time ranges
-* Unlimited weekday hours
-* Unlimited notifications
-* Import and export plugin settings
-
-[Go Premium, Be Happy! &#8594;](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)")
+= Is there a pro/premium version of Woo Store Vacation? =
+Absolutely! [Woo Store Vacation Pro](https://mypreview.one/woo-store-vacation/ "Woo Store Vacation (PRO)") is available as an upgrade and includes advanced functionality and third-party integrations.
 
 == Screenshots ==
 1. Plugin’s settings page
@@ -139,140 +126,136 @@ Currently, the key features offered by the premium (paid) version of the plugin 
 5. Displaying a notice at the top of shop archive pages
 
 == Changelog ==
+= 1.7.0 =
+* Feature: Vacation notice can be displayed using the "[woo_store_vacation]" shortcode or editor block.
+* Compatibility: WooCommerce 7.4
+
 = 1.6.4 =
-* Add "woo-store-vacation-shop-closed" class to the body element when shop is closed.
+* Feature: Add "woo-store-vacation-shop-closed" class to the body element when shop is closed.
 
 = 1.6.3 =
-* Ensure compatibility of HPOS support with PHP 7.4
+* Tweak: Ensure compatibility of HPOS support with PHP 7.4
 
 = 1.6.2 =
-* Add support for HPOS (High-Performance Order Storage)
-* Compatibility with WooCommerce 7.3
+* Feature: Add support for HPOS (High-Performance Order Storage)
+* Compatibility: WooCommerce 7.3
 
 = 1.6.1 =
-* Improved logic in displaying admin-notices.
+* Tweak: Improved logic in displaying admin-notices.
 
 = 1.6.0 =
-* Compatibility with WooCommerce 7.2
+* Compatibility: WooCommerce 7.2
 
 = 1.5.1 =
 * Update author URI.
 
 = 1.5.0 =
-* Compatibility with WordPress 6.1
-* Compatibility with WooCommerce 7.1
-* Account for time when comparing dates.
-* Support local timezone.
+* Compatibility: WordPress 6.1
+* Compatibility: WooCommerce 7.1
+* Fix: Account for time when comparing dates.
+* Fix: Support local timezone.
 
 = 1.4.6 =
-* Compatibility with WooCommerce 6.8
+* Compatibility: WooCommerce 6.8
 
 = 1.4.5 =
-* Compatibility with WordPress 6.0
-* Compatibility with WooCommerce 6.5
+* Compatibility: WordPress 6.0
+* Compatibility: WooCommerce 6.5
 
 = 1.4.4 =
-* Compatibility with WordPress 5.9
-* Compatibility with WooCommerce 6.2
+* Compatibility: WordPress 5.9
+* Compatibility: WooCommerce 6.2
 
 = 1.4.3 =
-* Compatibility with PHP 8.0
+* Compatibility: PHP 8.0
 
 = 1.4.2 =
-* Compatibility with WordPress 5.8
-* Compatibility with WooCommerce 5.5
+* Compatibility: WordPress 5.8
+* Compatibility: WooCommerce 5.5
 
 = 1.4.1 =
-* Compatibility with WordPress 5.7
-* Compatibility with WooCommerce 5.1
+* Compatibility: WordPress 5.7
+* Compatibility: WooCommerce 5.1
 
 = 1.4.0 =
-* Compatibility with WordPress 5.6
-* Compatibility with WooCommerce 4.8
-* Improved data sanitization/escaping.
-* Updated upsell notice markup/ID. Kudos to @nicomollet
+* Compatibility: WordPress 5.6
+* Compatibility: WooCommerce 4.8
+* Tweak: Improved data sanitization/escaping.
+* Tweak: Updated upsell notice markup/ID. Kudos to @nicomollet
 
 = 1.3.9 =
-* Updated language file.
-* Removed minimum date from the datepicker module.
-* Bail early, in case the store closing request is for an administrative interface page.
+* Tweak: Removed minimum date from the datepicker module.
+* Fix: Bail early, in case the store closing request is for an administrative interface page.
 
 = 1.3.8 =
-* Updated language file.
-* Multiple code standards improvements.
-* Compatibility with WordPress 5.5
-* Compatibility with WooCommerce 4.4
+* Fix: Multiple code standards improvements.
+* Compatibility: WordPress 5.5
+* Compatibility: WooCommerce 4.4
 
 = 1.3.7 =
-* Compatibility with WooCommerce 4.3
+* Compatibility: WooCommerce 4.3
 
 = 1.3.6 =
-* Compatibility with WordPress 5.4.2
+* Compatibility: WordPress 5.4
 
 = 1.3.5 =
-* Added language configuration file to support WPML/Polylang.
-* Compatibility with WooCommerce 4.2.0
+* Feature: Add language configuration file to support WPML/Polylang.
+* Compatibility: WooCommerce 4.2.0
 
 = 1.3.4 =
-* Compatibility with WordPress 5.4.1
-* Compatibility with WooCommerce 4.1.0
+* Compatibility: WordPress 5.4
+* Compatibility: WooCommerce 4.1
 
 = 1.3.3 =
-* Multiple code standards improvements.
-* Compatibility with WordPress 5.4.0
-* Compatibility with WooCommerce 4.0.1
+* Fix: Multiple code standards improvements.
+* Compatibility: WordPress 5.4
+* Compatibility: WooCommerce 4.0.1
 
 = 1.3.2 =
-* Delay purchasable filter to run AFTER all other hooks have completed preventing from getting overridden by a third-party extension.
-* Compatibility with WooCommerce 3.9.2
+* Fix: Delay purchasable filter to run AFTER all other hooks have completed preventing from getting overridden by a third-party extension.
+* Compatibility: WooCommerce 3.9.2
 
 = 1.3.1 =
-* Compatibility with WooCommerce 3.9.0
+* Compatibility: WooCommerce 3.9
 
 = 1.3.0 =
-* Updated language file.
-* Fixed fatal error while submitting store vacation dates via a non-Latin calendar.
-* Altered vacation notice `z-index` value to prevent overlap with core notifications.
-* Refactored and re-organized underlying code in plugin settings page/ controls.
-* Compatibility with WordPress 5.3.1
-* Compatibility with WooCommerce 3.8.1
+* Fix: Fatal error while submitting store vacation dates via a non-Latin calendar.
+* Fix: Altered vacation notice `z-index` value to prevent overlap with core notifications.
+* Compatibility: WordPress 5.3
+* Compatibility: WooCommerce 3.8
 
 = 1.2.4 =
-* Minor changes.
+* Tweak: Minor changes.
 
 = 1.2.3 =
-* Updated WooCommerce hook names.
+* Tweak: Update WooCommerce hook names.
 
 = 1.2.2 =
-* Fixed miscalculation of "strtotime" method.
+* Fix: Miscalculation of "strtotime" method.
 
 = 1.2.1 =
-* Compatibility with WordPress 4.9.
-* Fixed miscalculation of "strtotime" method.
+* Fix: Miscalculation of "strtotime" method.
+* Compatibility: WordPress 4.9
 
 = 1.2.0 =
-* Added custom datepicker stylesheet file.
+* Feature: Add custom datepicker stylesheet file.
 
 = 1.1.0 =
-* Updated language file.
-* Added button text and URL fields to the plugin settings page.
+* Feature: Add button text and URL fields to the plugin settings page.
 
 = 1.0.4 =
-* Updated language file.
-* Added start date to close the shop immediately.
-* Added color picker controls to customizer background and text color.
-* Compatibility with WooCommerce 3.X.
+* Feature: Add start date to close the shop immediately.
+* Feature: Add color picker controls to customizer background and text color.
+* Compatibility: WooCommerce 3.0
 
 = 1.0.3 =
-* Updated language file.
-* Refactored main class code.
-* Updated hooks for shop and single product pages.
+* Tweak: Update hooks for shop and single product pages.
 
 = 1.0.2 =
-* Added screenshot images.
+* Feature: Add screenshot images.
 
 = 1.0.1 =
-* Fixed time calculation bug with strtotime method.
+* Fix: Miscalculation of "strtotime" method.
 
 = 1.0.0 =
 * Initial release.
